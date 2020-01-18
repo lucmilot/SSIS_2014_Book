@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="CSharp_LoadPackage">
+</Property><Property Name="Solution File" Value="C:\ssis\ExtMgt\CSharp_LoadPackage\CSharp_LoadPackage.sln">
+</Property><Property Name="User Options File" Value="C:\ssis\ExtMgt\CSharp_LoadPackage\CSharp_LoadPackage.suo">
+</Property><Property Name="Date" Value="Monday, August 29, 2011">
+</Property><Property Name="Time" Value="23:47 PM">
+</Property></Properties><Event ErrorLevel="0" Project="" Source="CSharp_LoadPackage.sln" Description="File successfully backed up as C:\ssis\ExtMgt\CSharp_LoadPackage\Backup\CSharp_LoadPackage.sln">
+</Event><Event ErrorLevel="0" Project="" Source="CSharp_LoadPackage.suo" Description="File successfully backed up as C:\ssis\ExtMgt\CSharp_LoadPackage\Backup\CSharp_LoadPackage.suo">
+</Event><Event ErrorLevel="0" Project="CSharp_LoadPackage" Source="CSharp_LoadPackage\CSharp_LoadPackage.csproj" Description="Project file successfully backed up as C:\ssis\ExtMgt\CSharp_LoadPackage\Backup\CSharp_LoadPackage\CSharp_LoadPackage.csproj">
+</Event><Event ErrorLevel="0" Project="CSharp_LoadPackage" Source="CSharp_LoadPackage\Program.cs" Description="File successfully backed up as C:\ssis\ExtMgt\CSharp_LoadPackage\Backup\CSharp_LoadPackage\Program.cs">
+</Event><Event ErrorLevel="0" Project="CSharp_LoadPackage" Source="CSharp_LoadPackage\Properties\AssemblyInfo.cs" Description="File successfully backed up as C:\ssis\ExtMgt\CSharp_LoadPackage\Backup\CSharp_LoadPackage\Properties\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="CSharp_LoadPackage" Source="CSharp_LoadPackage\CSharp_LoadPackage.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="CSharp_LoadPackage" Source="CSharp_LoadPackage\CSharp_LoadPackage.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="CSharp_LoadPackage.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="CSharp_LoadPackage.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="CSharp_LoadPackage" Source="CSharp_LoadPackage\CSharp_LoadPackage.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event></UpgradeLog>

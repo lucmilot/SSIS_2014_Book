@@ -1,0 +1,3 @@
+Update ctrlConfigurations
+SET ConfiguredValue = 'SQL Server Config Value'
+where ConfiguredValue = 'Hard Coded Value'

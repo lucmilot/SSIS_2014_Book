@@ -1,0 +1,109 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/2/2008 8:47:07 AM"
+  DTS:CreationName="SSIS.Package.3"
+  DTS:CreatorComputerName="KATMAI"
+  DTS:CreatorName="KATMAI\Administrator"
+  DTS:DTSID="{7213F7FE-0BC1-41B1-83C3-0A7980AE33D9}"
+  DTS:ExecutableType="SSIS.Package.3"
+  DTS:LastModifiedProductVersion="11.0.1445.2"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Web Service Task"
+  DTS:PackageType="5"
+  DTS:VersionBuild="3"
+  DTS:VersionGUID="{6340D965-9C49-4B47-9BE2-12F06D16638A}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[HTTP Connection Manager]"
+      DTS:CreationName="HTTP"
+      DTS:DTSID="{7DE9199B-0BCF-4866-9201-D2825D741CD4}"
+      DTS:ObjectName="HTTP Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="http://www.webservicex.net/WeatherForecast.asmx?wsdl">
+          <DTS:HttpConnection
+            DTS:ServerURL="http://www.webservicex.net/WeatherForecast.asmx?wsdl">
+            <DTS:Property
+              DTS:Name="ServerPassword"
+              Sensitive="1"
+              Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA+K8oX1aLAk2eTEYD4qFb9QAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAABOzU0NfnQ0KRpsVmT0cSqOwhiugCyeqg6bdxtThHPcYAAAAAAOgAAAAAIAACAAAACw0l3zbu3DDLlYN4fyTkR21TMUbHG1Z5H6E7vZh228ahAAAACMsRVdTrBlM7rjWrqhzQM1QAAAAEGQxndwRaJXeV2mPjXUbBWNuM4aujmWdK6XTZwoeH7N/Z90ykQfGhA08er8bGjsYO4dMTQghxW03hIiW9hokIc</DTS:Property>
+            <DTS:Property
+              DTS:Name="ProxyPassword"
+              Sensitive="1"
+              Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA+K8oX1aLAk2eTEYD4qFb9QAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADEe/FnDblF+8Oq3s1+PqCItomRy7yG4GYpc0KfsAY0PAAAAAAOgAAAAAIAACAAAACjXVxTv3vZ4WclIP8Yda9rErqSzd76MRG8aTqoo7VOVxAAAAA0eMHbtyyIBNe/8KiuCnPLQAAAALaW7xuAL6PMTF73XWHq+MA7o+L9cqiZcqL6sfzota5QlYgCRUuebSMBojuvBOLgDbFHKMauwLbShv7EAmwguqM</DTS:Property>
+          </DTS:HttpConnection>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[weatheroutput.xml]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{E43DE1B8-C0D9-40EE-AE2E-25F96FBFB50E}"
+      DTS:ObjectName="weatheroutput.xml">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:FileUsageType="1"
+          DTS:ConnectionString="c:\ProSSIS\data\weatheroutput.xml" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Web Service Task"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.WebServiceTask.WebServiceTask, Microsoft.SqlServer.WebServiceTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="Web Service Task"
+      DTS:DTSID="{4CFF6837-AB23-4DC9-9D5B-BECDE428E99D}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.WebServiceTask.WebServiceTask, Microsoft.SqlServer.WebServiceTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Web Service Task"
+      DTS:TaskContact="Web Service Task; Microsoft Corporation; Microsoft SQL Server 2008; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <WSTask:WebServiceTaskData
+          WSTask:ConnectionName="{7DE9199B-0BCF-4866-9201-D2825D741CD4}"
+          WSTask:Service="WeatherForecast"
+          WSTask:WSDLFile="C:\ProSSIS\Data\weather.wsdl"
+          WSTask:OverwriteWSDLFile="True"
+          WSTask:OutputLocation="weatheroutput.xml" xmlns:WSTask="www.microsoft.com/sqlserver/dts/tasks/webservicetask">
+          <WSTask:MethodInfo
+            WSTask:MethodName="GetWeatherByZipCode"
+            WSTask:MessageName="">
+            <WSTask:Documentation>Get one week weather forecast for a valid Zip Code(USA)</WSTask:Documentation>
+            <WSTask:ParamInfo
+              WSTask:Name="ZipCode"
+              WSTask:Datatype="string"
+              WSTask:ParamType="Primitive"
+              WSTask:SeqNumber="0">
+              <WSTask:PrimitiveValue>30303</WSTask:PrimitiveValue>
+            </WSTask:ParamInfo>
+          </WSTask:MethodInfo>
+        </WSTask:WebServiceTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql11">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="222,44"
+          Id="Package\Web Service Task"
+          TopLeft="117.5,88.5" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

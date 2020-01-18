@@ -1,0 +1,17 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "Chapter3", "Chapter3\Chapter3.dtproj", "{D8ECC67A-53CE-4089-865C-BA0B4B5B1C26}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D8ECC67A-53CE-4089-865C-BA0B4B5B1C26}.Development|Default.ActiveCfg = Development
+		{D8ECC67A-53CE-4089-865C-BA0B4B5B1C26}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

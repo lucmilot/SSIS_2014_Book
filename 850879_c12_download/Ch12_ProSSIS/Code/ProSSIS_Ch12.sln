@@ -1,0 +1,17 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "ProSSIS_Ch12", "ProSSIS_Ch12.dtproj", "{01D1E6BF-85E1-48C6-B71B-2A32A1D1FE50}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{01D1E6BF-85E1-48C6-B71B-2A32A1D1FE50}.Development|Default.ActiveCfg = Development
+		{01D1E6BF-85E1-48C6-B71B-2A32A1D1FE50}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

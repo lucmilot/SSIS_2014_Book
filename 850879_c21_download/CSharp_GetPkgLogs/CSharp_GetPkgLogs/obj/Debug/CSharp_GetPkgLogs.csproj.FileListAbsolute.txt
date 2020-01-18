@@ -1,0 +1,13 @@
+C:\ssis\ExtMgt\CSharp_GetPkgLogs\CSharp_GetPkgLogs\bin\Debug\CSharp_GetPkgLogs.exe.config
+C:\ssis\ExtMgt\CSharp_GetPkgLogs\CSharp_GetPkgLogs\bin\Debug\CSharp_GetPkgLogs.exe
+C:\ssis\ExtMgt\CSharp_GetPkgLogs\CSharp_GetPkgLogs\bin\Debug\CSharp_GetPkgLogs.pdb
+C:\ssis\ExtMgt\CSharp_GetPkgLogs\CSharp_GetPkgLogs\obj\Debug\ResolveAssemblyReference.cache
+C:\ssis\ExtMgt\CSharp_GetPkgLogs\CSharp_GetPkgLogs\obj\Debug\CSharp_GetPkgLogs.exe
+C:\ssis\ExtMgt\CSharp_GetPkgLogs\CSharp_GetPkgLogs\obj\Debug\CSharp_GetPkgLogs.pdb
+C:\Users\Chris\Downloads\101124_ch20_download\CSharp_GetPkgLogs\CSharp_GetPkgLogs\bin\Debug\CSharp_GetPkgLogs.exe.config
+C:\Users\Chris\Downloads\101124_ch20_download\CSharp_GetPkgLogs\CSharp_GetPkgLogs\obj\Debug\CSharp_GetPkgLogs.exe
+C:\Users\Chris\Downloads\101124_ch20_download\CSharp_GetPkgLogs\CSharp_GetPkgLogs\obj\Debug\CSharp_GetPkgLogs.pdb
+C:\Users\Chris\Downloads\101124_ch20_download\CSharp_GetPkgLogs\CSharp_GetPkgLogs\bin\Debug\Package.dtsx
+C:\Users\Chris\Downloads\101124_ch20_download\CSharp_GetPkgLogs\CSharp_GetPkgLogs\bin\Debug\CSharp_GetPkgLogs.exe
+C:\Users\Chris\Downloads\101124_ch20_download\CSharp_GetPkgLogs\CSharp_GetPkgLogs\bin\Debug\CSharp_GetPkgLogs.pdb
+C:\Users\Chris\Downloads\101124_ch20_download\CSharp_GetPkgLogs\CSharp_GetPkgLogs\obj\Debug\CSharp_GetPkgLogs.csprojResolveAssemblyReference.cache

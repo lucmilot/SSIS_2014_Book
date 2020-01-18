@@ -1,0 +1,9 @@
+C:\SSIS\scripts\SSISUtilityLib_VB\SSISUtilityLib_VB\bin\Debug\SSISUtilityLib_VB.dll
+C:\SSIS\scripts\SSISUtilityLib_VB\SSISUtilityLib_VB\bin\Debug\SSISUtilityLib_VB.pdb
+C:\SSIS\scripts\SSISUtilityLib_VB\SSISUtilityLib_VB\bin\Debug\SSISUtilityLib_VB.xml
+C:\SSIS\scripts\SSISUtilityLib_VB\SSISUtilityLib_VB\obj\Debug\ResolveAssemblyReference.cache
+C:\SSIS\scripts\SSISUtilityLib_VB\SSISUtilityLib_VB\obj\Debug\SSISUtilityLib_VB.Resources.resources
+C:\SSIS\scripts\SSISUtilityLib_VB\SSISUtilityLib_VB\obj\Debug\SSISUtilityLib_VB.vbproj.GenerateResource.Cache
+C:\SSIS\scripts\SSISUtilityLib_VB\SSISUtilityLib_VB\obj\Debug\SSISUtilityLib_VB.dll
+C:\SSIS\scripts\SSISUtilityLib_VB\SSISUtilityLib_VB\obj\Debug\SSISUtilityLib_VB.xml
+C:\SSIS\scripts\SSISUtilityLib_VB\SSISUtilityLib_VB\obj\Debug\SSISUtilityLib_VB.pdb

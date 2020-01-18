@@ -1,0 +1,2933 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="6/28/2009 1:43:34 PM"
+  DTS:CreationName="SSIS.Package.3"
+  DTS:CreatorComputerName="WIN-YBOIGS5HVWB"
+  DTS:CreatorName="WIN-YBOIGS5HVWB\Administrator"
+  DTS:DTSID="{46161F76-56E2-4E5F-8E9B-09A448AE15A4}"
+  DTS:ExecutableType="SSIS.Package.3"
+  DTS:LastModifiedProductVersion="11.0.1445.2"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="DEMO 4_FactCallCenter_Script"
+  DTS:PackageType="5"
+  DTS:VersionBuild="99"
+  DTS:VersionGUID="{85E2017B-CA7C-42F9-8162-F9862A06EE6B}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[AdventureWorksDW2008]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{D9815D9D-AFB8-46FF-9F1E-7595A8B6C17D}"
+      DTS:ObjectName="AdventureWorksDW2008">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=localhost;Initial Catalog=AdventureWorksDW2008;Provider=SQLNCLI11;Integrated Security=SSPI;Application Name=SSIS-FactCallCenter_Script-{D9815D9D-AFB8-46FF-9F1E-7595A8B6C17D}localhost.AdventureWorksDW2008;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[AuditFlatFile]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{ee47c4b7-65e6-4ba9-b310-f43efbd6fbf2}"
+      DTS:ObjectName="AuditFlatFile">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\SQL_Connections\Data Cleansing\20061201_AuditExtract.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="IssueID"
+              DTS:DTSID="{020AF434-3A2D-47D4-B005-FA3F2DE221F3}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="7"
+              DTS:TextQualified="True"
+              DTS:ObjectName="AuditDatetime"
+              DTS:DTSID="{76955D6F-4E93-43D1-A9FF-E0265351A691}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="6"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DDLType"
+              DTS:DTSID="{6141E999-FEB6-4DBB-A292-ECEB21091652}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="8"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="OperatorID"
+              DTS:DTSID="{6D316876-9566-4F86-BAE7-CE4640F07685}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="16"
+              DTS:TextQualified="True"
+              DTS:ObjectName="OperatorLevel"
+              DTS:DTSID="{6104AF4D-34BC-4FB1-9059-185A4A8FF646}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="10"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="AlertType"
+              DTS:DTSID="{BD92BB11-62CB-428E-BE58-32CDA20C0243}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="16"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ResolvedFlag"
+              DTS:DTSID="{305B48E0-A9EA-4660-9C9D-B739E9F2BD9D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="16"
+              DTS:TextQualified="True"
+              DTS:ObjectName="OrderRequiredFlag"
+              DTS:DTSID="{2781E6AA-27E3-481D-9A16-86D6CCA12DD4}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="16"
+              DTS:TextQualified="True"
+              DTS:ObjectName="OutageIssueFlag"
+              DTS:DTSID="{CFACEA55-F410-4769-9474-5F3FB5A185F0}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="16"
+              DTS:TextQualified="True"
+              DTS:ObjectName="PossibleCustomerAbandonFlag"
+              DTS:DTSID="{98AD707F-159F-4FE1-B547-C4DB5AF681C7}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:DataType="16"
+              DTS:TextQualified="True"
+              DTS:ObjectName="AlertLevel"
+              DTS:DTSID="{3BD263A6-E00E-407C-B67E-4C737E612109}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Load Call Center Fact Table"
+      DTS:CreationName="{5918251B-2970-45A4-AB5F-01C3C588FE5A}"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{0B233B30-6BCA-4207-8015-B6BD51738449}"
+      DTS:ExecutableType="{5918251B-2970-45A4-AB5F-01C3C588FE5A}"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load Call Center Fact Table">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          BLOBTempStoragePath=""
+          bufferTempStoragePath=""
+          version="1">
+          <components>
+            <component
+              refId="Package\Load Call Center Fact Table\Aggregation Logic"
+              componentClassID="{874F7595-FB5F-40FF-96AF-FBFF8250E3EF}"
+              contactInfo="Executes a custom script.;Microsoft Corporation; Microsoft SqlServer v10; © 2007 Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="Executes a custom script."
+              name="Aggregation Logic"
+              version="8">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Stores the source code of the component"
+                  isArray="true"
+                  name="SourceCode"
+                  state="cdata">
+                  <arrayElements
+                    arrayElementCount="30">
+                    <arrayElement
+                      dataType="System.String"><![CDATA[My Project\Settings.Designer.vb]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA['------------------------------------------------------------------------------
+' <autogenerated>
+'     This code was generated by a tool.
+'
+'     Changes to this file may cause incorrect behavior and will be lost if
+'     the code is regenerated.
+' </autogenerated>
+'------------------------------------------------------------------------------
+
+Option Strict Off
+Option Explicit On
+
+
+
+Partial Friend NotInheritable Class MySettings
+    Inherits System.Configuration.ApplicationSettingsBase
+
+    Private Shared m_Value As MySettings
+
+    Private Shared m_SyncObject As Object = New Object
+
+    <System.Diagnostics.DebuggerNonUserCode()> _
+    Public Shared ReadOnly Property Value() As MySettings
+        Get
+            If (MySettings.m_Value Is Nothing) Then
+                System.Threading.Monitor.Enter(MySettings.m_SyncObject)
+                If (MySettings.m_Value Is Nothing) Then
+                    Try
+                        MySettings.m_Value = New MySettings
+                    Finally
+                        System.Threading.Monitor.Exit(MySettings.m_SyncObject)
+                    End Try
+                End If
+            End If
+            Return MySettings.m_Value
+        End Get
+    End Property
+End Class
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[sc_82672f314b8b4f309f7b38ab3ad40ccd.vbproj]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF16LE]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="utf-16"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!-- This section defines project-level properties.
+
+       Configuration - Specifies whether the default configuration is Release or Debug.
+       Platform - Specifies what CPU the output of this project can run on.
+       OutputType - Must be "Library" for VSTA.
+       NoStandardLibraries - Set to "false" for VSTA.
+       RootNamespace - In C#, this specifies the namespace given to new files.
+                       In Visual Basic, all objects are wrapped in this namespace at runtime.
+       AssemblyName - Name of the output assembly.
+  -->
+  <PropertyGroup>
+    <ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{F184B08F-C81C-45F6-A57F-5ABD9991F28F}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <OutputType>Library</OutputType>
+    <RootNamespace>SC_82672f314b8b4f309f7b38ab3ad40ccd.vbproj</RootNamespace>
+    <AssemblyName>SC_82672f314b8b4f309f7b38ab3ad40ccd.vbproj</AssemblyName>
+    <StartupObject></StartupObject>
+    <OptionExplicit>On</OptionExplicit>
+    <OptionCompare>Binary</OptionCompare>
+    <OptionStrict>Off</OptionStrict>
+    <OptionInfer>On</OptionInfer>
+    <ProjectGuid>{FAE95096-5BE5-4380-BA25-37B9F1080B3E}</ProjectGuid>
+  </PropertyGroup>
+  <!-- This section defines properties that are set when the "Debug" configuration is
+       selected.
+
+       DebugSymbols - If true, create symbols (.pdb). If false, do not create symbols.
+       Optimize - If true, optimize the build output. If false, do not optimize.
+       OutputPath - Output path of the project relative to the project file.
+       EnableUnmanagedDebugging - If true, starting the debugger will attach both managed and unmanaged debuggers.
+       DefineConstants - Constants defined for the preprocessor.
+       Warning Level - Warning level for the compiler.
+  -->
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DefineConstants></DefineConstants>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <DebugSymbols>true</DebugSymbols>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <NoWarn>42016,42017,42018,42019,42032,42353,42354,42355</NoWarn>
+  </PropertyGroup>
+  <!-- This section defines properties that are set when the "Release" configuration is
+       selected.
+
+       DebugSymbols - If true, create symbols (.pdb). If false, do not create symbols.
+       Optimize - If true, optimize the build output. If false, do not optimize.
+       OutputPath - Output path of the project relative to the project file.
+       EnableUnmanagedDebugging - If true, starting the debugger will attach both managed and unmanaged debuggers.
+       DefineConstants - Constants defined for the preprocessor.
+       Warning Level - Warning level for the compiler.
+  -->
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DefineConstants></DefineConstants>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <NoWarn>42016,42017,42018,42019,42032,42353,42354,42355</NoWarn>
+  </PropertyGroup>
+  <!-- This section enables pre- and post-build steps. However,
+       it is recommended that MSBuild tasks be used instead of these properties.
+  -->
+  <PropertyGroup>
+    <PreBuildEvent></PreBuildEvent>
+    <PostBuildEvent></PostBuildEvent>
+  </PropertyGroup>
+  <!-- This sections specifies references for the project. -->
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.SqlServer.TxScript, Version=11.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.PipelineHost, Version=11.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.DTSPipelineWrap, Version=11.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.DTSRuntimeWrap, Version=11.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" />
+  </ItemGroup>
+  <!-- Visual Basic supports Importing namespaces (equivalent to using statements in C#).-->
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+  </ItemGroup>
+  <!-- This section defines the user source files that are part of the
+       project.
+
+       Compile - Specifies a source file to compile.
+       EmbeddedResource - Specifies a .resx file for embedded resources.
+       None - Specifies a file that is not to be passed to the compiler (for instance,
+              a text file or XML file).
+       AppDesigner - Specifies the directory where the application properties files can
+                     be found.
+  -->
+  <ItemGroup>
+    <AppDesigner Include="My Project\" />
+    <Compile Include="BufferWrapper.vb" />
+    <Compile Include="ComponentWrapper.vb" />
+    <Compile Include="main.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <!-- Include the default configuration information and metadata files for the add-in.
+         These files are copied to the build output directory when the project is
+         built, and the path to the configuration file is passed to add-in on the command
+         line when debugging.
+    -->
+  </ItemGroup>
+  <!-- Include the build rules for a VB project.-->
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <!-- This section defines VSTA properties that describe the host-changable project properties. -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}">
+        <ProjectProperties HostName="VSTAHostName" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="vb" TemplatesPath="" />
+        <Host Name="SSIS_ScriptComponent" />
+        <ProjectClient>
+          <HostIdentifier>SSIS_SC110</HostIdentifier>
+        </ProjectClient>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <PropertyGroup>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetFrameworkProfile></TargetFrameworkProfile>
+  </PropertyGroup>
+</Project>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[My Project\AssemblyInfo.vb]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Imports System
+Imports System.Reflection
+Imports System.Runtime.InteropServices
+
+' General Information about an assembly is controlled through the following 
+' set of attributes. Change these attribute values to modify the information
+' associated with an assembly.
+
+' Review the values of the assembly attributes
+
+<Assembly: AssemblyTitle("SC_82672f314b8b4f309f7b38ab3ad40ccd.vbproj")> 
+<Assembly: AssemblyDescription("")> 
+<Assembly: AssemblyCompany("")> 
+<Assembly: AssemblyProduct("SC_82672f314b8b4f309f7b38ab3ad40ccd.vbproj")> 
+<Assembly: AssemblyCopyright("Copyright @  2009")> 
+<Assembly: AssemblyTrademark("")> 
+<Assembly: CLSCompliant(True)> 
+
+<Assembly: ComVisible(False)> 
+
+'The following GUID is for the ID of the typelib if this project is exposed to COM
+<Assembly: Guid("0c6235c9-9194-4d4b-b2bb-0960adc2ab16")> 
+
+' Version information for an assembly consists of the following four values:
+'
+'      Major Version
+'      Minor Version 
+'      Build Number
+'      Revision
+'
+' You can specify all the values or you can default the Build and Revision Numbers 
+' by using the '*' as shown below:
+' <Assembly: AssemblyVersion("1.0.*")>
+
+<Assembly: AssemblyVersion("1.0.0.0")> 
+<Assembly: AssemblyFileVersion("1.0.0.0")> 
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[ComponentWrapper.vb]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[' THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT!
+' Microsoft SQL Server Integration Services component wrapper
+' This module defines the base class for your component
+' THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT!
+
+Imports System
+Imports System.Data
+Imports Microsoft.SqlServer.Dts.Pipeline
+Imports Microsoft.SqlServer.Dts.Pipeline.Wrapper
+Imports Microsoft.SqlServer.Dts.Runtime.Wrapper
+
+<CLSCompliant(False)> _
+Public Class UserComponent
+    Inherits ScriptComponent
+
+    Public Connections As New Connections(Me)
+    Public Variables As New Variables(Me)
+
+    Public CallCenterOutputBuffer As CallCenterOutputBuffer
+
+    Dim InputsFinished As Integer = 0
+
+    Public Overrides Sub ProcessInput(ByVal InputID As Integer, ByVal InputName As String, ByVal Buffer As PipelineBuffer, ByVal OutputMap As OutputNameMap)
+
+        If InputName.Equals("CallCenterInput", StringComparison.Ordinal) Then
+            CallCenterInput_ProcessInput(New CallCenterInputBuffer(Buffer, GetColumnIndexes(InputID), OutputMap))
+        End If
+
+        If Buffer.EndOfRowset Then
+            InputsFinished = InputsFinished + 1
+            If InputsFinished = 1 Then
+                FinishOutputs()
+                MarkOutputsFinished()
+            End If
+        End If
+
+    End Sub
+
+    Public Overridable Sub FinishOutputs()
+    End Sub
+
+    Private Sub MarkOutputsFinished()
+
+        If CallCenterOutputBuffer IsNot Nothing Then
+            CallCenterOutputBuffer.SetEndOfRowset
+            CallCenterOutputBuffer = Nothing
+        End If
+
+    End Sub
+
+    Public Overrides Sub PrimeOutput(ByVal Outputs As Integer, ByVal OutputIDs() As Integer, ByVal Buffers() As PipelineBuffer, ByVal OutputMap As OutputNameMap)
+
+        For I As Integer = 0 To Outputs - 1
+            If OutputIDs(I) = GetOutputID(OutputMap, "CallCenterOutput") Then
+                CallCenterOutputBuffer = New CallCenterOutputBuffer(Buffers(I), GetColumnIndexes(OutputIDs(I)), OutputMap)
+            End If
+        Next
+
+        CreateNewOutputRows()
+
+    End Sub
+
+    Public Overridable Sub CreateNewOutputRows()
+    End Sub
+
+    Public Overridable Sub CallCenterInput_ProcessInput(ByVal Buffer As CallCenterInputBuffer)
+
+        While Buffer.NextRow()
+            CallCenterInput_ProcessInputRow(Buffer)
+        End While
+
+    End Sub
+
+    Public Overridable Sub CallCenterInput_ProcessInputRow(ByVal Row As CallCenterInputBuffer)
+
+    End Sub
+
+End Class
+
+<CLSCompliant(False)> _
+Public Class Connections
+
+    Dim ParentComponent As ScriptComponent
+
+    <CLSCompliant(False)> _
+    Public Sub New(ByVal Component As ScriptComponent)
+        ParentComponent = Component
+    End Sub
+
+End Class
+
+<CLSCompliant(False)> _
+Public Class Variables
+
+    Dim ParentComponent As ScriptComponent
+
+    <CLSCompliant(False)> _
+    Public Sub New(ByVal Component As ScriptComponent)
+        ParentComponent = Component
+    End Sub
+
+End Class
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[BufferWrapper.vb]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[' THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT!
+' Microsoft SQL Server Integration Services buffer wrappers
+' This module defines classes for accessing data flow buffers
+' THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT!
+
+
+Option Strict Off   ' This allows usage of PipelineBuffer typed accessors.
+
+Imports System
+Imports System.Data
+Imports Microsoft.SqlServer.Dts.Pipeline
+Imports Microsoft.SqlServer.Dts.Pipeline.Wrapper
+
+<CLSCompliant(False)> _
+Public Class CallCenterInputBuffer
+    Inherits ScriptBuffer
+
+    Public Sub New(ByVal Buffer As PipelineBuffer, ByVal BufferColumnIndexes As Integer(), ByVal OutputMap As OutputNameMap)
+        MyBase.New(Buffer, BufferColumnIndexes, OutputMap)
+    End Sub
+
+    Public ReadOnly Property [IssueID]() As Int32
+        Get
+            Return Buffer.GetInt32(Me.BufferColumnIndexes(0))
+        End Get
+    End Property
+    Public ReadOnly Property [IssueID_IsNull] As Boolean
+        Get
+            Return IsNull(0)
+        End Get
+    End Property
+
+    Public ReadOnly Property [AuditDatetime]() As DateTime
+        Get
+            Return Buffer.GetDateTime(Me.BufferColumnIndexes(1))
+        End Get
+    End Property
+    Public ReadOnly Property [AuditDatetime_IsNull] As Boolean
+        Get
+            Return IsNull(1)
+        End Get
+    End Property
+
+    Public ReadOnly Property [DDLType]() As String
+        Get
+            Return Buffer.GetString(Me.BufferColumnIndexes(2))
+        End Get
+    End Property
+    Public ReadOnly Property [DDLType_IsNull] As Boolean
+        Get
+            Return IsNull(2)
+        End Get
+    End Property
+
+    Public ReadOnly Property [OperatorID]() As String
+        Get
+            Return Buffer.GetString(Me.BufferColumnIndexes(3))
+        End Get
+    End Property
+    Public ReadOnly Property [OperatorID_IsNull] As Boolean
+        Get
+            Return IsNull(3)
+        End Get
+    End Property
+
+    Public ReadOnly Property [OperatorLevel]() As SByte
+        Get
+            Return Buffer.GetSByte(Me.BufferColumnIndexes(4))
+        End Get
+    End Property
+    Public ReadOnly Property [OperatorLevel_IsNull] As Boolean
+        Get
+            Return IsNull(4)
+        End Get
+    End Property
+
+    Public ReadOnly Property [AlertType]() As String
+        Get
+            Return Buffer.GetString(Me.BufferColumnIndexes(5))
+        End Get
+    End Property
+    Public ReadOnly Property [AlertType_IsNull] As Boolean
+        Get
+            Return IsNull(5)
+        End Get
+    End Property
+
+    Public ReadOnly Property [ResolvedFlag]() As SByte
+        Get
+            Return Buffer.GetSByte(Me.BufferColumnIndexes(6))
+        End Get
+    End Property
+    Public ReadOnly Property [ResolvedFlag_IsNull] As Boolean
+        Get
+            Return IsNull(6)
+        End Get
+    End Property
+
+    Public ReadOnly Property [OrderRequiredFlag]() As SByte
+        Get
+            Return Buffer.GetSByte(Me.BufferColumnIndexes(7))
+        End Get
+    End Property
+    Public ReadOnly Property [OrderRequiredFlag_IsNull] As Boolean
+        Get
+            Return IsNull(7)
+        End Get
+    End Property
+
+    Public ReadOnly Property [OutageIssueFlag]() As SByte
+        Get
+            Return Buffer.GetSByte(Me.BufferColumnIndexes(8))
+        End Get
+    End Property
+    Public ReadOnly Property [OutageIssueFlag_IsNull] As Boolean
+        Get
+            Return IsNull(8)
+        End Get
+    End Property
+
+    Public ReadOnly Property [PossibleCustomerAbandonFlag]() As SByte
+        Get
+            Return Buffer.GetSByte(Me.BufferColumnIndexes(9))
+        End Get
+    End Property
+    Public ReadOnly Property [PossibleCustomerAbandonFlag_IsNull] As Boolean
+        Get
+            Return IsNull(9)
+        End Get
+    End Property
+
+    Public ReadOnly Property [AlertLevel]() As SByte
+        Get
+            Return Buffer.GetSByte(Me.BufferColumnIndexes(10))
+        End Get
+    End Property
+    Public ReadOnly Property [AlertLevel_IsNull] As Boolean
+        Get
+            Return IsNull(10)
+        End Get
+    End Property
+
+    Public ReadOnly Property [ResolutionDatetime]() As DateTime
+        Get
+            Return Buffer.GetDateTime(Me.BufferColumnIndexes(11))
+        End Get
+    End Property
+    Public ReadOnly Property [ResolutionDatetime_IsNull] As Boolean
+        Get
+            Return IsNull(11)
+        End Get
+    End Property
+
+    Public ReadOnly Property [CallFlag]() As Int32
+        Get
+            Return Buffer.GetInt32(Me.BufferColumnIndexes(12))
+        End Get
+    End Property
+    Public ReadOnly Property [CallFlag_IsNull] As Boolean
+        Get
+            Return IsNull(12)
+        End Get
+    End Property
+
+    Public ReadOnly Property [AutoResponseFlag]() As Int32
+        Get
+            Return Buffer.GetInt32(Me.BufferColumnIndexes(13))
+        End Get
+    End Property
+    Public ReadOnly Property [AutoResponseFlag_IsNull] As Boolean
+        Get
+            Return IsNull(13)
+        End Get
+    End Property
+
+    Public ReadOnly Property [LevelOneDistinctOperator]() As String
+        Get
+            Return Buffer.GetString(Me.BufferColumnIndexes(14))
+        End Get
+    End Property
+    Public ReadOnly Property [LevelOneDistinctOperator_IsNull] As Boolean
+        Get
+            Return IsNull(14)
+        End Get
+    End Property
+
+    Public ReadOnly Property [LevelTwoDistinctOperator]() As String
+        Get
+            Return Buffer.GetString(Me.BufferColumnIndexes(15))
+        End Get
+    End Property
+    Public ReadOnly Property [LevelTwoDistinctOperator_IsNull] As Boolean
+        Get
+            Return IsNull(15)
+        End Get
+    End Property
+
+    Public Overloads Function NextRow() As Boolean
+        NextRow = MyBase.NextRow()
+    End Function
+
+    Public Overloads Function EndOfRowset() As Boolean
+        EndOfRowset = MyBase.EndOfRowset
+    End Function
+
+End Class
+
+<CLSCompliant(False)> _
+Public Class CallCenterOutputBuffer
+    Inherits ScriptBuffer
+
+    Public Sub New(ByVal Buffer As PipelineBuffer, ByVal BufferColumnIndexes As Integer(), ByVal OutputMap As OutputNameMap)
+        MyBase.New(Buffer, BufferColumnIndexes, OutputMap)
+    End Sub
+
+    Public WriteOnly Property [DateKey]() As Int32
+        Set
+            Me(0) = Value
+        End Set
+    End Property
+    Public WriteOnly Property [DateKey_IsNull] As Boolean
+        Set
+            If (value)
+                SetNull(0)
+            Else
+                Throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.")
+            End If
+        End Set
+    End Property
+
+    Public WriteOnly Property [Shift]() As String
+        Set
+            Me(1) = Value
+        End Set
+    End Property
+    Public WriteOnly Property [Shift_IsNull] As Boolean
+        Set
+            If (value)
+                SetNull(1)
+            Else
+                Throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.")
+            End If
+        End Set
+    End Property
+
+    Public WriteOnly Property [LevelOneOperators]() As UInt32
+        Set
+            Me(2) = Value
+        End Set
+    End Property
+    Public WriteOnly Property [LevelOneOperators_IsNull] As Boolean
+        Set
+            If (value)
+                SetNull(2)
+            Else
+                Throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.")
+            End If
+        End Set
+    End Property
+
+    Public WriteOnly Property [LevelTwoOperators]() As UInt32
+        Set
+            Me(3) = Value
+        End Set
+    End Property
+    Public WriteOnly Property [LevelTwoOperators_IsNull] As Boolean
+        Set
+            If (value)
+                SetNull(3)
+            Else
+                Throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.")
+            End If
+        End Set
+    End Property
+
+    Public WriteOnly Property [Calls]() As Int64
+        Set
+            Me(4) = Value
+        End Set
+    End Property
+    Public WriteOnly Property [Calls_IsNull] As Boolean
+        Set
+            If (value)
+                SetNull(4)
+            Else
+                Throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.")
+            End If
+        End Set
+    End Property
+
+    Public WriteOnly Property [AutoResponses]() As Int64
+        Set
+            Me(5) = Value
+        End Set
+    End Property
+    Public WriteOnly Property [AutoResponses_IsNull] As Boolean
+        Set
+            If (value)
+                SetNull(5)
+            Else
+                Throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.")
+            End If
+        End Set
+    End Property
+
+    Public WriteOnly Property [Orders]() As Int64
+        Set
+            Me(6) = Value
+        End Set
+    End Property
+    Public WriteOnly Property [Orders_IsNull] As Boolean
+        Set
+            If (value)
+                SetNull(6)
+            Else
+                Throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.")
+            End If
+        End Set
+    End Property
+
+    Public WriteOnly Property [IssuesRaised]() As Int64
+        Set
+            Me(7) = Value
+        End Set
+    End Property
+    Public WriteOnly Property [IssuesRaised_IsNull] As Boolean
+        Set
+            If (value)
+                SetNull(7)
+            Else
+                Throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.")
+            End If
+        End Set
+    End Property
+
+    Public WriteOnly Property [AverageTimePerIssue]() As Double
+        Set
+            Me(8) = Value
+        End Set
+    End Property
+    Public WriteOnly Property [AverageTimePerIssue_IsNull] As Boolean
+        Set
+            If (value)
+                SetNull(8)
+            Else
+                Throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.")
+            End If
+        End Set
+    End Property
+
+    Public WriteOnly Property [CustomerAbandons]() As Int64
+        Set
+            Me(9) = Value
+        End Set
+    End Property
+    Public WriteOnly Property [CustomerAbandons_IsNull] As Boolean
+        Set
+            If (value)
+                SetNull(9)
+            Else
+                Throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.")
+            End If
+        End Set
+    End Property
+
+    Public Overloads Sub AddRow()
+        MyBase.AddRow()
+    End Sub
+
+    Public Overloads Sub SetEndOfRowset()
+        MyBase.SetEndOfRowset()
+    End Sub
+
+    Public Overloads Function EndOfRowset() As Boolean
+        EndOfRowset = MyBase.EndOfRowset
+    End Function
+
+End Class
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[main.vb]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[' Microsoft SQL Server Integration Services Script Component
+' Write scripts using Microsoft Visual Basic 2008.
+' ScriptMain is the entry point class of the script.
+
+Imports System
+Imports System.Data
+Imports System.Math
+Imports Microsoft.SqlServer.Dts.Pipeline.Wrapper
+Imports Microsoft.SqlServer.Dts.Runtime.Wrapper
+
+<Microsoft.SqlServer.Dts.Pipeline.SSISScriptComponentEntryPointAttribute()> _
+<CLSCompliant(False)> _
+Public Class ScriptMain
+    Inherits UserComponent
+
+    Private Structure IssueStruct
+        Public InitialDateTime As DateTime
+        Public ResolutionDateTime As DateTime
+        Public ResolutionDateTime_IsNull As Boolean
+        Public OrderCount As Int64
+        Public IssueCount As Int64
+        Public CustomerAbandonCount As Int64
+        Public CallCount As Int64
+        Public AutoResponseCount As Int64
+    End Structure
+
+    Private Level1OperatorHash As New Hashtable
+    Private Level2OperatorHash As New Hashtable
+    Private IssueHash As New Hashtable
+
+    Public Overrides Sub CallCenterInput_ProcessInputRow(ByVal Row As CallCenterInputBuffer)
+        Dim OperatorKey As String = CStr(GetDateKey(Row.AuditDatetime)) _
+                    + GetShift(Row.AuditDatetime)
+
+        ' Add new operators to the appropriate hashtable at the Date-Shift grain
+        If Not Level1OperatorHash.ContainsKey(OperatorKey) Then
+            Dim Lvl1Operators As New ArrayList
+            Level1OperatorHash.Add(OperatorKey, Lvl1Operators)
+            Dim Lvl2Operators As New ArrayList
+            Level2OperatorHash.Add(OperatorKey, Lvl2Operators)
+        End If
+
+        If Row.OperatorLevel = 1 Then
+            If Not CType(Level1OperatorHash(OperatorKey), ArrayList).Contains(Row.LevelOneDistinctOperator) Then
+                If Not Row.LevelOneDistinctOperator_IsNull Then
+                    CType(Level1OperatorHash(OperatorKey), ArrayList).Add(Row.LevelOneDistinctOperator)
+                End If
+            End If
+        ElseIf Row.OperatorLevel = 2 Then
+            If Not CType(Level2OperatorHash(OperatorKey), ArrayList).Contains(Row.LevelTwoDistinctOperator) Then
+                If Not Row.LevelTwoDistinctOperator_IsNull Then
+                    CType(Level2OperatorHash(OperatorKey), ArrayList).Add(Row.LevelTwoDistinctOperator)
+                End If
+            End If
+        End If
+
+        ' Update attributes for each issue
+        If Not IssueHash.ContainsKey(Row.IssueID) Then
+            Dim issue As New IssueStruct
+            issue.InitialDateTime = Row.AuditDatetime
+            If Row.ResolutionDatetime_IsNull Then
+                issue.ResolutionDateTime_IsNull = True
+            Else
+                issue.ResolutionDateTime_IsNull = False
+                issue.ResolutionDateTime = Row.ResolutionDatetime
+            End If
+            issue.OrderCount = Row.OrderRequiredFlag
+            issue.IssueCount = Row.OutageIssueFlag
+            issue.CustomerAbandonCount = Row.PossibleCustomerAbandonFlag
+            issue.CallCount = Row.CallFlag
+            issue.AutoResponseCount = Row.AutoResponseFlag
+
+            IssueHash.Add(Row.IssueID, issue)
+        Else
+            Dim issue As IssueStruct = CType(IssueHash(Row.IssueID), IssueStruct)
+            If Row.AuditDatetime < issue.InitialDateTime Then
+                issue.InitialDateTime = Row.AuditDatetime
+            End If
+            If Not Row.ResolutionDatetime_IsNull Then
+                If Row.ResolutionDatetime > issue.ResolutionDateTime Then
+                    issue.ResolutionDateTime_IsNull = False
+                    issue.ResolutionDateTime = Row.ResolutionDatetime
+                End If
+            End If
+            If Row.OrderRequiredFlag > issue.OrderCount Then
+                issue.OrderCount = Row.OrderRequiredFlag
+            End If
+            If Row.OutageIssueFlag > issue.IssueCount Then
+                issue.IssueCount = Row.OutageIssueFlag
+            End If
+            If Row.PossibleCustomerAbandonFlag > issue.CustomerAbandonCount Then
+                issue.CustomerAbandonCount = Row.PossibleCustomerAbandonFlag
+            End If
+            If Row.CallFlag > issue.CallCount Then
+                issue.CallCount = Row.CallFlag
+            End If
+            If Row.AutoResponseFlag > issue.AutoResponseCount Then
+                issue.AutoResponseCount = Row.AutoResponseFlag
+            End If
+            IssueHash(Row.IssueID) = issue
+        End If
+    End Sub
+
+    Public Overrides Sub CallCenterInput_ProcessInput(ByVal Buffer As CallCenterInputBuffer)
+        While Buffer.NextRow
+            CallCenterInput_ProcessInputRow(Buffer)
+        End While
+
+        If Buffer.EndOfRowset Then
+            Dim dateKey As Integer
+            Dim shift As String
+            Dim level1Operators As Integer
+            Dim level2Operators As Integer
+            Dim calls As Int64
+            Dim autoResponses As Int64
+            Dim orders As Int64
+            Dim issuesRaised As Int64
+            Dim totalTimePerIssue As Int64
+            Dim totalTimeCount As Int64
+            Dim customerAbandons As Int64
+
+            If Not IsNothing(level1Operators) Then
+                For Each key As String In Level1OperatorHash.Keys
+                    dateKey = key.Substring(0, 8)
+                    shift = key.Substring(8, key.Length - 8)
+                    level1Operators = CType(Level1OperatorHash(key), ArrayList).Count
+                    level2Operators = CType(Level2OperatorHash(key), ArrayList).Count
+
+                    calls = 0
+                    autoResponses = 0
+                    orders = 0
+                    issuesRaised = 0
+                    totalTimePerIssue = 0
+                    totalTimeCount = 0
+                    customerAbandons = 0
+
+                    For Each issue As IssueStruct In IssueHash.Values
+                        If GetDateKey(issue.InitialDateTime) = dateKey And _
+                            GetShift(issue.InitialDateTime) = shift Then
+                            calls = calls + issue.CallCount
+                            autoResponses = autoResponses + issue.AutoResponseCount
+                            orders = orders + issue.OrderCount
+                            issuesRaised = issuesRaised + issue.IssueCount
+                            If issue.ResolutionDateTime_IsNull = False Then
+                                Dim initialDateNoMin As DateTime = issue.InitialDateTime.Subtract(TimeSpan.FromSeconds(issue.InitialDateTime.Second))
+                                Dim resolutionDateNoMin As DateTime = issue.ResolutionDateTime.Subtract(TimeSpan.FromSeconds(issue.ResolutionDateTime.Second))
+                                totalTimePerIssue = totalTimePerIssue + DateDiff(DateInterval.Minute, initialDateNoMin, resolutionDateNoMin)
+                                totalTimeCount = totalTimeCount + 1
+                            End If
+                            customerAbandons = customerAbandons + issue.CustomerAbandonCount
+                        End If
+                    Next
+
+                    CallCenterOutputBuffer.AddRow()
+                    CallCenterOutputBuffer.DateKey = dateKey
+                    CallCenterOutputBuffer.Shift = shift
+                    CallCenterOutputBuffer.LevelOneOperators = level1Operators
+                    CallCenterOutputBuffer.LevelTwoOperators = level2Operators
+                    CallCenterOutputBuffer.Calls = calls
+                    CallCenterOutputBuffer.AutoResponses = autoResponses
+                    CallCenterOutputBuffer.Orders = orders
+                    CallCenterOutputBuffer.IssuesRaised = issuesRaised
+                    CallCenterOutputBuffer.AverageTimePerIssue = totalTimePerIssue / totalTimeCount
+                    CallCenterOutputBuffer.CustomerAbandons = customerAbandons
+                Next
+            End If
+            CallCenterOutputBuffer.SetEndOfRowset()
+        End If
+
+    End Sub
+
+    Private Function GetShift(ByVal shiftDate As DateTime) As String
+        Dim shift As String
+        Select Case shiftDate.Hour
+            Case 0 To 5
+                shift = "midnight"
+            Case 6 To 11
+                shift = "AM"
+            Case 12 To 17
+                shift = "PM1"
+            Case Else
+                shift = "PM2"
+        End Select
+        Return shift
+    End Function
+
+    Private Function GetDateKey(ByVal inputDate As DateTime) As Integer
+        Return CInt(inputDate.ToString("yyyyMMdd"))
+    End Function
+
+End Class
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Project]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF16LE]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="4.0" schemaVersion="1.0">
+	<msb:PropertyGroup>
+		<msb:ProjectId>{67C7A501-8333-4CD4-9E27-7A8B865E971F}</msb:ProjectId>
+		<msb:NoContent>Reference;Import;Folder</msb:NoContent>
+		<msb:Language>msBuild</msb:Language>
+		<msb:DisplayName>sc_82672f314b8b4f309f7b38ab3ad40ccd</msb:DisplayName>
+		<msb:CodeName>sc_82672f314b8b4f309f7b38ab3ad40ccd</msb:CodeName>
+	</msb:PropertyGroup>
+	<msb:ItemGroup>
+		<msb:File Include="ComponentWrapper.vb"/>
+		<msb:File Include="BufferWrapper.vb"/>
+		<msb:File Include="main.vb"/>
+		<msb:File Include="My Project\Settings.Designer.vb"/>
+		<msb:File Include="My Project\Resources.Designer.vb"/>
+		<msb:File Include="My Project\AssemblyInfo.vb"/>
+		<msb:File Include="My Project\Resources.resx"/>
+		<msb:File Include="My Project\Settings.settings"/>
+		<msb:Project Include="sc_82672f314b8b4f309f7b38ab3ad40ccd.vbproj"/>
+	</msb:ItemGroup>
+</c:Project>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[My Project\Settings.settings]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)" GeneratedClassNamespace="" GeneratedClassName="MySettings">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[My Project\Resources.resx]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+</root>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[My Project\Resources.Designer.vb]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA['------------------------------------------------------------------------------
+' <autogenerated>
+'     This code was generated by a tool.
+'
+'     Changes to this file may cause incorrect behavior and will be lost if
+'     the code is regenerated.
+' </autogenerated>
+'------------------------------------------------------------------------------
+
+Option Strict Off
+Option Explicit On
+
+
+Namespace My.Resources
+    
+    '''<summary>
+    '''   A strongly-typed resource class, for looking up localized strings, etc.
+    '''</summary>
+    'This class was auto-generated by the Strongly Typed Resource Builder
+    'class via a tool like ResGen or Visual Studio.NET.
+    'To add or remove a member, edit your .ResX file then rerun ResGen
+    'with the /str option, or rebuild your VS project.
+    Class MyResources
+        
+        Private Shared _resMgr As System.Resources.ResourceManager
+        
+        Private Shared _resCulture As System.Globalization.CultureInfo
+        
+        Friend Sub New()
+            MyBase.New
+        End Sub
+        
+        '''<summary>
+        '''   Returns the cached ResourceManager instance used by this class.
+        '''</summary>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Public Shared ReadOnly Property ResourceManager() As System.Resources.ResourceManager
+            Get
+                If (_resMgr Is Nothing) Then
+                    Dim temp As System.Resources.ResourceManager = New System.Resources.ResourceManager("My.Resources.MyResources", GetType(MyResources).Assembly)
+                    _resMgr = temp
+                End If
+                Return _resMgr
+            End Get
+        End Property
+        
+        '''<summary>
+        '''   Overrides the current thread's CurrentUICulture property for all
+        '''   resource lookups using this strongly typed resource class.
+        '''</summary>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Public Shared Property Culture() As System.Globalization.CultureInfo
+            Get
+                Return _resCulture
+            End Get
+            Set
+                _resCulture = value
+            End Set
+        End Property
+    End Class
+End Namespace
+]]></arrayElement>
+                  </arrayElements>
+                </property>
+                <property
+                  dataType="System.String"
+                  description="Stores the binary representation of the component"
+                  isArray="true"
+                  name="BinaryCode"
+                  state="cdata">
+                  <arrayElements
+                    arrayElementCount="2">
+                    <arrayElement
+                      dataType="System.String"><![CDATA[SC_82672f314b8b4f309f7b38ab3ad40ccd.vbproj.dll]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[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
+CihVAAAKfhkAAAQtHHNgAAAGgBkAAATeEH4aAAAEKBEAAAooVgAACtx+GQAABCoAARAAAAIAHQAM
+KQAQAAAAAbQAAADOyu++AQAAAJEAAABsU3lzdGVtLlJlc291cmNlcy5SZXNvdXJjZVJlYWRlciwg
+bXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tl
+bj1iNzdhNWM1NjE5MzRlMDg5I1N5c3RlbS5SZXNvdXJjZXMuUnVudGltZVJlc291cmNlU2V0AgAA
+AAAAAAAAAAAAUEFEUEFEULQAAABCU0pCAQABAAAAAAAMAAAAdjQuMC4zMDMxOQAAAAAFAGwAAACY
+EQAAI34AAAQSAAC0FQAAI1N0cmluZ3MAAAAAuCcAAEwBAAAjVVMABCkAABAAAAAjR1VJRAAAABQp
+AAD8BAAAI0Jsb2IAAAAAAAAAAgAAAVcVogkJDwAAAPolMwAWAAABAAAAQAAAAA8AAAAaAAAAYQAA
+AC4AAABiAAAAPQAAADYAAAAGAAAAPAAAAD0AAAAJAAAAAQAAAAUAAAABAAAAAwAAAAMAAAACAAAA
+AACFFQEAAAAAAAoArwGFAQoA4wHFAQYA8wHsAQoASwKFAQYAyQLsAQoASwMhAw4ArgONAxIA3AON
+Aw4A6wONAwYAPQTsAQ4AZwyNAwYAbw1cDQYA0Q3sAQYAcA5fDgYAnQ6IDhYA/g7pDhYASw81DxYA
+ZA81DxYAkQ95DwYAuw+oDwoA+g/TDwoAEhATABYARxAqEAYAfBBcEAYAmhDsAQYAvhDsAQoA1xAT
+AAYAGxH8EAYAXhHsAQYAdBHsAQYAixHsAQYApRHsAQYArBHsAQYAshHsAQYAuRHsAQYAwBHsAQYA
+/hFcDQoACBLTDwYARRJcDQoAURITAAYAZxJcDQYAfBJcDQoA1hLTDwYA+RLsAQoAFxMTAAoAIxMT
+AAoAMBMTAAoAPxMTAAYAYRPsAQ4AfhONAwYAtxOlEwYA3hPNEwYA8ROoDwYATRRcEAYAbRRcEAYA
+pRSLFAYAvhSlEwYA2xT8EAYA6RSlEwYABBWlEwYAHxWlEwYAOBWlEwYAURWlEwYAbhWlEwAAAAAB
+AAAAAAABAAEAAAAAACkANwAFAAEAAQAAAAAAZQA3AAkAAQACAAABEABwADcADQABAAMABQEAAHoA
+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
+AAABAH8JAAABAH8JAAABAJMMAAACAJsMAAADAPkDAAAEABQEAAABANMMAAACANsMAAADAOUMAAAE
+ABQEAAABAPkDAAABAD4NAAABAFINAAABAFINAAABAD4NAAABAPkDAAABALINAAABAMcNAAABAH8J
+CQC/ARMAiQC/AX4BmQC/AY0BEQC/ARMAoQC/ARMAJAC/ARMALAC/ARMANAC/ARMAPAC/ARMAJAAR
+A4sALAARA4sANAARA4sAPAARA4sAqQC/ARMAsQC/ARMAuQC/AdwAwQCLECcCGQC0AmMAGQC9AmgA
+KQCsEDQCGQDWAnEA0QDIEEQCGQC/ARMA2QC/AVQCRABaA5AATAArD4sATADyENECTAC/ARMA4QC/
+AdcAOQC/AaYAOQD5A+YCOQAABOoCQQAvEe4COQA4EfMCQQA/EfgCQQBLEQMDQQBVEQgDOQADB7AA
+OQALB7AA6QC/AdcAOQB6EREDOQCDEdIA+QC/AdwAOQANCxMAOQAUCxMAWQC/ARMAGQG0AhcDWQDR
+ER8DQQDiEbAAWQDyESUDYQC/ARMAMQHWAjEDGQEUEjYDYQAbEmMAKQG/ARMAYQAnEjwDYQArEkID
+KQE0EmMAKQEnEkcDUQA9EkwDYQB6ETwDQQFdEmQDYQBzEmkDUQGIEm8DOQGWEnUDMQHWAnkDGQGi
+En4DMQGsEoQDGQG2EmgAKQHBEmgAYQDLEmkDWQHgEokDUQDuEmgAYQECE5ADUQAOE5cDaQFPE58D
+OQFYE7AAiQFtExMAUQB1E2gAUQDWAtMDkQG/ARMAKQDAE9gDcQC/Ad4DgQC/ARMAoQHmE/sDoQHs
+E/sDqQG/ARMAsQG/AdIAuQG/ARMAwQG/AdwAyQG/AdwA0QG/AdwA2QG/AdwA4QG/AdwA6QG/AdwA
+8QG/AdwA+QG/AdwAAQK/AdwAKQCDAPUBLgADA+ACLgD7AskELgDTAi0ELgDzArIELgALA+ACLgAT
+A8kELgDDAgUELgDLAg4ELgDbAnUELgDjAoIELgDrAOACLgBDAawELgDrAuACQAArAKwBQAATAIQB
+QwATAIQBQwAbAJMBSQCDAOEBYwAbAJMBYwATAIQBaQCDABoCgAArAKwBgwBzAKwBgwAbAJMBgwB7
+AKwBiQCDAAYCoAArAKwBowATAIQBowDDAFwCwAArAKwBwwDrAOACwwATAIQB4AArAKwB4wBDAeAC
+AAErAKwBAAETAIQBAwFDAeACIAETAIQBIAErAKwBIwFDAeACQAErAKwBQAETAIQBQwFDAeACYAET
+AIQBYAErAKwBYwFDAeACgAErAKwBgwGLAqwBgwFDAeACoAErAKwBwAErAKwBwAETAIQB4AErAKwB
+AAITAIQBAAIrAKwBSQcTAPIDaQcTAPIDiQe7AqwBgApDAeACoApDAeACzQHSAdcB3AEsAjACOwJA
+Ak8CTwLXAjACLAL+AiwCQAIsAkACLAINAywCQAIsAg0DLAINAywCDQMsAg0DLAINAywC/gIsAjAC
+LAIwAiwCQAIsAkACLAIsAiwCLAIsA1QDsAPNAzAC5gPtAwAEBAABAAYABQAHAAYACAAmAA4AOgAP
+ADwAAADjAU8AAACcAlQAAABLAlkAAACoAl4AAABkA5gAAAAXB70AAAAfB8EAAAAuB8UAAAA8B8EA
+AABRB8oAAABZB8EAAABoB8oAAABzB8EAAACFB84AAACTB8EAAACoB8oAAACyB8EAAADDB84AAADQ
+B8EAAADkB84AAAD2B8EAAAAPCM4AAAAfCMEAAAA2CM4AAABSCMEAAAB1CM4AAACACMEAAACSCMUA
+AAClCMEAAAC/CL0AAADICMEAAADYCL0AAADpCMEAAAABCcoAAAAaCcEAAAA6CcoAAABTCcEAAAAj
+C70AAAArC8EAAAA6C8oAAABAC8EAAABNC/AAAABfC8EAAAB4C/AAAACKC8EAAACjC/QAAACpC8EA
+AAC2C/QAAADEC8EAAADZC/QAAADgC8EAAADuC/QAAAD7C8EAAAAPDPgAAAAjDMEAAAA+DPQAAABP
+DMEAAABwDmMBAADhDmgBAAB/CXkBAgAEAAMAAgAFAAUAAgAGAAcAAgAHAAkAAgAPAAsAAgASAA0A
+AgATAA8AAgAUABEAAgAVABMAAgAWABUAAgAXABcAAgAYABkAAgAZABsAAgAaAB0AAgAbAB8AAgAc
+ACEAAgAdACMAAgAeACUAAgAfACcAAgAgACkAAgAhACsAAgAiAC0AAgAjAC8AAgAkADEAAgAlADMA
+AgAmADUAAgAnADcAAgAoADkAAgApADsAAgAqAD0AAgArAD8AAgAsAEEAAgAtAEMAAgAuAEUAAgAv
+AEcAAgAwAEkAAgAxAEsAAQA1AE0AAQA2AE8AAQA3AFEAAQA4AFMAAQA5AFUAAQA6AFcAAQA7AFkA
+AQA8AFsAAQA9AF0AAQA+AF8AAQA/AGEAAQBAAGMAAQBBAGUAAQBCAGcAAQBDAGkAAQBEAGsAAQBF
+AG0AAQBGAG8AAQBHAHEAAQBIAHMAAgBcAHUAAgBdAHcAAQBeAHcAAgBhAHkAdQB1AIgAsQG4Ab8B
+xgG+AsUCBIAAAAEAAAAAAAAAAAAAAAAAuQAAAAQAAAAAAAAAAAAAAAEACgAAAAAACgAAAAAAAAAA
+AAAACgATAAAAAAALAAAAAAAAAAAAAACdAHADAAAAAAsAAAAAAAAAAAAAAJ0AuwMAAAAABAAAAAAA
+AAAAAAAAAQDsAQAAAAAAAAAAAQAAAA4UAAAFAAQABgAEAA0ADAAAABAADADyAgAAEAAZAPICAAAA
+ABsA8gItAEoCLQDMAgAAADxNb2R1bGU+AG1zY29ybGliAE1pY3Jvc29mdC5WaXN1YWxCYXNpYwBN
+eUFwcGxpY2F0aW9uAFNDXzgyNjcyZjMxNGI4YjRmMzA5ZjdiMzhhYjNhZDQwY2NkLnZicHJvai5N
+eQBNeUNvbXB1dGVyAE15UHJvamVjdABNeVdlYlNlcnZpY2VzAFRocmVhZFNhZmVPYmplY3RQcm92
+aWRlcmAxAENhbGxDZW50ZXJJbnB1dEJ1ZmZlcgBTQ184MjY3MmYzMTRiOGI0ZjMwOWY3YjM4YWIz
+YWQ0MGNjZC52YnByb2oAQ2FsbENlbnRlck91dHB1dEJ1ZmZlcgBVc2VyQ29tcG9uZW50AENvbm5l
+Y3Rpb25zAFZhcmlhYmxlcwBTY3JpcHRNYWluAElzc3VlU3RydWN0AE15UmVzb3VyY2VzAFNDXzgy
+NjcyZjMxNGI4YjRmMzA5ZjdiMzhhYjNhZDQwY2NkLnZicHJvai5NeS5SZXNvdXJjZXMATXlTZXR0
+aW5ncwBNaWNyb3NvZnQuVmlzdWFsQmFzaWMuQXBwbGljYXRpb25TZXJ2aWNlcwBBcHBsaWNhdGlv
+bkJhc2UALmN0b3IATWljcm9zb2Z0LlZpc3VhbEJhc2ljLkRldmljZXMAQ29tcHV0ZXIAU3lzdGVt
+AE9iamVjdAAuY2N0b3IAZ2V0X0NvbXB1dGVyAG1fQ29tcHV0ZXJPYmplY3RQcm92aWRlcgBnZXRf
+QXBwbGljYXRpb24AbV9BcHBPYmplY3RQcm92aWRlcgBVc2VyAGdldF9Vc2VyAG1fVXNlck9iamVj
+dFByb3ZpZGVyAGdldF9XZWJTZXJ2aWNlcwBtX015V2ViU2VydmljZXNPYmplY3RQcm92aWRlcgBB
+cHBsaWNhdGlvbgBXZWJTZXJ2aWNlcwBFcXVhbHMAbwBHZXRIYXNoQ29kZQBUeXBlAEdldFR5cGUA
+VG9TdHJpbmcAQ3JlYXRlX19JbnN0YW5jZV9fAFQAaW5zdGFuY2UARGlzcG9zZV9fSW5zdGFuY2Vf
+XwBnZXRfR2V0SW5zdGFuY2UATWljcm9zb2Z0LlZpc3VhbEJhc2ljLk15U2VydmljZXMuSW50ZXJu
+YWwAQ29udGV4dFZhbHVlYDEAbV9Db250ZXh0AEdldEluc3RhbmNlAE1pY3Jvc29mdC5TcWxTZXJ2
+ZXIuVHhTY3JpcHQATWljcm9zb2Z0LlNxbFNlcnZlci5EdHMuUGlwZWxpbmUAU2NyaXB0QnVmZmVy
+AE1pY3Jvc29mdC5TcWxTZXJ2ZXIuUGlwZWxpbmVIb3N0AFBpcGVsaW5lQnVmZmVyAE91dHB1dE5h
+bWVNYXAAQnVmZmVyAEJ1ZmZlckNvbHVtbkluZGV4ZXMAT3V0cHV0TWFwAGdldF9Jc3N1ZUlEAGdl
+dF9Jc3N1ZUlEX0lzTnVsbABEYXRlVGltZQBnZXRfQXVkaXREYXRldGltZQBnZXRfQXVkaXREYXRl
+dGltZV9Jc051bGwAZ2V0X0RETFR5cGUAZ2V0X0RETFR5cGVfSXNOdWxsAGdldF9PcGVyYXRvcklE
+AGdldF9PcGVyYXRvcklEX0lzTnVsbABnZXRfT3BlcmF0b3JMZXZlbABnZXRfT3BlcmF0b3JMZXZl
+bF9Jc051bGwAZ2V0X0FsZXJ0VHlwZQBnZXRfQWxlcnRUeXBlX0lzTnVsbABnZXRfUmVzb2x2ZWRG
+bGFnAGdldF9SZXNvbHZlZEZsYWdfSXNOdWxsAGdldF9PcmRlclJlcXVpcmVkRmxhZwBnZXRfT3Jk
+ZXJSZXF1aXJlZEZsYWdfSXNOdWxsAGdldF9PdXRhZ2VJc3N1ZUZsYWcAZ2V0X091dGFnZUlzc3Vl
+RmxhZ19Jc051bGwAZ2V0X1Bvc3NpYmxlQ3VzdG9tZXJBYmFuZG9uRmxhZwBnZXRfUG9zc2libGVD
+dXN0b21lckFiYW5kb25GbGFnX0lzTnVsbABnZXRfQWxlcnRMZXZlbABnZXRfQWxlcnRMZXZlbF9J
+c051bGwAZ2V0X1Jlc29sdXRpb25EYXRldGltZQBnZXRfUmVzb2x1dGlvbkRhdGV0aW1lX0lzTnVs
+bABnZXRfQ2FsbEZsYWcAZ2V0X0NhbGxGbGFnX0lzTnVsbABnZXRfQXV0b1Jlc3BvbnNlRmxhZwBn
+ZXRfQXV0b1Jlc3BvbnNlRmxhZ19Jc051bGwAZ2V0X0xldmVsT25lRGlzdGluY3RPcGVyYXRvcgBn
+ZXRfTGV2ZWxPbmVEaXN0aW5jdE9wZXJhdG9yX0lzTnVsbABnZXRfTGV2ZWxUd29EaXN0aW5jdE9w
+ZXJhdG9yAGdldF9MZXZlbFR3b0Rpc3RpbmN0T3BlcmF0b3JfSXNOdWxsAE5leHRSb3cARW5kT2ZS
+b3dzZXQASXNzdWVJRABJc3N1ZUlEX0lzTnVsbABBdWRpdERhdGV0aW1lAEF1ZGl0RGF0ZXRpbWVf
+SXNOdWxsAERETFR5cGUARERMVHlwZV9Jc051bGwAT3BlcmF0b3JJRABPcGVyYXRvcklEX0lzTnVs
+bABPcGVyYXRvckxldmVsAE9wZXJhdG9yTGV2ZWxfSXNOdWxsAEFsZXJ0VHlwZQBBbGVydFR5cGVf
+SXNOdWxsAFJlc29sdmVkRmxhZwBSZXNvbHZlZEZsYWdfSXNOdWxsAE9yZGVyUmVxdWlyZWRGbGFn
+AE9yZGVyUmVxdWlyZWRGbGFnX0lzTnVsbABPdXRhZ2VJc3N1ZUZsYWcAT3V0YWdlSXNzdWVGbGFn
+X0lzTnVsbABQb3NzaWJsZUN1c3RvbWVyQWJhbmRvbkZsYWcAUG9zc2libGVDdXN0b21lckFiYW5k
+b25GbGFnX0lzTnVsbABBbGVydExldmVsAEFsZXJ0TGV2ZWxfSXNOdWxsAFJlc29sdXRpb25EYXRl
+dGltZQBSZXNvbHV0aW9uRGF0ZXRpbWVfSXNOdWxsAENhbGxGbGFnAENhbGxGbGFnX0lzTnVsbABB
+dXRvUmVzcG9uc2VGbGFnAEF1dG9SZXNwb25zZUZsYWdfSXNOdWxsAExldmVsT25lRGlzdGluY3RP
+cGVyYXRvcgBMZXZlbE9uZURpc3RpbmN0T3BlcmF0b3JfSXNOdWxsAExldmVsVHdvRGlzdGluY3RP
+cGVyYXRvcgBMZXZlbFR3b0Rpc3RpbmN0T3BlcmF0b3JfSXNOdWxsAHNldF9EYXRlS2V5AFZhbHVl
+AHNldF9EYXRlS2V5X0lzTnVsbABzZXRfU2hpZnQAc2V0X1NoaWZ0X0lzTnVsbABzZXRfTGV2ZWxP
+bmVPcGVyYXRvcnMAc2V0X0xldmVsT25lT3BlcmF0b3JzX0lzTnVsbABzZXRfTGV2ZWxUd29PcGVy
+YXRvcnMAc2V0X0xldmVsVHdvT3BlcmF0b3JzX0lzTnVsbABzZXRfQ2FsbHMAc2V0X0NhbGxzX0lz
+TnVsbABzZXRfQXV0b1Jlc3BvbnNlcwBzZXRfQXV0b1Jlc3BvbnNlc19Jc051bGwAc2V0X09yZGVy
+cwBzZXRfT3JkZXJzX0lzTnVsbABzZXRfSXNzdWVzUmFpc2VkAHNldF9Jc3N1ZXNSYWlzZWRfSXNO
+dWxsAHNldF9BdmVyYWdlVGltZVBlcklzc3VlAHNldF9BdmVyYWdlVGltZVBlcklzc3VlX0lzTnVs
+bABzZXRfQ3VzdG9tZXJBYmFuZG9ucwBzZXRfQ3VzdG9tZXJBYmFuZG9uc19Jc051bGwAQWRkUm93
+AFNldEVuZE9mUm93c2V0AERhdGVLZXkARGF0ZUtleV9Jc051bGwAU2hpZnQAU2hpZnRfSXNOdWxs
+AExldmVsT25lT3BlcmF0b3JzAExldmVsT25lT3BlcmF0b3JzX0lzTnVsbABMZXZlbFR3b09wZXJh
+dG9ycwBMZXZlbFR3b09wZXJhdG9yc19Jc051bGwAQ2FsbHMAQ2FsbHNfSXNOdWxsAEF1dG9SZXNw
+b25zZXMAQXV0b1Jlc3BvbnNlc19Jc051bGwAT3JkZXJzAE9yZGVyc19Jc051bGwASXNzdWVzUmFp
+c2VkAElzc3Vlc1JhaXNlZF9Jc051bGwAQXZlcmFnZVRpbWVQZXJJc3N1ZQBBdmVyYWdlVGltZVBl
+cklzc3VlX0lzTnVsbABDdXN0b21lckFiYW5kb25zAEN1c3RvbWVyQWJhbmRvbnNfSXNOdWxsAFNj
+cmlwdENvbXBvbmVudABJbnB1dHNGaW5pc2hlZABQcm9jZXNzSW5wdXQASW5wdXRJRABJbnB1dE5h
+bWUARmluaXNoT3V0cHV0cwBNYXJrT3V0cHV0c0ZpbmlzaGVkAFByaW1lT3V0cHV0AE91dHB1dHMA
+T3V0cHV0SURzAEJ1ZmZlcnMAQ3JlYXRlTmV3T3V0cHV0Um93cwBDYWxsQ2VudGVySW5wdXRfUHJv
+Y2Vzc0lucHV0AENhbGxDZW50ZXJJbnB1dF9Qcm9jZXNzSW5wdXRSb3cAUm93AFBhcmVudENvbXBv
+bmVudABDb21wb25lbnQAU3lzdGVtLkNvbGxlY3Rpb25zAEhhc2h0YWJsZQBMZXZlbDFPcGVyYXRv
+ckhhc2gATGV2ZWwyT3BlcmF0b3JIYXNoAElzc3VlSGFzaABHZXRTaGlmdABzaGlmdERhdGUAR2V0
+RGF0ZUtleQBpbnB1dERhdGUAVmFsdWVUeXBlAEluaXRpYWxEYXRlVGltZQBSZXNvbHV0aW9uRGF0
+ZVRpbWUAUmVzb2x1dGlvbkRhdGVUaW1lX0lzTnVsbABPcmRlckNvdW50AElzc3VlQ291bnQAQ3Vz
+dG9tZXJBYmFuZG9uQ291bnQAQ2FsbENvdW50AEF1dG9SZXNwb25zZUNvdW50AFN5c3RlbS5SZXNv
+dXJjZXMAUmVzb3VyY2VNYW5hZ2VyAF9yZXNNZ3IAU3lzdGVtLkdsb2JhbGl6YXRpb24AQ3VsdHVy
+ZUluZm8AX3Jlc0N1bHR1cmUAZ2V0X1Jlc291cmNlTWFuYWdlcgBnZXRfQ3VsdHVyZQBzZXRfQ3Vs
+dHVyZQBDdWx0dXJlAFN5c3RlbS5Db25maWd1cmF0aW9uAEFwcGxpY2F0aW9uU2V0dGluZ3NCYXNl
+AG1fVmFsdWUAbV9TeW5jT2JqZWN0AGdldF9WYWx1ZQBTeXN0ZW0uQ29tcG9uZW50TW9kZWwARWRp
+dG9yQnJvd3NhYmxlQXR0cmlidXRlAEVkaXRvckJyb3dzYWJsZVN0YXRlAFN5c3RlbS5Db2RlRG9t
+LkNvbXBpbGVyAEdlbmVyYXRlZENvZGVBdHRyaWJ1dGUAU3lzdGVtLkRpYWdub3N0aWNzAERlYnVn
+Z2VySGlkZGVuQXR0cmlidXRlAE1pY3Jvc29mdC5WaXN1YWxCYXNpYy5Db21waWxlclNlcnZpY2Vz
+AFN0YW5kYXJkTW9kdWxlQXR0cmlidXRlAEhpZGVNb2R1bGVOYW1lQXR0cmlidXRlAFN5c3RlbS5D
+b21wb25lbnRNb2RlbC5EZXNpZ24ASGVscEtleXdvcmRBdHRyaWJ1dGUAU3lzdGVtLlJ1bnRpbWUu
+Q29tcGlsZXJTZXJ2aWNlcwBSdW50aW1lSGVscGVycwBHZXRPYmplY3RWYWx1ZQBSdW50aW1lVHlw
+ZUhhbmRsZQBHZXRUeXBlRnJvbUhhbmRsZQBBY3RpdmF0b3IAQ3JlYXRlSW5zdGFuY2UATXlHcm91
+cENvbGxlY3Rpb25BdHRyaWJ1dGUAc2V0X1ZhbHVlAFN5c3RlbS5SdW50aW1lLkludGVyb3BTZXJ2
+aWNlcwBDb21WaXNpYmxlQXR0cmlidXRlAEdldEludDMyAElzTnVsbABHZXREYXRlVGltZQBHZXRT
+dHJpbmcAR2V0U0J5dGUAQ0xTQ29tcGxpYW50QXR0cmlidXRlAEludDMyAHNldF9JdGVtAFNldE51
+bGwASW52YWxpZE9wZXJhdGlvbkV4Y2VwdGlvbgBVSW50MzIASW50NjQARG91YmxlAFN0cmluZwBT
+dHJpbmdDb21wYXJpc29uAEdldENvbHVtbkluZGV4ZXMAZ2V0X0VuZE9mUm93c2V0AEdldE91dHB1
+dElEAEFycmF5TGlzdABDb252ZXJzaW9ucwBDb25jYXQAQ29udGFpbnNLZXkAQWRkAGdldF9JdGVt
+AENvbnRhaW5zAENvbXBhcmUASUVudW1lcmF0b3IASW5mb3JtYXRpb24ASXNOb3RoaW5nAElDb2xs
+ZWN0aW9uAGdldF9LZXlzAElFbnVtZXJhYmxlAEdldEVudW1lcmF0b3IAZ2V0X0N1cnJlbnQAU3Vi
+c3RyaW5nAFRvSW50ZWdlcgBnZXRfTGVuZ3RoAGdldF9Db3VudABnZXRfVmFsdWVzAE9wZXJhdG9y
+cwBDb21wYXJlU3RyaW5nAGdldF9TZWNvbmQAVGltZVNwYW4ARnJvbVNlY29uZHMAU3VidHJhY3QA
+RGF0ZUFuZFRpbWUARGF0ZUludGVydmFsAEZpcnN0RGF5T2ZXZWVrAEZpcnN0V2Vla09mWWVhcgBE
+YXRlRGlmZgBNb3ZlTmV4dABJRGlzcG9zYWJsZQBEaXNwb3NlAGdldF9Ib3VyAFNTSVNTY3JpcHRD
+b21wb25lbnRFbnRyeVBvaW50QXR0cmlidXRlAFN5c3RlbS5SZWZsZWN0aW9uAEFzc2VtYmx5AGdl
+dF9Bc3NlbWJseQBTeXN0ZW0uVGhyZWFkaW5nAE1vbml0b3IARW50ZXIARXhpdABEZWJ1Z2dlck5v
+blVzZXJDb2RlQXR0cmlidXRlAFNDXzgyNjcyZjMxNGI4YjRmMzA5ZjdiMzhhYjNhZDQwY2NkLnZi
+cHJvai5SZXNvdXJjZXMucmVzb3VyY2VzAENvbXBpbGF0aW9uUmVsYXhhdGlvbnNBdHRyaWJ1dGUA
+UnVudGltZUNvbXBhdGliaWxpdHlBdHRyaWJ1dGUAU3lzdGVtLlJ1bnRpbWUuVmVyc2lvbmluZwBU
+YXJnZXRGcmFtZXdvcmtBdHRyaWJ1dGUAQXNzZW1ibHlGaWxlVmVyc2lvbkF0dHJpYnV0ZQBHdWlk
+QXR0cmlidXRlAEFzc2VtYmx5VHJhZGVtYXJrQXR0cmlidXRlAEFzc2VtYmx5Q29weXJpZ2h0QXR0
+cmlidXRlAEFzc2VtYmx5UHJvZHVjdEF0dHJpYnV0ZQBBc3NlbWJseUNvbXBhbnlBdHRyaWJ1dGUA
+QXNzZW1ibHlEZXNjcmlwdGlvbkF0dHJpYnV0ZQBBc3NlbWJseVRpdGxlQXR0cmlidXRlAFNDXzgy
+NjcyZjMxNGI4YjRmMzA5ZjdiMzhhYjNhZDQwY2NkLnZicHJvai5kbGwAAICbSQBzAE4AdQBsAGwA
+IABwAHIAbwBwAGUAcgB0AHkAIABjAGEAbgBuAG8AdAAgAGIAZQAgAHMAZQB0ACAAdABvACAARgBh
+AGwAcwBlAC4AIABBAHMAcwBpAGcAbgAgAGEAIAB2AGEAbAB1AGUAIAB0AG8AIAB0AGgAZQAgAGMA
+bwBsAHUAbQBuACAAaQBuAHMAdABlAGEAZAAuAAAfQwBhAGwAbABDAGUAbgB0AGUAcgBJAG4AcAB1
+AHQAACFDAGEAbABsAEMAZQBuAHQAZQByAE8AdQB0AHAAdQB0AAARbQBpAGQAbgBpAGcAaAB0AAAF
+QQBNAAAHUABNADEAAAdQAE0AMgAAEXkAeQB5AHkATQBNAGQAZAAAMU0AeQAuAFIAZQBzAG8AdQBy
+AGMAZQBzAC4ATQB5AFIAZQBzAG8AdQByAGMAZQBzAAAsR+zJB3wNRITt5VUbRXZpAAi3elxWGTTg
+iQiwP19/EdUKOgMgAAEDAAABBAAAEgwHBhUSGAESDAQAABIIBwYVEhgBEggEAAASEQcGFRIYARIR
+BAAAEhQHBhUSGAESFAQIABIMBAgAEggECAASEQQIABIUBCABAhwDIAAIBCAAEhUDIAAOAh4ABxAB
+AR4AHgAHMAEBARAeAAITAAQgABMABwYVEhkBEwAEKAATAAiJhF3NgIDMkQkgAwESIR0IEiUDIAAC
+BCAAESkDIAAEAygACAMoAAIEKAARKQMoAA4DKAAEBCABAQgEIAEBAgQgAQEOBCABAQkEIAEBCgQg
+AQENAygACQMoAAoDKAANAwYSKAMGEiwDBhIgAgYICSAEAQgOEiESJQsgBAEIHQgdEiESJQUgAQES
+HAMGEi0FIAEBEi0DBhIxBSABDhEpBSABCBEpAwYRKQIGAgIGCgMGEjkDBhI9BAAAEjkEAAASPQUA
+AQESPQQIABI5BAgAEj0DBhI8AgYcBAAAEjwECAASPAUgAQERSQgBAAEAAAAAAAUgAgEODhgBAApN
+eVRlbXBsYXRlCDEwLjAuMC4wAAAEAQAAAAYVEhgBEgwGFRIYARIIBhUSGAESEQYVEhgBEhQEBwES
+DAQHARIIBAcBEhEEBwESFBMBAA5NeS5BcHBsaWNhdGlvbgAAEAEAC015LkNvbXB1dGVyAAATAQAO
+TXkuV2ViU2VydmljZXMAAAwBAAdNeS5Vc2VyAAAEAAEcHAMHAQIDBwEIBgABEhURZQQHARIVAwcB
+DgUQAQAeAAQKAR4ABAcBHgAHIAQBDg4ODmEBADRTeXN0ZW0uV2ViLlNlcnZpY2VzLlByb3RvY29s
+cy5Tb2FwSHR0cENsaWVudFByb3RvY29sEkNyZWF0ZV9fSW5zdGFuY2VfXxNEaXNwb3NlX19JbnN0
+YW5jZV9fAAAABhUSGAETAAYVEhkBEwAECgETAAUgAQETAAgHAxMAEwATAAUBAAAAAAMGEiEDBh0I
+BCABCAgEIAECCAUgAREpCAQHAREpBCABDggEIAEECAMHAQQFIAIBCBwHIAICDhGAkQUgAR0ICAYA
+AggSJQ4EBwIICAQAAQ4IBQACDg4OBSACARwcBCABHBwEIAEIHAcAAggRKREpDwcGDhKAlRKAlRE0
+ETQRNAQAAQIcBSAAEoClBSAAEoCdAyAAHAQAAQ4cBSACDggIBAABCA4GAAMIDg4CBgABEYCxDQcg
+AREpEYCxEAAFChGAuREpESkRgL0RgMEcBxIKCgoICggICg4KCg4RNBEpESkSgJ0SgJ0RNAUHAw4O
+CAQgAQ4OBSAAEoDNByACAQ4SgM0GBwISORI5BAcBEj0IAQACAAAAAAAEAAEBHAQHARI8CAEACAAA
+AAAAHgEAAQBUAhZXcmFwTm9uRXhjZXB0aW9uVGhyb3dzAUcBABouTkVURnJhbWV3b3JrLFZlcnNp
+b249djQuMAEAVA4URnJhbWV3b3JrRGlzcGxheU5hbWUQLk5FVCBGcmFtZXdvcmsgNAwBAAcxLjAu
+MC4wAAApAQAkMGM2MjM1YzktOTE5NC00ZDRiLWIyYmItMDk2MGFkYzJhYjE2AAAFAQABAAAWAQAR
+Q29weXJpZ2h0IEAgIDIwMDkAAC8BACpTQ184MjY3MmYzMTRiOGI0ZjMwOWY3YjM4YWIzYWQ0MGNj
+ZC52YnByb2oAAAAAAABfAAAAAAAAAAAAAB5fAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQXwAA
+AAAAAAAAAAAAAAAAAABfQ29yRGxsTWFpbgBtc2NvcmVlLmRsbAAAAAAA/yUAIEAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABABAAAAAYAACAAAAAAAAAAAAA
+AAAAAAABAAEAAAAwAACAAAAAAAAAAAAAAAAAAAABAAAAAABIAAAAWGAAAMADAAAAAAAAAAAAAMAD
+NAAAAFYAUwBfAFYARQBSAFMASQBPAE4AXwBJAE4ARgBPAAAAAAC9BO/+AAABAAAAAQAAAAAAAAAB
+AAAAAAA/AAAAAAAAAAQAAAACAAAAAAAAAAAAAAAAAAAARAAAAAEAVgBhAHIARgBpAGwAZQBJAG4A
+ZgBvAAAAAAAkAAQAAABUAHIAYQBuAHMAbABhAHQAaQBvAG4AAAAAAAAAsAQgAwAAAQBTAHQAcgBp
+AG4AZwBGAGkAbABlAEkAbgBmAG8AAAD8AgAAAQAwADAAMAAwADAANABiADAAAACAACsAAQBGAGkA
+bABlAEQAZQBzAGMAcgBpAHAAdABpAG8AbgAAAAAAUwBDAF8AOAAyADYANwAyAGYAMwAxADQAYgA4
+AGIANABmADMAMAA5AGYANwBiADMAOABhAGIAMwBhAGQANAAwAGMAYwBkAC4AdgBiAHAAcgBvAGoA
+AAAAADAACAABAEYAaQBsAGUAVgBlAHIAcwBpAG8AbgAAAAAAMQAuADAALgAwAC4AMAAAAIAALwAB
+AEkAbgB0AGUAcgBuAGEAbABOAGEAbQBlAAAAUwBDAF8AOAAyADYANwAyAGYAMwAxADQAYgA4AGIA
+NABmADMAMAA5AGYANwBiADMAOABhAGIAMwBhAGQANAAwAGMAYwBkAC4AdgBiAHAAcgBvAGoALgBk
+AGwAbAAAAAAASAASAAEATABlAGcAYQBsAEMAbwBwAHkAcgBpAGcAaAB0AAAAQwBvAHAAeQByAGkA
+ZwBoAHQAIABAACAAIAAyADAAMAA5AAAAiAAvAAEATwByAGkAZwBpAG4AYQBsAEYAaQBsAGUAbgBh
+AG0AZQAAAFMAQwBfADgAMgA2ADcAMgBmADMAMQA0AGIAOABiADQAZgAzADAAOQBmADcAYgAzADgA
+YQBiADMAYQBkADQAMABjAGMAZAAuAHYAYgBwAHIAbwBqAC4AZABsAGwAAAAAAHgAKwABAFAAcgBv
+AGQAdQBjAHQATgBhAG0AZQAAAAAAUwBDAF8AOAAyADYANwAyAGYAMwAxADQAYgA4AGIANABmADMA
+MAA5AGYANwBiADMAOABhAGIAMwBhAGQANAAwAGMAYwBkAC4AdgBiAHAAcgBvAGoAAAAAADQACAAB
+AFAAcgBvAGQAdQBjAHQAVgBlAHIAcwBpAG8AbgAAADEALgAwAC4AMAAuADAAAAA4AAgAAQBBAHMA
+cwBlAG0AYgBsAHkAIABWAGUAcgBzAGkAbwBuAAAAMQAuADAALgAwAC4AMAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAAAAwAAAAwPwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
+                  </arrayElements>
+                </property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the Microsoft Visual Studio Tools for Applications project. Project names must be unique within a package."
+                  name="VSTAProjectName"
+                  typeConverter="NOTBROWSABLE">SC_82672f314b8b4f309f7b38ab3ad40ccd</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the programming language used by the script."
+                  name="ScriptLanguage"
+                  typeConverter="Microsoft.SqlServer.VSTAHosting.ScriptingLanguages, Microsoft.SqlServer.VSTAScriptingLib, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">VisualBasic</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a comma-separated list of read-only variables."
+                  name="ReadOnlyVariables"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ScriptUIVariablePickerDlg, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a comma-separated list of read/write variables."
+                  name="ReadWriteVariables"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ScriptUIWriteableVariablePickerDlg, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="List of breakpoints present on the script."
+                  isArray="true"
+                  name="BreakpointCollection"
+                  typeConverter="NOTBROWSABLE">
+                  <arrayElements
+                    arrayElementCount="0" />
+                </property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.SqlServer.Dts.Pipeline.ScriptComponentHost, Microsoft.SqlServer.TxScript, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91</property>
+                <property
+                  dataType="System.String"
+                  description="Checksum to match component metedata against compiled codes."
+                  name="MetadataChecksum"
+                  typeConverter="NOTBROWSABLE">89ac265e5bc8d3eb09a57ea2d88301c6</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Load Call Center Fact Table\Aggregation Logic.Inputs[CallCenterInput]"
+                  hasSideEffects="true"
+                  name="CallCenterInput">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Call Center Fact Table\Aggregation Logic.Inputs[CallCenterInput].Columns[IssueID]"
+                      cachedDataType="i4"
+                      cachedName="IssueID"
+                      lineageId="Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Output].Columns[IssueID]" />
+                    <inputColumn
+                      refId="Package\Load Call Center Fact Table\Aggregation Logic.Inputs[CallCenterInput].Columns[AuditDatetime]"
+                      cachedDataType="date"
+                      cachedName="AuditDatetime"
+                      lineageId="Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Output].Columns[AuditDatetime]" />
+                    <inputColumn
+                      refId="Package\Load Call Center Fact Table\Aggregation Logic.Inputs[CallCenterInput].Columns[DDLType]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="6"
+                      cachedName="DDLType"
+                      lineageId="Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Output].Columns[DDLType]" />
+                    <inputColumn
+                      refId="Package\Load Call Center Fact Table\Aggregation Logic.Inputs[CallCenterInput].Columns[OperatorID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="8"
+                      cachedName="OperatorID"
+                      lineageId="Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Output].Columns[OperatorID]" />
+                    <inputColumn
+                      refId="Package\Load Call Center Fact Table\Aggregation Logic.Inputs[CallCenterInput].Columns[OperatorLevel]"
+                      cachedDataType="i1"
+                      cachedName="OperatorLevel"
+                      lineageId="Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Output].Columns[OperatorLevel]" />
+                    <inputColumn
+                      refId="Package\Load Call Center Fact Table\Aggregation Logic.Inputs[CallCenterInput].Columns[AlertType]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="AlertType"
+                      lineageId="Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Output].Columns[AlertType]" />
+                    <inputColumn
+                      refId="Package\Load Call Center Fact Table\Aggregation Logic.Inputs[CallCenterInput].Columns[ResolvedFlag]"
+                      cachedDataType="i1"
+                      cachedName="ResolvedFlag"
+                      lineageId="Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Output].Columns[ResolvedFlag]" />
+                    <inputColumn
+                      refId="Package\Load Call Center Fact Table\Aggregation Logic.Inputs[CallCenterInput].Columns[OrderRequiredFlag]"
+                      cachedDataType="i1"
+                      cachedName="OrderRequiredFlag"
+                      lineageId="Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Output].Columns[OrderRequiredFlag]" />
+                    <inputColumn
+                      refId="Package\Load Call Center Fact Table\Aggregation Logic.Inputs[CallCenterInput].Columns[OutageIssueFlag]"
+                      cachedDataType="i1"
+                      cachedName="OutageIssueFlag"
+                      lineageId="Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Output].Columns[OutageIssueFlag]" />
+                    <inputColumn
+                      refId="Package\Load Call Center Fact Table\Aggregation Logic.Inputs[CallCenterInput].Columns[PossibleCustomerAbandonFlag]"
+                      cachedDataType="i1"
+                      cachedName="PossibleCustomerAbandonFlag"
+                      lineageId="Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Output].Columns[PossibleCustomerAbandonFlag]" />
+                    <inputColumn
+                      refId="Package\Load Call Center Fact Table\Aggregation Logic.Inputs[CallCenterInput].Columns[AlertLevel]"
+                      cachedDataType="i1"
+                      cachedName="AlertLevel"
+                      lineageId="Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Output].Columns[AlertLevel]" />
+                    <inputColumn
+                      refId="Package\Load Call Center Fact Table\Aggregation Logic.Inputs[CallCenterInput].Columns[ResolutionDatetime]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="ResolutionDatetime"
+                      lineageId="Package\Load Call Center Fact Table\Aggregation Preparation.Outputs[Derived Column Output].Columns[ResolutionDatetime]" />
+                    <inputColumn
+                      refId="Package\Load Call Center Fact Table\Aggregation Logic.Inputs[CallCenterInput].Columns[CallFlag]"
+                      cachedDataType="i4"
+                      cachedName="CallFlag"
+                      lineageId="Package\Load Call Center Fact Table\Aggregation Preparation.Outputs[Derived Column Output].Columns[CallFlag]" />
+                    <inputColumn
+                      refId="Package\Load Call Center Fact Table\Aggregation Logic.Inputs[CallCenterInput].Columns[AutoResponseFlag]"
+                      cachedDataType="i4"
+                      cachedName="AutoResponseFlag"
+                      lineageId="Package\Load Call Center Fact Table\Aggregation Preparation.Outputs[Derived Column Output].Columns[AutoResponseFlag]" />
+                    <inputColumn
+                      refId="Package\Load Call Center Fact Table\Aggregation Logic.Inputs[CallCenterInput].Columns[LevelOneDistinctOperator]"
+                      cachedDataType="wstr"
+                      cachedLength="8"
+                      cachedName="LevelOneDistinctOperator"
+                      lineageId="Package\Load Call Center Fact Table\Aggregation Preparation.Outputs[Derived Column Output].Columns[LevelOneDistinctOperator]" />
+                    <inputColumn
+                      refId="Package\Load Call Center Fact Table\Aggregation Logic.Inputs[CallCenterInput].Columns[LevelTwoDistinctOperator]"
+                      cachedDataType="wstr"
+                      cachedLength="8"
+                      cachedName="LevelTwoDistinctOperator"
+                      lineageId="Package\Load Call Center Fact Table\Aggregation Preparation.Outputs[Derived Column Output].Columns[LevelTwoDistinctOperator]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Call Center Fact Table\Aggregation Logic.Outputs[CallCenterOutput]"
+                  hasSideEffects="true"
+                  name="CallCenterOutput">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Call Center Fact Table\Aggregation Logic.Outputs[CallCenterOutput].Columns[DateKey]"
+                      dataType="i4"
+                      lineageId="Package\Load Call Center Fact Table\Aggregation Logic.Outputs[CallCenterOutput].Columns[DateKey]"
+                      name="DateKey" />
+                    <outputColumn
+                      refId="Package\Load Call Center Fact Table\Aggregation Logic.Outputs[CallCenterOutput].Columns[Shift]"
+                      dataType="wstr"
+                      length="8"
+                      lineageId="Package\Load Call Center Fact Table\Aggregation Logic.Outputs[CallCenterOutput].Columns[Shift]"
+                      name="Shift" />
+                    <outputColumn
+                      refId="Package\Load Call Center Fact Table\Aggregation Logic.Outputs[CallCenterOutput].Columns[LevelOneOperators]"
+                      dataType="ui4"
+                      lineageId="Package\Load Call Center Fact Table\Aggregation Logic.Outputs[CallCenterOutput].Columns[LevelOneOperators]"
+                      name="LevelOneOperators" />
+                    <outputColumn
+                      refId="Package\Load Call Center Fact Table\Aggregation Logic.Outputs[CallCenterOutput].Columns[LevelTwoOperators]"
+                      dataType="ui4"
+                      lineageId="Package\Load Call Center Fact Table\Aggregation Logic.Outputs[CallCenterOutput].Columns[LevelTwoOperators]"
+                      name="LevelTwoOperators" />
+                    <outputColumn
+                      refId="Package\Load Call Center Fact Table\Aggregation Logic.Outputs[CallCenterOutput].Columns[Calls]"
+                      dataType="i8"
+                      lineageId="Package\Load Call Center Fact Table\Aggregation Logic.Outputs[CallCenterOutput].Columns[Calls]"
+                      name="Calls" />
+                    <outputColumn
+                      refId="Package\Load Call Center Fact Table\Aggregation Logic.Outputs[CallCenterOutput].Columns[AutoResponses]"
+                      dataType="i8"
+                      lineageId="Package\Load Call Center Fact Table\Aggregation Logic.Outputs[CallCenterOutput].Columns[AutoResponses]"
+                      name="AutoResponses" />
+                    <outputColumn
+                      refId="Package\Load Call Center Fact Table\Aggregation Logic.Outputs[CallCenterOutput].Columns[Orders]"
+                      dataType="i8"
+                      lineageId="Package\Load Call Center Fact Table\Aggregation Logic.Outputs[CallCenterOutput].Columns[Orders]"
+                      name="Orders" />
+                    <outputColumn
+                      refId="Package\Load Call Center Fact Table\Aggregation Logic.Outputs[CallCenterOutput].Columns[IssuesRaised]"
+                      dataType="i8"
+                      lineageId="Package\Load Call Center Fact Table\Aggregation Logic.Outputs[CallCenterOutput].Columns[IssuesRaised]"
+                      name="IssuesRaised" />
+                    <outputColumn
+                      refId="Package\Load Call Center Fact Table\Aggregation Logic.Outputs[CallCenterOutput].Columns[AverageTimePerIssue]"
+                      dataType="r8"
+                      lineageId="Package\Load Call Center Fact Table\Aggregation Logic.Outputs[CallCenterOutput].Columns[AverageTimePerIssue]"
+                      name="AverageTimePerIssue" />
+                    <outputColumn
+                      refId="Package\Load Call Center Fact Table\Aggregation Logic.Outputs[CallCenterOutput].Columns[CustomerAbandons]"
+                      dataType="i8"
+                      lineageId="Package\Load Call Center Fact Table\Aggregation Logic.Outputs[CallCenterOutput].Columns[CustomerAbandons]"
+                      name="CustomerAbandons" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Call Center Fact Table\Aggregation Preparation"
+              componentClassID="{49928E82-9C4E-49F0-AABE-3812B82707EC}"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Updates column values using expressions"
+              localeId="1033"
+              name="Aggregation Preparation"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Load Call Center Fact Table\Aggregation Preparation.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Call Center Fact Table\Aggregation Preparation.Inputs[Derived Column Input].Columns[AuditDatetime]"
+                      cachedDataType="date"
+                      cachedName="AuditDatetime"
+                      lineageId="Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Output].Columns[AuditDatetime]"
+                      name="AuditDatetime" />
+                    <inputColumn
+                      refId="Package\Load Call Center Fact Table\Aggregation Preparation.Inputs[Derived Column Input].Columns[OperatorID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="8"
+                      cachedName="OperatorID"
+                      lineageId="Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Output].Columns[OperatorID]"
+                      name="OperatorID" />
+                    <inputColumn
+                      refId="Package\Load Call Center Fact Table\Aggregation Preparation.Inputs[Derived Column Input].Columns[OperatorLevel]"
+                      cachedDataType="i1"
+                      cachedName="OperatorLevel"
+                      lineageId="Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Output].Columns[OperatorLevel]"
+                      name="OperatorLevel" />
+                    <inputColumn
+                      refId="Package\Load Call Center Fact Table\Aggregation Preparation.Inputs[Derived Column Input].Columns[AlertType]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="AlertType"
+                      lineageId="Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Output].Columns[AlertType]"
+                      name="AlertType" />
+                    <inputColumn
+                      refId="Package\Load Call Center Fact Table\Aggregation Preparation.Inputs[Derived Column Input].Columns[ResolvedFlag]"
+                      cachedDataType="i1"
+                      cachedName="ResolvedFlag"
+                      lineageId="Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Output].Columns[ResolvedFlag]"
+                      name="ResolvedFlag" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Call Center Fact Table\Aggregation Preparation.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Load Call Center Fact Table\Aggregation Preparation.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Call Center Fact Table\Aggregation Preparation.Outputs[Derived Column Output].Columns[ResolutionDatetime]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load Call Center Fact Table\Aggregation Preparation.Outputs[Derived Column Output].Columns[ResolutionDatetime]"
+                      name="ResolutionDatetime"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Output].Columns[ResolvedFlag]} == 1 ? #{Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Output].Columns[AuditDatetime]} : NULL(DT_DBDATE)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ResolvedFlag == 1 ? AuditDatetime : NULL(DT_DBDATE)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Call Center Fact Table\Aggregation Preparation.Outputs[Derived Column Output].Columns[CallFlag]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load Call Center Fact Table\Aggregation Preparation.Outputs[Derived Column Output].Columns[CallFlag]"
+                      name="CallFlag"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Output].Columns[AlertType]} == "Phone Call" ? 1 : 0</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">AlertType == "Phone Call" ? 1 : 0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Call Center Fact Table\Aggregation Preparation.Outputs[Derived Column Output].Columns[AutoResponseFlag]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load Call Center Fact Table\Aggregation Preparation.Outputs[Derived Column Output].Columns[AutoResponseFlag]"
+                      name="AutoResponseFlag"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Output].Columns[OperatorID]} == "AUTO" ? 1 : 0</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">OperatorID == "AUTO" ? 1 : 0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Call Center Fact Table\Aggregation Preparation.Outputs[Derived Column Output].Columns[LevelOneDistinctOperator]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="8"
+                      lineageId="Package\Load Call Center Fact Table\Aggregation Preparation.Outputs[Derived Column Output].Columns[LevelOneDistinctOperator]"
+                      name="LevelOneDistinctOperator"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Output].Columns[OperatorLevel]} == 1 ? #{Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Output].Columns[OperatorID]} : NULL(DT_WSTR,8)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">OperatorLevel == 1 ? OperatorID : NULL(DT_WSTR,8)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Call Center Fact Table\Aggregation Preparation.Outputs[Derived Column Output].Columns[LevelTwoDistinctOperator]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="8"
+                      lineageId="Package\Load Call Center Fact Table\Aggregation Preparation.Outputs[Derived Column Output].Columns[LevelTwoDistinctOperator]"
+                      name="LevelTwoDistinctOperator"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Output].Columns[OperatorLevel]} == 2 ? #{Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Output].Columns[OperatorID]} : NULL(DT_WSTR,8)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">OperatorLevel == 2 ? OperatorID : NULL(DT_WSTR,8)</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Call Center Fact Table\Aggregation Preparation.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Load Call Center Fact Table\Aggregation Preparation.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Call Center Fact Table\Aggregation Preparation.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Call Center Fact Table\Aggregation Preparation.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Call Center Fact Table\Aggregation Preparation.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Call Center Fact Table\Aggregation Preparation.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Call Center Fact Table\Audit Flat File"
+              componentClassID="{D23FD76B-F51D-420F-BBCB-19CBF6AC1AB4}"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="1033"
+              name="Audit Flat File"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Call Center Fact Table\Audit Flat File.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[AuditFlatFile]"
+                  connectionManagerRefId="Package.ConnectionManagers[AuditFlatFile]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Output].Columns[IssueID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Output].ExternalColumns[IssueID]"
+                      lineageId="Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Output].Columns[IssueID]"
+                      name="IssueID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Output].Columns[AuditDatetime]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Output].ExternalColumns[AuditDatetime]"
+                      lineageId="Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Output].Columns[AuditDatetime]"
+                      name="AuditDatetime"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Output].Columns[DDLType]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Output].ExternalColumns[DDLType]"
+                      length="6"
+                      lineageId="Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Output].Columns[DDLType]"
+                      name="DDLType"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Output].Columns[OperatorID]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Output].ExternalColumns[OperatorID]"
+                      length="8"
+                      lineageId="Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Output].Columns[OperatorID]"
+                      name="OperatorID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Output].Columns[OperatorLevel]"
+                      dataType="i1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Output].ExternalColumns[OperatorLevel]"
+                      lineageId="Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Output].Columns[OperatorLevel]"
+                      name="OperatorLevel"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Output].Columns[AlertType]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Output].ExternalColumns[AlertType]"
+                      length="10"
+                      lineageId="Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Output].Columns[AlertType]"
+                      name="AlertType"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Output].Columns[ResolvedFlag]"
+                      dataType="i1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Output].ExternalColumns[ResolvedFlag]"
+                      lineageId="Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Output].Columns[ResolvedFlag]"
+                      name="ResolvedFlag"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Output].Columns[OrderRequiredFlag]"
+                      dataType="i1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Output].ExternalColumns[OrderRequiredFlag]"
+                      lineageId="Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Output].Columns[OrderRequiredFlag]"
+                      name="OrderRequiredFlag"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Output].Columns[OutageIssueFlag]"
+                      dataType="i1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Output].ExternalColumns[OutageIssueFlag]"
+                      lineageId="Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Output].Columns[OutageIssueFlag]"
+                      name="OutageIssueFlag"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Output].Columns[PossibleCustomerAbandonFlag]"
+                      dataType="i1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Output].ExternalColumns[PossibleCustomerAbandonFlag]"
+                      lineageId="Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Output].Columns[PossibleCustomerAbandonFlag]"
+                      name="PossibleCustomerAbandonFlag"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Output].Columns[AlertLevel]"
+                      dataType="i1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Output].ExternalColumns[AlertLevel]"
+                      lineageId="Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Output].Columns[AlertLevel]"
+                      name="AlertLevel"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Output].ExternalColumns[IssueID]"
+                      dataType="i4"
+                      name="IssueID" />
+                    <externalMetadataColumn
+                      refId="Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Output].ExternalColumns[AuditDatetime]"
+                      dataType="date"
+                      name="AuditDatetime" />
+                    <externalMetadataColumn
+                      refId="Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Output].ExternalColumns[DDLType]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="DDLType" />
+                    <externalMetadataColumn
+                      refId="Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Output].ExternalColumns[OperatorID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      name="OperatorID" />
+                    <externalMetadataColumn
+                      refId="Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Output].ExternalColumns[OperatorLevel]"
+                      dataType="i1"
+                      name="OperatorLevel" />
+                    <externalMetadataColumn
+                      refId="Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Output].ExternalColumns[AlertType]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="AlertType" />
+                    <externalMetadataColumn
+                      refId="Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Output].ExternalColumns[ResolvedFlag]"
+                      dataType="i1"
+                      name="ResolvedFlag" />
+                    <externalMetadataColumn
+                      refId="Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Output].ExternalColumns[OrderRequiredFlag]"
+                      dataType="i1"
+                      name="OrderRequiredFlag" />
+                    <externalMetadataColumn
+                      refId="Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Output].ExternalColumns[OutageIssueFlag]"
+                      dataType="i1"
+                      name="OutageIssueFlag" />
+                    <externalMetadataColumn
+                      refId="Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Output].ExternalColumns[PossibleCustomerAbandonFlag]"
+                      dataType="i1"
+                      name="PossibleCustomerAbandonFlag" />
+                    <externalMetadataColumn
+                      refId="Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Output].ExternalColumns[AlertLevel]"
+                      dataType="i1"
+                      name="AlertLevel" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Call Center Fact Table\FactCallCenter"
+              componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              localeId="1033"
+              name="FactCallCenter"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[FactCallCenter]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Call Center Fact Table\FactCallCenter.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[AdventureWorksDW2008]"
+                  connectionManagerRefId="Package.ConnectionManagers[AdventureWorksDW2008]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load Call Center Fact Table\FactCallCenter.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Call Center Fact Table\FactCallCenter.Inputs[OLE DB Destination Input].Columns[DateKey]"
+                      cachedDataType="i4"
+                      cachedName="DateKey"
+                      externalMetadataColumnId="Package\Load Call Center Fact Table\FactCallCenter.Inputs[OLE DB Destination Input].ExternalColumns[DateKey]"
+                      lineageId="Package\Load Call Center Fact Table\Aggregation Logic.Outputs[CallCenterOutput].Columns[DateKey]"
+                      name="DateKey" />
+                    <inputColumn
+                      refId="Package\Load Call Center Fact Table\FactCallCenter.Inputs[OLE DB Destination Input].Columns[Shift]"
+                      cachedDataType="wstr"
+                      cachedLength="8"
+                      cachedName="Shift"
+                      externalMetadataColumnId="Package\Load Call Center Fact Table\FactCallCenter.Inputs[OLE DB Destination Input].ExternalColumns[Shift]"
+                      lineageId="Package\Load Call Center Fact Table\Aggregation Logic.Outputs[CallCenterOutput].Columns[Shift]"
+                      name="Shift" />
+                    <inputColumn
+                      refId="Package\Load Call Center Fact Table\FactCallCenter.Inputs[OLE DB Destination Input].Columns[LevelOneOperators]"
+                      cachedDataType="ui4"
+                      cachedName="LevelOneOperators"
+                      externalMetadataColumnId="Package\Load Call Center Fact Table\FactCallCenter.Inputs[OLE DB Destination Input].ExternalColumns[LevelOneOperators]"
+                      lineageId="Package\Load Call Center Fact Table\Aggregation Logic.Outputs[CallCenterOutput].Columns[LevelOneOperators]"
+                      name="LevelOneOperators" />
+                    <inputColumn
+                      refId="Package\Load Call Center Fact Table\FactCallCenter.Inputs[OLE DB Destination Input].Columns[LevelTwoOperators]"
+                      cachedDataType="ui4"
+                      cachedName="LevelTwoOperators"
+                      externalMetadataColumnId="Package\Load Call Center Fact Table\FactCallCenter.Inputs[OLE DB Destination Input].ExternalColumns[LevelTwoOperators]"
+                      lineageId="Package\Load Call Center Fact Table\Aggregation Logic.Outputs[CallCenterOutput].Columns[LevelTwoOperators]"
+                      name="LevelTwoOperators" />
+                    <inputColumn
+                      refId="Package\Load Call Center Fact Table\FactCallCenter.Inputs[OLE DB Destination Input].Columns[Calls]"
+                      cachedDataType="i8"
+                      cachedName="Calls"
+                      externalMetadataColumnId="Package\Load Call Center Fact Table\FactCallCenter.Inputs[OLE DB Destination Input].ExternalColumns[Calls]"
+                      lineageId="Package\Load Call Center Fact Table\Aggregation Logic.Outputs[CallCenterOutput].Columns[Calls]"
+                      name="Calls" />
+                    <inputColumn
+                      refId="Package\Load Call Center Fact Table\FactCallCenter.Inputs[OLE DB Destination Input].Columns[Orders]"
+                      cachedDataType="i8"
+                      cachedName="Orders"
+                      externalMetadataColumnId="Package\Load Call Center Fact Table\FactCallCenter.Inputs[OLE DB Destination Input].ExternalColumns[Orders]"
+                      lineageId="Package\Load Call Center Fact Table\Aggregation Logic.Outputs[CallCenterOutput].Columns[Orders]"
+                      name="Orders" />
+                    <inputColumn
+                      refId="Package\Load Call Center Fact Table\FactCallCenter.Inputs[OLE DB Destination Input].Columns[AverageTimePerIssue]"
+                      cachedDataType="r8"
+                      cachedName="AverageTimePerIssue"
+                      externalMetadataColumnId="Package\Load Call Center Fact Table\FactCallCenter.Inputs[OLE DB Destination Input].ExternalColumns[AverageTimePerIssue]"
+                      lineageId="Package\Load Call Center Fact Table\Aggregation Logic.Outputs[CallCenterOutput].Columns[AverageTimePerIssue]"
+                      name="AverageTimePerIssue" />
+                    <inputColumn
+                      refId="Package\Load Call Center Fact Table\FactCallCenter.Inputs[OLE DB Destination Input].Columns[ServiceGrade]"
+                      cachedDataType="r8"
+                      cachedName="ServiceGrade"
+                      externalMetadataColumnId="Package\Load Call Center Fact Table\FactCallCenter.Inputs[OLE DB Destination Input].ExternalColumns[ServiceGrade]"
+                      lineageId="Package\Load Call Center Fact Table\ServiceLevel Calculation.Outputs[Derived Column Output].Columns[ServiceGrade]"
+                      name="ServiceGrade" />
+                    <inputColumn
+                      refId="Package\Load Call Center Fact Table\FactCallCenter.Inputs[OLE DB Destination Input].Columns[WageType]"
+                      cachedDataType="wstr"
+                      cachedLength="6"
+                      cachedName="WageType"
+                      externalMetadataColumnId="Package\Load Call Center Fact Table\FactCallCenter.Inputs[OLE DB Destination Input].ExternalColumns[WageType]"
+                      lineageId="Package\Load Call Center Fact Table\ServiceLevel Calculation.Outputs[Derived Column Output].Columns[WageType]"
+                      name="WageType" />
+                    <inputColumn
+                      refId="Package\Load Call Center Fact Table\FactCallCenter.Inputs[OLE DB Destination Input].Columns[AutoResponses]"
+                      cachedDataType="i8"
+                      cachedName="AutoResponses"
+                      externalMetadataColumnId="Package\Load Call Center Fact Table\FactCallCenter.Inputs[OLE DB Destination Input].ExternalColumns[AutomaticResponses]"
+                      lineageId="Package\Load Call Center Fact Table\Aggregation Logic.Outputs[CallCenterOutput].Columns[AutoResponses]"
+                      name="AutoResponses" />
+                    <inputColumn
+                      refId="Package\Load Call Center Fact Table\FactCallCenter.Inputs[OLE DB Destination Input].Columns[TotalOperators]"
+                      cachedDataType="ui4"
+                      cachedName="TotalOperators"
+                      externalMetadataColumnId="Package\Load Call Center Fact Table\FactCallCenter.Inputs[OLE DB Destination Input].ExternalColumns[TotalOperators]"
+                      lineageId="Package\Load Call Center Fact Table\ServiceLevel Calculation.Outputs[Derived Column Output].Columns[TotalOperators]"
+                      name="TotalOperators" />
+                    <inputColumn
+                      refId="Package\Load Call Center Fact Table\FactCallCenter.Inputs[OLE DB Destination Input].Columns[IssuesRaised]"
+                      cachedDataType="i8"
+                      cachedName="IssuesRaised"
+                      externalMetadataColumnId="Package\Load Call Center Fact Table\FactCallCenter.Inputs[OLE DB Destination Input].ExternalColumns[IssuesRaised]"
+                      lineageId="Package\Load Call Center Fact Table\Aggregation Logic.Outputs[CallCenterOutput].Columns[IssuesRaised]"
+                      name="IssuesRaised" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Call Center Fact Table\FactCallCenter.Inputs[OLE DB Destination Input].ExternalColumns[DateKey]"
+                      dataType="i4"
+                      name="DateKey" />
+                    <externalMetadataColumn
+                      refId="Package\Load Call Center Fact Table\FactCallCenter.Inputs[OLE DB Destination Input].ExternalColumns[FactCallCenterID]"
+                      dataType="i4"
+                      name="FactCallCenterID" />
+                    <externalMetadataColumn
+                      refId="Package\Load Call Center Fact Table\FactCallCenter.Inputs[OLE DB Destination Input].ExternalColumns[WageType]"
+                      dataType="wstr"
+                      length="15"
+                      name="WageType" />
+                    <externalMetadataColumn
+                      refId="Package\Load Call Center Fact Table\FactCallCenter.Inputs[OLE DB Destination Input].ExternalColumns[Shift]"
+                      dataType="wstr"
+                      length="20"
+                      name="Shift" />
+                    <externalMetadataColumn
+                      refId="Package\Load Call Center Fact Table\FactCallCenter.Inputs[OLE DB Destination Input].ExternalColumns[LevelOneOperators]"
+                      dataType="i2"
+                      name="LevelOneOperators" />
+                    <externalMetadataColumn
+                      refId="Package\Load Call Center Fact Table\FactCallCenter.Inputs[OLE DB Destination Input].ExternalColumns[LevelTwoOperators]"
+                      dataType="i2"
+                      name="LevelTwoOperators" />
+                    <externalMetadataColumn
+                      refId="Package\Load Call Center Fact Table\FactCallCenter.Inputs[OLE DB Destination Input].ExternalColumns[TotalOperators]"
+                      dataType="i2"
+                      name="TotalOperators" />
+                    <externalMetadataColumn
+                      refId="Package\Load Call Center Fact Table\FactCallCenter.Inputs[OLE DB Destination Input].ExternalColumns[Calls]"
+                      dataType="i4"
+                      name="Calls" />
+                    <externalMetadataColumn
+                      refId="Package\Load Call Center Fact Table\FactCallCenter.Inputs[OLE DB Destination Input].ExternalColumns[AutomaticResponses]"
+                      dataType="i4"
+                      name="AutomaticResponses" />
+                    <externalMetadataColumn
+                      refId="Package\Load Call Center Fact Table\FactCallCenter.Inputs[OLE DB Destination Input].ExternalColumns[Orders]"
+                      dataType="i4"
+                      name="Orders" />
+                    <externalMetadataColumn
+                      refId="Package\Load Call Center Fact Table\FactCallCenter.Inputs[OLE DB Destination Input].ExternalColumns[IssuesRaised]"
+                      dataType="i2"
+                      name="IssuesRaised" />
+                    <externalMetadataColumn
+                      refId="Package\Load Call Center Fact Table\FactCallCenter.Inputs[OLE DB Destination Input].ExternalColumns[AverageTimePerIssue]"
+                      dataType="i2"
+                      name="AverageTimePerIssue" />
+                    <externalMetadataColumn
+                      refId="Package\Load Call Center Fact Table\FactCallCenter.Inputs[OLE DB Destination Input].ExternalColumns[ServiceGrade]"
+                      dataType="r8"
+                      name="ServiceGrade" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Call Center Fact Table\FactCallCenter.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Load Call Center Fact Table\FactCallCenter.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Call Center Fact Table\FactCallCenter.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Call Center Fact Table\FactCallCenter.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Call Center Fact Table\FactCallCenter.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Call Center Fact Table\FactCallCenter.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Call Center Fact Table\ServiceLevel Calculation"
+              componentClassID="{49928E82-9C4E-49F0-AABE-3812B82707EC}"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Updates column values using expressions"
+              localeId="1033"
+              name="ServiceLevel Calculation"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Load Call Center Fact Table\ServiceLevel Calculation.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Call Center Fact Table\ServiceLevel Calculation.Inputs[Derived Column Input].Columns[Calls]"
+                      cachedDataType="i8"
+                      cachedName="Calls"
+                      lineageId="Package\Load Call Center Fact Table\Aggregation Logic.Outputs[CallCenterOutput].Columns[Calls]"
+                      name="Calls" />
+                    <inputColumn
+                      refId="Package\Load Call Center Fact Table\ServiceLevel Calculation.Inputs[Derived Column Input].Columns[CustomerAbandons]"
+                      cachedDataType="i8"
+                      cachedName="CustomerAbandons"
+                      lineageId="Package\Load Call Center Fact Table\Aggregation Logic.Outputs[CallCenterOutput].Columns[CustomerAbandons]"
+                      name="CustomerAbandons" />
+                    <inputColumn
+                      refId="Package\Load Call Center Fact Table\ServiceLevel Calculation.Inputs[Derived Column Input].Columns[LevelOneOperators]"
+                      cachedDataType="ui4"
+                      cachedName="LevelOneOperators"
+                      lineageId="Package\Load Call Center Fact Table\Aggregation Logic.Outputs[CallCenterOutput].Columns[LevelOneOperators]"
+                      name="LevelOneOperators" />
+                    <inputColumn
+                      refId="Package\Load Call Center Fact Table\ServiceLevel Calculation.Inputs[Derived Column Input].Columns[LevelTwoOperators]"
+                      cachedDataType="ui4"
+                      cachedName="LevelTwoOperators"
+                      lineageId="Package\Load Call Center Fact Table\Aggregation Logic.Outputs[CallCenterOutput].Columns[LevelTwoOperators]"
+                      name="LevelTwoOperators" />
+                    <inputColumn
+                      refId="Package\Load Call Center Fact Table\ServiceLevel Calculation.Inputs[Derived Column Input].Columns[IssuesRaised]"
+                      cachedDataType="i8"
+                      cachedName="IssuesRaised"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load Call Center Fact Table\Aggregation Logic.Outputs[CallCenterOutput].Columns[IssuesRaised]"
+                      name="IssuesRaised"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[ISNULL](#{Package\Load Call Center Fact Table\Aggregation Logic.Outputs[CallCenterOutput].Columns[IssuesRaised]}) ? 0 : #{Package\Load Call Center Fact Table\Aggregation Logic.Outputs[CallCenterOutput].Columns[IssuesRaised]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ISNULL(IssuesRaised) ? 0 : IssuesRaised</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Call Center Fact Table\ServiceLevel Calculation.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Load Call Center Fact Table\ServiceLevel Calculation.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Call Center Fact Table\ServiceLevel Calculation.Outputs[Derived Column Output].Columns[ServiceGrade]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load Call Center Fact Table\ServiceLevel Calculation.Outputs[Derived Column Output].Columns[ServiceGrade]"
+                      name="ServiceGrade"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_R8)#{Package\Load Call Center Fact Table\Aggregation Logic.Outputs[CallCenterOutput].Columns[CustomerAbandons]} / (DT_R8)#{Package\Load Call Center Fact Table\Aggregation Logic.Outputs[CallCenterOutput].Columns[Calls]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_R8)CustomerAbandons / (DT_R8)Calls</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Call Center Fact Table\ServiceLevel Calculation.Outputs[Derived Column Output].Columns[WageType]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="6"
+                      lineageId="Package\Load Call Center Fact Table\ServiceLevel Calculation.Outputs[Derived Column Output].Columns[WageType]"
+                      name="WageType"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">"Weekly"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">"Weekly"</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Call Center Fact Table\ServiceLevel Calculation.Outputs[Derived Column Output].Columns[TotalOperators]"
+                      dataType="ui4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load Call Center Fact Table\ServiceLevel Calculation.Outputs[Derived Column Output].Columns[TotalOperators]"
+                      name="TotalOperators"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Load Call Center Fact Table\Aggregation Logic.Outputs[CallCenterOutput].Columns[LevelOneOperators]} + #{Package\Load Call Center Fact Table\Aggregation Logic.Outputs[CallCenterOutput].Columns[LevelTwoOperators]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">LevelOneOperators + LevelTwoOperators</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Call Center Fact Table\ServiceLevel Calculation.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Load Call Center Fact Table\ServiceLevel Calculation.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Call Center Fact Table\ServiceLevel Calculation.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Call Center Fact Table\ServiceLevel Calculation.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Call Center Fact Table\ServiceLevel Calculation.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Call Center Fact Table\ServiceLevel Calculation.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Load Call Center Fact Table.Paths[CallCenterOutput]"
+              endId="Package\Load Call Center Fact Table\ServiceLevel Calculation.Inputs[Derived Column Input]"
+              name="CallCenterOutput"
+              startId="Package\Load Call Center Fact Table\Aggregation Logic.Outputs[CallCenterOutput]" />
+            <path
+              refId="Package\Load Call Center Fact Table.Paths[Derived Column Output1]"
+              endId="Package\Load Call Center Fact Table\FactCallCenter.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Load Call Center Fact Table\ServiceLevel Calculation.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Load Call Center Fact Table.Paths[Derived Column Output]"
+              endId="Package\Load Call Center Fact Table\Aggregation Logic.Inputs[CallCenterInput]"
+              name="Derived Column Output"
+              startId="Package\Load Call Center Fact Table\Aggregation Preparation.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Load Call Center Fact Table.Paths[Flat File Source Output]"
+              endId="Package\Load Call Center Fact Table\Aggregation Preparation.Inputs[Derived Column Input]"
+              name="Flat File Source Output"
+              startId="Package\Load Call Center Fact Table\Audit Flat File.Outputs[Flat File Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PackageVariables>
+    <DTS:PackageVariable
+      DTS:CreationName=""
+      DTS:DTSID="{9E29A00F-A531-463E-8FCE-D45C0761F8B7}"
+      DTS:Namespace="dts-designer-1.0"
+      DTS:ObjectName="{0B233B30-6BCA-4207-8015-B6BD51738449}">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="PackageVariableValue">&lt;TaskHost xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0"&gt;&lt;dwd:DtsDataFlowDiagram&gt;&lt;dwd:BoundingLeft&gt;-3740&lt;/dwd:BoundingLeft&gt;&lt;dwd:BoundingTop&gt;977&lt;/dwd:BoundingTop&gt;&lt;dwd:Layout&gt;&lt;dds&gt;&lt;diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="Microsoft.DataWarehouse.Layout.GraphLayout110" defaultlineroute="Microsoft.DataWarehouse.Layout.GraphLayout110" version="7" nextobject="32" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="-4740" scrolltop="-23" gridx="150" gridy="150" marginx="1000" marginy="1000" zoom="100" x="35322" y="22516" backcolor="15334399" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="1" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="0" viewpagebreaks="0" donotforceconnectorsbehindshapes="0" backpictureclsid="{00000000-0000-0000-0000-000000000000}"&gt;&lt;font&gt;&lt;ddsxmlobjectstreamwrapper binary="01000000900144420100065461686f6d61" /&gt;&lt;/font&gt;&lt;mouseicon&gt;&lt;ddsxmlobjectstreamwrapper binary="6c74000000000000" /&gt;&lt;/mouseicon&gt;&lt;/diagram&gt;&lt;layoutmanager&gt;&lt;ddsxmlobj /&gt;&lt;/layoutmanager&gt;&lt;ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.2" tooltip="Updates column values using expressions" left="1419" top="5180" logicalid="11" controlid="1" masterid="0" hint1="0" hint2="0" width="3598" height="1164" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;&lt;control&gt;&lt;ddsxmlobjectstreaminitwrapper binary="000800000e0e00008c040000" /&gt;&lt;/control&gt;&lt;layoutobject&gt;&lt;ddsxmlobj&gt;&lt;property name="LogicalObject" value="Package\Load Call Center Fact Table\Aggregation Preparation" vartype="8" /&gt;&lt;property name="ShowConnectorSource" value="0" vartype="2" /&gt;&lt;/ddsxmlobj&gt;&lt;/layoutobject&gt;&lt;shape groupshapeid="0" groupnode="0" /&gt;&lt;/ddscontrol&gt;&lt;ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.2" tooltip="Flat File Source" left="1419" top="3016" logicalid="12" controlid="2" masterid="0" hint1="0" hint2="0" width="3598" height="1164" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;&lt;control&gt;&lt;ddsxmlobjectstreaminitwrapper binary="000800000e0e00008c040000" /&gt;&lt;/control&gt;&lt;layoutobject&gt;&lt;ddsxmlobj&gt;&lt;property name="LogicalObject" value="Package\Load Call Center Fact Table\Audit Flat File" vartype="8" /&gt;&lt;property name="ShowConnectorSource" value="0" vartype="2" /&gt;&lt;/ddsxmlobj&gt;&lt;/layoutobject&gt;&lt;shape groupshapeid="0" groupnode="0" /&gt;&lt;/ddscontrol&gt;&lt;ddscontrol controlprogid="MSDDS.Polyline" left="2819" top="3781" logicalid="13" controlid="3" masterid="0" hint1="0" hint2="0" width="799" height="1899" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;&lt;control&gt;&lt;ddsxmlobj&gt;&lt;polyline endtypedst="3" endtypesrc="1" usercolor="32768" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" /&gt;&lt;/ddsxmlobj&gt;&lt;/control&gt;&lt;layoutobject&gt;&lt;ddsxmlobj&gt;&lt;property name="LogicalObject" value="Package\Load Call Center Fact Table.Paths[Flat File Source Output]" vartype="8" /&gt;&lt;property name="Virtual" value="0" vartype="11" /&gt;&lt;property name="VisibleAP" value="0" vartype="3" /&gt;&lt;/ddsxmlobj&gt;&lt;/layoutobject&gt;&lt;connector lineroutestyle="Microsoft.DataWarehouse.Layout.GraphLayout110" sourceid="2" destid="1" sourceattachpoint="7" destattachpoint="6" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="2" relatedid="0" virtual="0"&gt;&lt;point x="3218" y="4180" /&gt;&lt;point x="3218" y="5180" /&gt;&lt;/connector&gt;&lt;/ddscontrol&gt;&lt;ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.2" tooltip="Executes a custom script." left="1419" top="7344" logicalid="14" controlid="4" masterid="0" hint1="0" hint2="0" width="3598" height="1164" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;&lt;control&gt;&lt;ddsxmlobjectstreaminitwrapper binary="000800000e0e00008c040000" /&gt;&lt;/control&gt;&lt;layoutobject&gt;&lt;ddsxmlobj&gt;&lt;property name="LogicalObject" value="Package\Load Call Center Fact Table\Aggregation Logic" vartype="8" /&gt;&lt;property name="ShowConnectorSource" value="0" vartype="2" /&gt;&lt;/ddsxmlobj&gt;&lt;/layoutobject&gt;&lt;shape groupshapeid="0" groupnode="0" /&gt;&lt;/ddscontrol&gt;&lt;ddscontrol controlprogid="MSDDS.Polyline" left="2819" top="5945" logicalid="15" controlid="5" masterid="0" hint1="0" hint2="0" width="799" height="1899" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;&lt;control&gt;&lt;ddsxmlobj&gt;&lt;polyline endtypedst="3" endtypesrc="1" usercolor="32768" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" /&gt;&lt;/ddsxmlobj&gt;&lt;/control&gt;&lt;layoutobject&gt;&lt;ddsxmlobj&gt;&lt;property name="LogicalObject" value="Package\Load Call Center Fact Table.Paths[Derived Column Output]" vartype="8" /&gt;&lt;property name="Virtual" value="0" vartype="11" /&gt;&lt;property name="VisibleAP" value="0" vartype="3" /&gt;&lt;/ddsxmlobj&gt;&lt;/layoutobject&gt;&lt;connector lineroutestyle="Microsoft.DataWarehouse.Layout.GraphLayout110" sourceid="1" destid="4" sourceattachpoint="7" destattachpoint="6" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="2" relatedid="0" virtual="0"&gt;&lt;point x="3218" y="6344" /&gt;&lt;point x="3218" y="7344" /&gt;&lt;/connector&gt;&lt;/ddscontrol&gt;&lt;ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.2" tooltip="OLE DB Destination" left="1419" top="11672" logicalid="16" controlid="6" masterid="0" hint1="0" hint2="0" width="3598" height="1164" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;&lt;control&gt;&lt;ddsxmlobjectstreaminitwrapper binary="000800000e0e00008c040000" /&gt;&lt;/control&gt;&lt;layoutobject&gt;&lt;ddsxmlobj&gt;&lt;property name="LogicalObject" value="Package\Load Call Center Fact Table\FactCallCenter" vartype="8" /&gt;&lt;property name="ShowConnectorSource" value="0" vartype="2" /&gt;&lt;/ddsxmlobj&gt;&lt;/layoutobject&gt;&lt;shape groupshapeid="0" groupnode="0" /&gt;&lt;/ddscontrol&gt;&lt;ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.2" tooltip="Updates column values using expressions" left="1419" top="9508" logicalid="17" controlid="7" masterid="0" hint1="0" hint2="0" width="3598" height="1164" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;&lt;control&gt;&lt;ddsxmlobjectstreaminitwrapper binary="000800000e0e00008c040000" /&gt;&lt;/control&gt;&lt;layoutobject&gt;&lt;ddsxmlobj&gt;&lt;property name="LogicalObject" value="Package\Load Call Center Fact Table\ServiceLevel Calculation" vartype="8" /&gt;&lt;property name="ShowConnectorSource" value="0" vartype="2" /&gt;&lt;/ddsxmlobj&gt;&lt;/layoutobject&gt;&lt;shape groupshapeid="0" groupnode="0" /&gt;&lt;/ddscontrol&gt;&lt;ddscontrol controlprogid="MSDDS.Polyline" left="2819" top="8109" logicalid="18" controlid="8" masterid="0" hint1="0" hint2="0" width="799" height="1899" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;&lt;control&gt;&lt;ddsxmlobj&gt;&lt;polyline endtypedst="3" endtypesrc="1" usercolor="32768" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" /&gt;&lt;/ddsxmlobj&gt;&lt;/control&gt;&lt;layoutobject&gt;&lt;ddsxmlobj&gt;&lt;property name="LogicalObject" value="Package\Load Call Center Fact Table.Paths[CallCenterOutput]" vartype="8" /&gt;&lt;property name="Virtual" value="0" vartype="11" /&gt;&lt;property name="VisibleAP" value="0" vartype="3" /&gt;&lt;/ddsxmlobj&gt;&lt;/layoutobject&gt;&lt;connector lineroutestyle="Microsoft.DataWarehouse.Layout.GraphLayout110" sourceid="4" destid="7" sourceattachpoint="7" destattachpoint="6" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="2" relatedid="0" virtual="0"&gt;&lt;point x="3218" y="8508" /&gt;&lt;point x="3218" y="9508" /&gt;&lt;/connector&gt;&lt;/ddscontrol&gt;&lt;ddscontrol controlprogid="MSDDS.Polyline" left="2819" top="10273" logicalid="19" controlid="9" masterid="0" hint1="0" hint2="0" width="799" height="1899" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;&lt;control&gt;&lt;ddsxmlobj&gt;&lt;polyline endtypedst="3" endtypesrc="1" usercolor="32768" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" /&gt;&lt;/ddsxmlobj&gt;&lt;/control&gt;&lt;layoutobject&gt;&lt;ddsxmlobj&gt;&lt;property name="LogicalObject" value="Package\Load Call Center Fact Table.Paths[Derived Column Output1]" vartype="8" /&gt;&lt;property name="Virtual" value="0" vartype="11" /&gt;&lt;property name="VisibleAP" value="0" vartype="3" /&gt;&lt;/ddsxmlobj&gt;&lt;/layoutobject&gt;&lt;connector lineroutestyle="Microsoft.DataWarehouse.Layout.GraphLayout110" sourceid="7" destid="6" sourceattachpoint="7" destattachpoint="6" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="2" relatedid="0" virtual="0"&gt;&lt;point x="3218" y="10672" /&gt;&lt;point x="3218" y="11672" /&gt;&lt;/connector&gt;&lt;/ddscontrol&gt;&lt;/dds&gt;&lt;/dwd:Layout&gt;&lt;dwd:PersistedViewPortLeft&gt;-4740&lt;/dwd:PersistedViewPortLeft&gt;&lt;dwd:PersistedViewPortTop&gt;-23&lt;/dwd:PersistedViewPortTop&gt;&lt;/dwd:DtsDataFlowDiagram&gt;&lt;dwd:DtsComponentDesignerPropertiesList&gt;&lt;dwd:DtsComponentDesignTimeProperty&gt;&lt;dwd:key xsi:type="xsd:string"&gt;347	TableInfoObjectType&lt;/dwd:key&gt;&lt;dwd:value xsi:type="xsd:string"&gt;Table&lt;/dwd:value&gt;&lt;/dwd:DtsComponentDesignTimeProperty&gt;&lt;dwd:DtsComponentDesignTimeProperty&gt;&lt;dwd:key xsi:type="xsd:string"&gt;347	DataSourceViewID&lt;/dwd:key&gt;&lt;/dwd:DtsComponentDesignTimeProperty&gt;&lt;/dwd:DtsComponentDesignerPropertiesList&gt;&lt;/TaskHost&gt;</DTS:Property>
+    </DTS:PackageVariable>
+    <DTS:PackageVariable
+      DTS:CreationName=""
+      DTS:DTSID="{EB4CC7BB-E7A5-41D6-A031-CB06464A3C28}"
+      DTS:Namespace="dts-designer-1.0"
+      DTS:ObjectName="{0B233B30-6BCA-4207-8015-B6BD51738449}-181">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="PackageVariableValue">&lt;PipelinePath xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0"&gt;&lt;dwd:SourceName&gt;Derived Column Output&lt;/dwd:SourceName&gt;&lt;dwd:DestinationName&gt;CallCenterInput&lt;/dwd:DestinationName&gt;&lt;/PipelinePath&gt;</DTS:Property>
+    </DTS:PackageVariable>
+    <DTS:PackageVariable
+      DTS:CreationName=""
+      DTS:DTSID="{B77990EF-133B-4A56-8BC0-EDBAAA012AC2}"
+      DTS:Namespace="dts-designer-1.0"
+      DTS:ObjectName="{0B233B30-6BCA-4207-8015-B6BD51738449}-444">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="PackageVariableValue">&lt;PipelinePath xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0"&gt;&lt;dwd:SourceName&gt;CallCenterOutput&lt;/dwd:SourceName&gt;&lt;dwd:DestinationName&gt;Derived Column Input&lt;/dwd:DestinationName&gt;&lt;/PipelinePath&gt;</DTS:Property>
+    </DTS:PackageVariable>
+    <DTS:PackageVariable
+      DTS:CreationName=""
+      DTS:DTSID="{6096EECF-CAE1-429A-ABB9-6DB0B6CB3295}"
+      DTS:Namespace="dts-designer-1.0"
+      DTS:ObjectName="{0B233B30-6BCA-4207-8015-B6BD51738449}-445">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="PackageVariableValue">&lt;PipelinePath xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0"&gt;&lt;dwd:SourceName&gt;Derived Column Output&lt;/dwd:SourceName&gt;&lt;dwd:DestinationName&gt;OLE DB Destination Input&lt;/dwd:DestinationName&gt;&lt;/PipelinePath&gt;</DTS:Property>
+    </DTS:PackageVariable>
+    <DTS:PackageVariable
+      DTS:CreationName=""
+      DTS:DTSID="{1865CD90-D03C-4908-B7D8-143D3017DD50}"
+      DTS:Namespace="dts-designer-1.0"
+      DTS:ObjectName="{0B233B30-6BCA-4207-8015-B6BD51738449}-86">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="PackageVariableValue">&lt;PipelinePath xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0"&gt;&lt;dwd:SourceName&gt;Flat File Source Output&lt;/dwd:SourceName&gt;&lt;dwd:DestinationName&gt;Derived Column Input&lt;/dwd:DestinationName&gt;&lt;/PipelinePath&gt;</DTS:Property>
+    </DTS:PackageVariable>
+    <DTS:PackageVariable
+      DTS:CreationName=""
+      DTS:DTSID="{9E58233D-6BD1-4EB9-AABD-B1E96BB5BC90}"
+      DTS:Namespace="dts-designer-1.0"
+      DTS:ObjectName="package-diagram">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="PackageVariableValue">&lt;Package xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0"&gt;&lt;dwd:DtsControlFlowDiagram&gt;&lt;dwd:BoundingLeft&gt;1000&lt;/dwd:BoundingLeft&gt;&lt;dwd:BoundingTop&gt;1000&lt;/dwd:BoundingTop&gt;&lt;dwd:Layout&gt;&lt;dds&gt;&lt;diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="Microsoft.DataWarehouse.Layout.GraphLayout110" defaultlineroute="Microsoft.DataWarehouse.Layout.GraphLayout110" version="7" nextobject="5" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="0" scrolltop="0" gridx="150" gridy="150" marginx="1000" marginy="1000" zoom="100" x="35322" y="23442" backcolor="15334399" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="1" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="0" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}"&gt;&lt;font&gt;&lt;ddsxmlobjectstreamwrapper binary="01010000900180380100065461686f6d61" /&gt;&lt;/font&gt;&lt;mouseicon&gt;&lt;ddsxmlobjectstreamwrapper binary="6c74000000000000" /&gt;&lt;/mouseicon&gt;&lt;/diagram&gt;&lt;layoutmanager&gt;&lt;ddsxmlobj /&gt;&lt;/layoutmanager&gt;&lt;ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.2" tooltip="Data Flow Task" left="6019" top="5146" logicalid="2" controlid="1" masterid="0" hint1="0" hint2="0" width="3598" height="1164" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;&lt;control&gt;&lt;ddsxmlobjectstreaminitwrapper binary="000800000e0e00008c040000" /&gt;&lt;/control&gt;&lt;layoutobject&gt;&lt;ddsxmlobj&gt;&lt;property name="LogicalObject" value="Package\Load Call Center Fact Table" vartype="8" /&gt;&lt;property name="ShowConnectorSource" value="0" vartype="2" /&gt;&lt;/ddsxmlobj&gt;&lt;/layoutobject&gt;&lt;shape groupshapeid="0" groupnode="0" /&gt;&lt;/ddscontrol&gt;&lt;/dds&gt;&lt;/dwd:Layout&gt;&lt;/dwd:DtsControlFlowDiagram&gt;&lt;/Package&gt;</DTS:Property>
+    </DTS:PackageVariable>
+    <DTS:PackageVariable
+      DTS:CreationName=""
+      DTS:DTSID="{A837C446-098F-4524-9545-24E9FDCD00BF}"
+      DTS:Namespace="dts-designer-1.0"
+      DTS:ObjectName="package-diagram">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="PackageVariableValue">&lt;Package xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0"&gt;&lt;dwd:DtsControlFlowDiagram&gt;&lt;dwd:BoundingLeft&gt;1000&lt;/dwd:BoundingLeft&gt;&lt;dwd:BoundingTop&gt;1000&lt;/dwd:BoundingTop&gt;&lt;dwd:Layout&gt;&lt;dds&gt;&lt;diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="Microsoft.DataWarehouse.Layout.GraphLayout110" defaultlineroute="Microsoft.DataWarehouse.Layout.GraphLayout110" version="7" nextobject="5" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="0" scrolltop="0" gridx="150" gridy="150" marginx="1000" marginy="1000" zoom="100" x="35322" y="23442" backcolor="15334399" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="1" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="0" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}"&gt;&lt;font&gt;&lt;ddsxmlobjectstreamwrapper binary="01010000900180380100065461686f6d61" /&gt;&lt;/font&gt;&lt;mouseicon&gt;&lt;ddsxmlobjectstreamwrapper binary="6c74000000000000" /&gt;&lt;/mouseicon&gt;&lt;/diagram&gt;&lt;layoutmanager&gt;&lt;ddsxmlobj /&gt;&lt;/layoutmanager&gt;&lt;ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.2" tooltip="Data Flow Task" left="6019" top="5146" logicalid="2" controlid="1" masterid="0" hint1="0" hint2="0" width="3598" height="1164" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0"&gt;&lt;control&gt;&lt;ddsxmlobjectstreaminitwrapper binary="000800000e0e00008c040000" /&gt;&lt;/control&gt;&lt;layoutobject&gt;&lt;ddsxmlobj&gt;&lt;property name="LogicalObject" value="Package\Load Call Center Fact Table" vartype="8" /&gt;&lt;property name="ShowConnectorSource" value="0" vartype="2" /&gt;&lt;/ddsxmlobj&gt;&lt;/layoutobject&gt;&lt;shape groupshapeid="0" groupnode="0" /&gt;&lt;/ddscontrol&gt;&lt;/dds&gt;&lt;/dwd:Layout&gt;&lt;/dwd:DtsControlFlowDiagram&gt;&lt;/Package&gt;</DTS:Property>
+    </DTS:PackageVariable>
+  </DTS:PackageVariables>
+</DTS:Executable>

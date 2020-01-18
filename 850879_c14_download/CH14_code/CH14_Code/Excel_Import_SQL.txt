@@ -1,0 +1,3 @@
+SELECT ProductID, PhysicalCount, LocationID, Shelf, Bin
+FROM Inventory_Worksheet
+WHERE PhysicalCount IS NOT NULL

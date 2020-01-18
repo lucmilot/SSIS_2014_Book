@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="CSharp_ConfigPkg">
+</Property><Property Name="Solution File" Value="C:\ssis\ExtMgt\CSharp_ConfigPkg\CSharp_ConfigPkg.sln">
+</Property><Property Name="User Options File" Value="C:\ssis\ExtMgt\CSharp_ConfigPkg\CSharp_ConfigPkg.suo">
+</Property><Property Name="Date" Value="Tuesday, August 30, 2011">
+</Property><Property Name="Time" Value="9:10 AM">
+</Property></Properties><Event ErrorLevel="0" Project="" Source="CSharp_ConfigPkg.sln" Description="File successfully backed up as C:\ssis\ExtMgt\CSharp_ConfigPkg\Backup\CSharp_ConfigPkg.sln">
+</Event><Event ErrorLevel="0" Project="" Source="CSharp_ConfigPkg.suo" Description="File successfully backed up as C:\ssis\ExtMgt\CSharp_ConfigPkg\Backup\CSharp_ConfigPkg.suo">
+</Event><Event ErrorLevel="0" Project="CSharp_ConfigPkg" Source="CSharp_ConfigPkg\CSharp_ConfigPkg.csproj" Description="Project file successfully backed up as C:\ssis\ExtMgt\CSharp_ConfigPkg\Backup\CSharp_ConfigPkg\CSharp_ConfigPkg.csproj">
+</Event><Event ErrorLevel="0" Project="CSharp_ConfigPkg" Source="CSharp_ConfigPkg\Program.cs" Description="File successfully backed up as C:\ssis\ExtMgt\CSharp_ConfigPkg\Backup\CSharp_ConfigPkg\Program.cs">
+</Event><Event ErrorLevel="0" Project="CSharp_ConfigPkg" Source="CSharp_ConfigPkg\Properties\AssemblyInfo.cs" Description="File successfully backed up as C:\ssis\ExtMgt\CSharp_ConfigPkg\Backup\CSharp_ConfigPkg\Properties\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="CSharp_ConfigPkg" Source="CSharp_ConfigPkg\CSharp_ConfigPkg.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="CSharp_ConfigPkg" Source="CSharp_ConfigPkg\CSharp_ConfigPkg.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="CSharp_ConfigPkg.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="CSharp_ConfigPkg.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="CSharp_ConfigPkg" Source="CSharp_ConfigPkg\CSharp_ConfigPkg.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event></UpgradeLog>

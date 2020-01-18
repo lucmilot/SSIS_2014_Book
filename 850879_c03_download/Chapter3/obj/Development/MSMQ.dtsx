@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/2/2008 1:13:08 AM"
+  DTS:CreationName="SSIS.Package.3"
+  DTS:CreatorComputerName="DHINSON-PC"
+  DTS:CreatorName="dhinson-PC\dhinson"
+  DTS:DTSID="{967A77CD-5D52-4460-BFAC-FD937A70637D}"
+  DTS:ExecutableType="SSIS.Package.3"
+  DTS:LastModifiedProductVersion="11.0.1445.2"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="MSMQ"
+  DTS:PackageType="5"
+  DTS:VersionBuild="3"
+  DTS:VersionGUID="{76E5B996-1A0D-4F74-99E7-28A4B4AA1C38}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Message Queue Connection Manager]"
+      DTS:CreationName="MSMQ"
+      DTS:DTSID="{8F0F667C-3A66-4703-80B6-2127A07DFC8D}"
+      DTS:ObjectName="Message Queue Connection Manager">
+      <DTS:ObjectData>
+        <MsmqConnectionManager
+          ConnectionString="Path" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Message Queue Task"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.MessageQueueTask.MessageQueueTask, Microsoft.SqlServer.MSMQTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="Message Queue Task"
+      DTS:DTSID="{85DE03A7-19F5-4F77-B2D4-3625669A0E10}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.MessageQueueTask.MessageQueueTask, Microsoft.SqlServer.MSMQTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Message Queue Task"
+      DTS:TaskContact="Message Queue Task; Microsoft Corporation; Microsoft SQL Server 2008; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <MessageQueueTask:MessageQueueTaskData
+          MessageQueueTask:CurrentPackageID="{967A77CD-5D52-4460-BFAC-FD937A70637D}"
+          MessageQueueTask:QueuePath="Message Queue Connection Manager"
+          MessageQueueTask:StringMessage="My Message" xmlns:MessageQueueTask="www.microsoft.com/sqlserver/dts/tasks/messagequeuetask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql11">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="136,44"
+          Id="Package\Message Queue Task"
+          TopLeft="5.5,5.5" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

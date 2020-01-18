@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="CSharp_CreatePkgLog">
+</Property><Property Name="Solution File" Value="C:\ssis\ExtMgt\CSharp_CreatePkgLog\CSharp_CreatePkgLog.sln">
+</Property><Property Name="User Options File" Value="C:\ssis\ExtMgt\CSharp_CreatePkgLog\CSharp_CreatePkgLog.suo">
+</Property><Property Name="Date" Value="Tuesday, August 30, 2011">
+</Property><Property Name="Time" Value="8:48 AM">
+</Property></Properties><Event ErrorLevel="0" Project="" Source="CSharp_CreatePkgLog.sln" Description="File successfully backed up as C:\ssis\ExtMgt\CSharp_CreatePkgLog\Backup\CSharp_CreatePkgLog.sln">
+</Event><Event ErrorLevel="0" Project="" Source="CSharp_CreatePkgLog.suo" Description="File successfully backed up as C:\ssis\ExtMgt\CSharp_CreatePkgLog\Backup\CSharp_CreatePkgLog.suo">
+</Event><Event ErrorLevel="0" Project="CSharp_CreatePkgLog" Source="CSharp_CreatePkgLog\CSharp_CreatePkgLog.csproj" Description="Project file successfully backed up as C:\ssis\ExtMgt\CSharp_CreatePkgLog\Backup\CSharp_CreatePkgLog\CSharp_CreatePkgLog.csproj">
+</Event><Event ErrorLevel="0" Project="CSharp_CreatePkgLog" Source="CSharp_CreatePkgLog\Program.cs" Description="File successfully backed up as C:\ssis\ExtMgt\CSharp_CreatePkgLog\Backup\CSharp_CreatePkgLog\Program.cs">
+</Event><Event ErrorLevel="0" Project="CSharp_CreatePkgLog" Source="CSharp_CreatePkgLog\Properties\AssemblyInfo.cs" Description="File successfully backed up as C:\ssis\ExtMgt\CSharp_CreatePkgLog\Backup\CSharp_CreatePkgLog\Properties\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="CSharp_CreatePkgLog" Source="CSharp_CreatePkgLog\CSharp_CreatePkgLog.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="CSharp_CreatePkgLog" Source="CSharp_CreatePkgLog\CSharp_CreatePkgLog.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="CSharp_CreatePkgLog.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="CSharp_CreatePkgLog.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="CSharp_CreatePkgLog" Source="CSharp_CreatePkgLog\CSharp_CreatePkgLog.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event></UpgradeLog>

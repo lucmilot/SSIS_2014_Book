@@ -1,0 +1,6 @@
+C:\SSIS\scripts\SSISUtilityLib_CSharp\SSISUtilityLib_CSharp\obj\Debug\ResolveAssemblyReference.cache
+C:\SSIS\scripts\SSISUtilityLib_CSharp\SSISUtilityLib_CSharp\obj\Debug\SSISUtilityLib_CSharp.dll
+C:\SSIS\scripts\SSISUtilityLib_CSharp\SSISUtilityLib_CSharp\obj\Debug\SSISUtilityLib_CSharp.pdb
+C:\SSIS\scripts\SSISUtilityLib_CSharp\SSISUtilityLib_CSharp\bin\Debug\SSISUtilityLib_CSharp.dll
+C:\SSIS\scripts\SSISUtilityLib_CSharp\SSISUtilityLib_CSharp\bin\Debug\SSISUtilityLib_CSharp.pdb
+C:\SSIS\scripts\SSISUtilityLib_CSharp\SSISUtilityLib_CSharp\bin\Debug\Microsoft.SQLServer.DTSRuntimeWrap.dll

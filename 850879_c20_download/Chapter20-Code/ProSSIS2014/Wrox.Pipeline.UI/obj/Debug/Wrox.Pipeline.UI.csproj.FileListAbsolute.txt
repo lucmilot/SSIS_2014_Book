@@ -1,0 +1,22 @@
+C:\Users\DenaliDemo\Documents\Visual Studio 2010\Projects\ProSSIS2011\Wrox.Pipeline.UI\bin\Debug\Wrox.Pipeline.UI.dll
+C:\Users\DenaliDemo\Documents\Visual Studio 2010\Projects\ProSSIS2011\Wrox.Pipeline.UI\bin\Debug\Wrox.Pipeline.UI.pdb
+C:\Users\DenaliDemo\Documents\Visual Studio 2010\Projects\ProSSIS2011\Wrox.Pipeline.UI\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\DenaliDemo\Documents\Visual Studio 2010\Projects\ProSSIS2011\Wrox.Pipeline.UI\obj\Debug\Wrox.Pipeline.UI.ReverseStringUIForm.resources
+C:\Users\DenaliDemo\Documents\Visual Studio 2010\Projects\ProSSIS2011\Wrox.Pipeline.UI\obj\Debug\GenerateResource.read.1.tlog
+C:\Users\DenaliDemo\Documents\Visual Studio 2010\Projects\ProSSIS2011\Wrox.Pipeline.UI\obj\Debug\GenerateResource.write.1.tlog
+C:\Users\DenaliDemo\Documents\Visual Studio 2010\Projects\ProSSIS2011\Wrox.Pipeline.UI\obj\Debug\Wrox.Pipeline.UI.dll
+C:\Users\DenaliDemo\Documents\Visual Studio 2010\Projects\ProSSIS2011\Wrox.Pipeline.UI\obj\Debug\Wrox.Pipeline.UI.pdb
+C:\Users\DenaliDemo\Documents\Visual Studio 2010\Projects\ProSSIS2012\Wrox.Pipeline.UI\bin\Debug\Wrox.Pipeline.UI.dll
+C:\Users\DenaliDemo\Documents\Visual Studio 2010\Projects\ProSSIS2012\Wrox.Pipeline.UI\bin\Debug\Wrox.Pipeline.UI.pdb
+C:\Users\DenaliDemo\Documents\Visual Studio 2010\Projects\ProSSIS2012\Wrox.Pipeline.UI\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\DenaliDemo\Documents\Visual Studio 2010\Projects\ProSSIS2012\Wrox.Pipeline.UI\obj\Debug\Wrox.Pipeline.UI.ReverseStringUIForm.resources
+C:\Users\DenaliDemo\Documents\Visual Studio 2010\Projects\ProSSIS2012\Wrox.Pipeline.UI\obj\Debug\GenerateResource.read.1.tlog
+C:\Users\DenaliDemo\Documents\Visual Studio 2010\Projects\ProSSIS2012\Wrox.Pipeline.UI\obj\Debug\GenerateResource.write.1.tlog
+C:\Users\DenaliDemo\Documents\Visual Studio 2010\Projects\ProSSIS2012\Wrox.Pipeline.UI\obj\Debug\Wrox.Pipeline.UI.dll
+C:\Users\DenaliDemo\Documents\Visual Studio 2010\Projects\ProSSIS2012\Wrox.Pipeline.UI\obj\Debug\Wrox.Pipeline.UI.pdb
+C:\Users\Chris\Downloads\101124_ch18_download\ProSSIS2014\Wrox.Pipeline.UI\bin\Debug\Wrox.Pipeline.UI.dll
+C:\Users\Chris\Downloads\101124_ch18_download\ProSSIS2014\Wrox.Pipeline.UI\bin\Debug\Wrox.Pipeline.UI.pdb
+C:\Users\Chris\Downloads\101124_ch18_download\ProSSIS2014\Wrox.Pipeline.UI\obj\Debug\Wrox.Pipeline.UI.ReverseStringUIForm.resources
+C:\Users\Chris\Downloads\101124_ch18_download\ProSSIS2014\Wrox.Pipeline.UI\obj\Debug\Wrox.Pipeline.UI.csproj.GenerateResource.Cache
+C:\Users\Chris\Downloads\101124_ch18_download\ProSSIS2014\Wrox.Pipeline.UI\obj\Debug\Wrox.Pipeline.UI.dll
+C:\Users\Chris\Downloads\101124_ch18_download\ProSSIS2014\Wrox.Pipeline.UI\obj\Debug\Wrox.Pipeline.UI.pdb

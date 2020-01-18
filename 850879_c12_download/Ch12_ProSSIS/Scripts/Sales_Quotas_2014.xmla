@@ -1,0 +1,26 @@
+<Create xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+	<ParentObject>
+		<DatabaseID>AdventureWorksDWMultidimensional</DatabaseID>
+		<CubeID>Adventure Works</CubeID>
+		<MeasureGroupID>Fact Sales Quota</MeasureGroupID>
+	</ParentObject>
+	<ObjectDefinition>
+		<Partition xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100">
+			<ID>Fact Sales Quota 2014</ID>
+			<Name>Sales_Quotas_2014</Name>
+			<Source xsi:type="QueryBinding">
+				<DataSourceID>Adventure Works DW</DataSourceID>
+				<QueryDefinition>SELECT EmployeeKey, DateKey AS OrderDateKey, CalendarQuarter, CalendarYear, SalesAmountQuota FROM FactSalesQuota WHERE CalendarYear = 2008</QueryDefinition>
+			</Source>
+			<StorageMode>Molap</StorageMode>
+			<ProcessingMode>Regular</ProcessingMode>
+			<ProactiveCaching>
+				<SilenceInterval>-PT1S</SilenceInterval>
+				<Latency>-PT1S</Latency>
+				<SilenceOverrideInterval>-PT1S</SilenceOverrideInterval>
+				<ForceRebuildInterval>-PT1S</ForceRebuildInterval>
+				<Source xsi:type="ProactiveCachingInheritedBinding" />
+			</ProactiveCaching>
+		</Partition>
+	</ObjectDefinition>
+</Create>

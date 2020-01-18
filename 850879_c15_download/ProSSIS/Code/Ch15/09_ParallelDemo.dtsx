@@ -1,0 +1,1452 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/29/2011 1:30:36 PM"
+  DTS:CreationName="SSIS.Package.3"
+  DTS:CreatorComputerName="SQL-MVP"
+  DTS:CreatorName="SQL-MVP\Administrator"
+  DTS:DTSID="{FE47A92B-067F-4656-90D2-C3867ABC8111}"
+  DTS:ExecutableType="SSIS.Package.3"
+  DTS:LastModifiedProductVersion="11.0.3369.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="09_ParallelDemo"
+  DTS:PackageType="5"
+  DTS:VersionBuild="17"
+  DTS:VersionGUID="{10F7B20D-2D00-4A4C-9AFC-D30D4E12698E}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[AdventureWorks]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{62DB3735-A3C9-4C91-86AD-C0F8FBB220E4}"
+      DTS:ObjectName="AdventureWorks">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=localhost;Initial Catalog=AdventureWorks;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[AdventureWorksDW]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{37494728-8907-402D-B1BF-CBD99B329000}"
+      DTS:ObjectName="AdventureWorksDW">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=localhost;Initial Catalog=AdventureWorksDW;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{7A276A55-A469-4607-8500-1FE4F014E1AA}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="intTaskQueueID">
+      <DTS:VariableValue
+        DTS:DataType="3">-1</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{1BB1EEFE-3827-4171-977D-4446ADE4B478}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;SELECT [SalesOrderID]&#xA;&#xA;      ,[RevisionNumber]&#xA;&#xA;      ,[OrderDate]&#xA;&#xA;      ,[DueDate]&#xA;&#xA;      ,[ShipDate]&#xA;&#xA;      ,[Status]&#xA;&#xA;      ,[OnlineOrderFlag]&#xA;&#xA;      ,[SalesOrderNumber]&#xA;&#xA;      ,[PurchaseOrderNumber]&#xA;&#xA;      ,[AccountNumber]&#xA;&#xA;      ,[CustomerID]&#xA;&#xA;      ,[SalesPersonID]&#xA;&#xA;      ,[TerritoryID]&#xA;&#xA;      ,[BillToAddressID]&#xA;&#xA;      ,[ShipToAddressID]&#xA;&#xA;      ,[ShipMethodID]&#xA;&#xA;      ,[CreditCardID]&#xA;&#xA;      ,[CreditCardApprovalCode]&#xA;&#xA;      ,[CurrencyRateID]&#xA;&#xA;      ,[SubTotal]&#xA;&#xA;      ,[TaxAmt]&#xA;&#xA;      ,[Freight]&#xA;&#xA;      ,[TotalDue]&#xA;&#xA;      ,[Comment]&#xA;&#xA;      ,[rowguid]&#xA;&#xA;      ,[ModifiedDate]&#xA;&#xA;  FROM [AdventureWorks].[Sales].[SalesOrderHeader]&#xA;&#xA;WHERE [ShipDate] &gt; '&quot;+ @[User::strWherePartition]  + &quot;-01-01' and &#xA;&#xA;[ShipDate] &lt;= '&quot; + @[User::strWherePartition]  + &quot;-12-31' ORDER BY [ShipDate] &quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="strSQLStatement">
+      <DTS:VariableValue
+        DTS:DataType="8">SELECT [SalesOrderID]
+
+      ,[RevisionNumber]
+
+      ,[OrderDate]
+
+      ,[DueDate]
+
+      ,[ShipDate]
+
+      ,[Status]
+
+      ,[OnlineOrderFlag]
+
+      ,[SalesOrderNumber]
+
+      ,[PurchaseOrderNumber]
+
+      ,[AccountNumber]
+
+      ,[CustomerID]
+
+      ,[SalesPersonID]
+
+      ,[TerritoryID]
+
+      ,[BillToAddressID]
+
+      ,[ShipToAddressID]
+
+      ,[ShipMethodID]
+
+      ,[CreditCardID]
+
+      ,[CreditCardApprovalCode]
+
+      ,[CurrencyRateID]
+
+      ,[SubTotal]
+
+      ,[TaxAmt]
+
+      ,[Freight]
+
+      ,[TotalDue]
+
+      ,[Comment]
+
+      ,[rowguid]
+
+      ,[ModifiedDate]
+
+  FROM [AdventureWorks].[Sales].[SalesOrderHeader]
+
+WHERE [ShipDate] &gt; '2001-01-01' and 
+
+[ShipDate] &lt;= '2001-12-31' ORDER BY [ShipDate] </DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{CF45196F-F066-4D47-B7BB-E09D305E66D2}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="strWherePartition">
+      <DTS:VariableValue
+        DTS:DataType="8">2001</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Loop Over Work"
+      DTS:CreationName="STOCK:FORLOOP"
+      DTS:Description="Loops over Queue looking for work"
+      DTS:DTSID="{99775459-341C-462F-819B-9DB40DF3E4D8}"
+      DTS:EvalExpression="@intTaskQueueID != 0"
+      DTS:ExecutableType="STOCK:FORLOOP"
+      DTS:InitExpression="@intTaskQueueID = -1"
+      DTS:LocaleID="-1"
+      DTS:MaxConcurrent="1"
+      DTS:ObjectName="Loop Over Work">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Loop Over Work\Load Data"
+          DTS:CreationName="SSIS.Pipeline.3"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{E95C5961-35AB-4AF4-9F18-6C6DB1BF71C8}"
+          DTS:ExecutableType="SSIS.Pipeline.3"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Load Data"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Loop Over Work\Load Data\OLE DB Source"
+                  componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="OLE DB Source"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable">User::strSQLStatement</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Loop Over Work\Load Data\OLE DB Source.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[AdventureWorks]"
+                      connectionManagerRefId="Package.ConnectionManagers[AdventureWorks]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[SalesOrderID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SalesOrderID]"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[SalesOrderID]"
+                          name="SalesOrderID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[RevisionNumber]"
+                          dataType="ui1"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[RevisionNumber]"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[RevisionNumber]"
+                          name="RevisionNumber"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[OrderDate]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[OrderDate]"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[OrderDate]"
+                          name="OrderDate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[DueDate]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DueDate]"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[DueDate]"
+                          name="DueDate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[ShipDate]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ShipDate]"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[ShipDate]"
+                          name="ShipDate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Status]"
+                          dataType="ui1"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Status]"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Status]"
+                          name="Status"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[OnlineOrderFlag]"
+                          dataType="bool"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[OnlineOrderFlag]"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[OnlineOrderFlag]"
+                          name="OnlineOrderFlag"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[SalesOrderNumber]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SalesOrderNumber]"
+                          length="25"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[SalesOrderNumber]"
+                          name="SalesOrderNumber"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[PurchaseOrderNumber]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PurchaseOrderNumber]"
+                          length="25"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[PurchaseOrderNumber]"
+                          name="PurchaseOrderNumber"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[AccountNumber]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AccountNumber]"
+                          length="15"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[AccountNumber]"
+                          name="AccountNumber"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[CustomerID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CustomerID]"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[CustomerID]"
+                          name="CustomerID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[SalesPersonID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SalesPersonID]"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[SalesPersonID]"
+                          name="SalesPersonID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[TerritoryID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TerritoryID]"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[TerritoryID]"
+                          name="TerritoryID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[BillToAddressID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BillToAddressID]"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[BillToAddressID]"
+                          name="BillToAddressID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[ShipToAddressID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ShipToAddressID]"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[ShipToAddressID]"
+                          name="ShipToAddressID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[ShipMethodID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ShipMethodID]"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[ShipMethodID]"
+                          name="ShipMethodID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[CreditCardID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CreditCardID]"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[CreditCardID]"
+                          name="CreditCardID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[CreditCardApprovalCode]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CreditCardApprovalCode]"
+                          length="15"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[CreditCardApprovalCode]"
+                          name="CreditCardApprovalCode"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[CurrencyRateID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CurrencyRateID]"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[CurrencyRateID]"
+                          name="CurrencyRateID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[SubTotal]"
+                          dataType="cy"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SubTotal]"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[SubTotal]"
+                          name="SubTotal"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[TaxAmt]"
+                          dataType="cy"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TaxAmt]"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[TaxAmt]"
+                          name="TaxAmt"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Freight]"
+                          dataType="cy"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Freight]"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Freight]"
+                          name="Freight"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[TotalDue]"
+                          dataType="cy"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TotalDue]"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[TotalDue]"
+                          name="TotalDue"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Comment]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Comment]"
+                          length="128"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Comment]"
+                          name="Comment"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[rowguid]"
+                          dataType="guid"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[rowguid]"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[rowguid]"
+                          name="rowguid"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[ModifiedDate]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ModifiedDate]"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[ModifiedDate]"
+                          name="ModifiedDate"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SalesOrderID]"
+                          dataType="i4"
+                          name="SalesOrderID" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[RevisionNumber]"
+                          dataType="ui1"
+                          name="RevisionNumber" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[OrderDate]"
+                          dataType="dbTimeStamp"
+                          name="OrderDate" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DueDate]"
+                          dataType="dbTimeStamp"
+                          name="DueDate" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ShipDate]"
+                          dataType="dbTimeStamp"
+                          name="ShipDate" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Status]"
+                          dataType="ui1"
+                          name="Status" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[OnlineOrderFlag]"
+                          dataType="bool"
+                          name="OnlineOrderFlag" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SalesOrderNumber]"
+                          dataType="wstr"
+                          length="25"
+                          name="SalesOrderNumber" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PurchaseOrderNumber]"
+                          dataType="wstr"
+                          length="25"
+                          name="PurchaseOrderNumber" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AccountNumber]"
+                          dataType="wstr"
+                          length="15"
+                          name="AccountNumber" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CustomerID]"
+                          dataType="i4"
+                          name="CustomerID" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SalesPersonID]"
+                          dataType="i4"
+                          name="SalesPersonID" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TerritoryID]"
+                          dataType="i4"
+                          name="TerritoryID" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BillToAddressID]"
+                          dataType="i4"
+                          name="BillToAddressID" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ShipToAddressID]"
+                          dataType="i4"
+                          name="ShipToAddressID" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ShipMethodID]"
+                          dataType="i4"
+                          name="ShipMethodID" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CreditCardID]"
+                          dataType="i4"
+                          name="CreditCardID" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CreditCardApprovalCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="15"
+                          name="CreditCardApprovalCode" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CurrencyRateID]"
+                          dataType="i4"
+                          name="CurrencyRateID" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SubTotal]"
+                          dataType="cy"
+                          name="SubTotal" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TaxAmt]"
+                          dataType="cy"
+                          name="TaxAmt" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Freight]"
+                          dataType="cy"
+                          name="Freight" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TotalDue]"
+                          dataType="cy"
+                          name="TotalDue" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Comment]"
+                          dataType="wstr"
+                          length="128"
+                          name="Comment" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[rowguid]"
+                          dataType="guid"
+                          name="rowguid" />
+                        <externalMetadataColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ModifiedDate]"
+                          dataType="dbTimeStamp"
+                          name="ModifiedDate" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SalesOrderID]"
+                          dataType="i4"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SalesOrderID]"
+                          name="SalesOrderID" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[RevisionNumber]"
+                          dataType="ui1"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[RevisionNumber]"
+                          name="RevisionNumber" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[OrderDate]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[OrderDate]"
+                          name="OrderDate" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DueDate]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DueDate]"
+                          name="DueDate" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ShipDate]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ShipDate]"
+                          name="ShipDate" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Status]"
+                          dataType="ui1"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Status]"
+                          name="Status" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[OnlineOrderFlag]"
+                          dataType="bool"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[OnlineOrderFlag]"
+                          name="OnlineOrderFlag" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SalesOrderNumber]"
+                          dataType="wstr"
+                          length="25"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SalesOrderNumber]"
+                          name="SalesOrderNumber" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PurchaseOrderNumber]"
+                          dataType="wstr"
+                          length="25"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PurchaseOrderNumber]"
+                          name="PurchaseOrderNumber" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AccountNumber]"
+                          dataType="wstr"
+                          length="15"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AccountNumber]"
+                          name="AccountNumber" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CustomerID]"
+                          dataType="i4"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CustomerID]"
+                          name="CustomerID" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SalesPersonID]"
+                          dataType="i4"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SalesPersonID]"
+                          name="SalesPersonID" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TerritoryID]"
+                          dataType="i4"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TerritoryID]"
+                          name="TerritoryID" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BillToAddressID]"
+                          dataType="i4"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BillToAddressID]"
+                          name="BillToAddressID" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ShipToAddressID]"
+                          dataType="i4"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ShipToAddressID]"
+                          name="ShipToAddressID" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ShipMethodID]"
+                          dataType="i4"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ShipMethodID]"
+                          name="ShipMethodID" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CreditCardID]"
+                          dataType="i4"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CreditCardID]"
+                          name="CreditCardID" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CreditCardApprovalCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="15"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CreditCardApprovalCode]"
+                          name="CreditCardApprovalCode" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CurrencyRateID]"
+                          dataType="i4"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CurrencyRateID]"
+                          name="CurrencyRateID" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SubTotal]"
+                          dataType="cy"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SubTotal]"
+                          name="SubTotal" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TaxAmt]"
+                          dataType="cy"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TaxAmt]"
+                          name="TaxAmt" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Freight]"
+                          dataType="cy"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Freight]"
+                          name="Freight" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TotalDue]"
+                          dataType="cy"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TotalDue]"
+                          name="TotalDue" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Comment]"
+                          dataType="wstr"
+                          length="128"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Comment]"
+                          name="Comment" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[rowguid]"
+                          dataType="guid"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[rowguid]"
+                          name="rowguid" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ModifiedDate]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ModifiedDate]"
+                          name="ModifiedDate" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Loop Over Work\Load Data\Union All"
+                  componentClassID="{B594E9A8-4351-4939-891C-CFE1AB93E925}"
+                  contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
+                  name="Union All"
+                  version="1">
+                  <inputs>
+                    <input
+                      refId="Package\Loop Over Work\Load Data\Union All.Inputs[Union All Input 1]"
+                      name="Union All Input 1">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Loop Over Work\Load Data\Union All.Inputs[Union All Input 1].Columns[SalesOrderID]"
+                          cachedDataType="i4"
+                          cachedName="SalesOrderID"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[SalesOrderID]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[SalesOrderID]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Loop Over Work\Load Data\Union All.Inputs[Union All Input 1].Columns[RevisionNumber]"
+                          cachedDataType="ui1"
+                          cachedName="RevisionNumber"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[RevisionNumber]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[RevisionNumber]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Loop Over Work\Load Data\Union All.Inputs[Union All Input 1].Columns[OrderDate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="OrderDate"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[OrderDate]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[OrderDate]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Loop Over Work\Load Data\Union All.Inputs[Union All Input 1].Columns[DueDate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="DueDate"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[DueDate]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[DueDate]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Loop Over Work\Load Data\Union All.Inputs[Union All Input 1].Columns[ShipDate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="ShipDate"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[ShipDate]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[ShipDate]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Loop Over Work\Load Data\Union All.Inputs[Union All Input 1].Columns[Status]"
+                          cachedDataType="ui1"
+                          cachedName="Status"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Status]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[Status]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Loop Over Work\Load Data\Union All.Inputs[Union All Input 1].Columns[OnlineOrderFlag]"
+                          cachedDataType="bool"
+                          cachedName="OnlineOrderFlag"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[OnlineOrderFlag]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[OnlineOrderFlag]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Loop Over Work\Load Data\Union All.Inputs[Union All Input 1].Columns[SalesOrderNumber]"
+                          cachedDataType="wstr"
+                          cachedLength="25"
+                          cachedName="SalesOrderNumber"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[SalesOrderNumber]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[SalesOrderNumber]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Loop Over Work\Load Data\Union All.Inputs[Union All Input 1].Columns[PurchaseOrderNumber]"
+                          cachedDataType="wstr"
+                          cachedLength="25"
+                          cachedName="PurchaseOrderNumber"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[PurchaseOrderNumber]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[PurchaseOrderNumber]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Loop Over Work\Load Data\Union All.Inputs[Union All Input 1].Columns[AccountNumber]"
+                          cachedDataType="wstr"
+                          cachedLength="15"
+                          cachedName="AccountNumber"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[AccountNumber]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[AccountNumber]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Loop Over Work\Load Data\Union All.Inputs[Union All Input 1].Columns[CustomerID]"
+                          cachedDataType="i4"
+                          cachedName="CustomerID"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[CustomerID]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[CustomerID]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Loop Over Work\Load Data\Union All.Inputs[Union All Input 1].Columns[SalesPersonID]"
+                          cachedDataType="i4"
+                          cachedName="SalesPersonID"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[SalesPersonID]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[SalesPersonID]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Loop Over Work\Load Data\Union All.Inputs[Union All Input 1].Columns[TerritoryID]"
+                          cachedDataType="i4"
+                          cachedName="TerritoryID"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[TerritoryID]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[TerritoryID]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Loop Over Work\Load Data\Union All.Inputs[Union All Input 1].Columns[BillToAddressID]"
+                          cachedDataType="i4"
+                          cachedName="BillToAddressID"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[BillToAddressID]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[BillToAddressID]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Loop Over Work\Load Data\Union All.Inputs[Union All Input 1].Columns[ShipToAddressID]"
+                          cachedDataType="i4"
+                          cachedName="ShipToAddressID"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[ShipToAddressID]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[ShipToAddressID]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Loop Over Work\Load Data\Union All.Inputs[Union All Input 1].Columns[ShipMethodID]"
+                          cachedDataType="i4"
+                          cachedName="ShipMethodID"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[ShipMethodID]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[ShipMethodID]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Loop Over Work\Load Data\Union All.Inputs[Union All Input 1].Columns[CreditCardID]"
+                          cachedDataType="i4"
+                          cachedName="CreditCardID"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[CreditCardID]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[CreditCardID]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Loop Over Work\Load Data\Union All.Inputs[Union All Input 1].Columns[CreditCardApprovalCode]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="15"
+                          cachedName="CreditCardApprovalCode"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[CreditCardApprovalCode]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[CreditCardApprovalCode]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Loop Over Work\Load Data\Union All.Inputs[Union All Input 1].Columns[CurrencyRateID]"
+                          cachedDataType="i4"
+                          cachedName="CurrencyRateID"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[CurrencyRateID]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[CurrencyRateID]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Loop Over Work\Load Data\Union All.Inputs[Union All Input 1].Columns[SubTotal]"
+                          cachedDataType="cy"
+                          cachedName="SubTotal"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[SubTotal]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[SubTotal]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Loop Over Work\Load Data\Union All.Inputs[Union All Input 1].Columns[TaxAmt]"
+                          cachedDataType="cy"
+                          cachedName="TaxAmt"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[TaxAmt]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[TaxAmt]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Loop Over Work\Load Data\Union All.Inputs[Union All Input 1].Columns[Freight]"
+                          cachedDataType="cy"
+                          cachedName="Freight"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Freight]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[Freight]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Loop Over Work\Load Data\Union All.Inputs[Union All Input 1].Columns[TotalDue]"
+                          cachedDataType="cy"
+                          cachedName="TotalDue"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[TotalDue]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[TotalDue]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Loop Over Work\Load Data\Union All.Inputs[Union All Input 1].Columns[Comment]"
+                          cachedDataType="wstr"
+                          cachedLength="128"
+                          cachedName="Comment"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Comment]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[Comment]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Loop Over Work\Load Data\Union All.Inputs[Union All Input 1].Columns[rowguid]"
+                          cachedDataType="guid"
+                          cachedName="rowguid"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[rowguid]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[rowguid]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Loop Over Work\Load Data\Union All.Inputs[Union All Input 1].Columns[ModifiedDate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="ModifiedDate"
+                          lineageId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[ModifiedDate]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[ModifiedDate]}</property>
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                    <input
+                      refId="Package\Loop Over Work\Load Data\Union All.Inputs[Union All Input 2]"
+                      dangling="true"
+                      hasSideEffects="true"
+                      name="Union All Input 2">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1]"
+                      name="Union All Output 1">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[SalesOrderID]"
+                          dataType="i4"
+                          lineageId="Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[SalesOrderID]"
+                          name="SalesOrderID" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[RevisionNumber]"
+                          dataType="ui1"
+                          lineageId="Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[RevisionNumber]"
+                          name="RevisionNumber" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[OrderDate]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[OrderDate]"
+                          name="OrderDate" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[DueDate]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[DueDate]"
+                          name="DueDate" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[ShipDate]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[ShipDate]"
+                          name="ShipDate" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[Status]"
+                          dataType="ui1"
+                          lineageId="Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[Status]"
+                          name="Status" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[OnlineOrderFlag]"
+                          dataType="bool"
+                          lineageId="Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[OnlineOrderFlag]"
+                          name="OnlineOrderFlag" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[SalesOrderNumber]"
+                          dataType="wstr"
+                          length="25"
+                          lineageId="Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[SalesOrderNumber]"
+                          name="SalesOrderNumber" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[PurchaseOrderNumber]"
+                          dataType="wstr"
+                          length="25"
+                          lineageId="Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[PurchaseOrderNumber]"
+                          name="PurchaseOrderNumber" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[AccountNumber]"
+                          dataType="wstr"
+                          length="15"
+                          lineageId="Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[AccountNumber]"
+                          name="AccountNumber" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[CustomerID]"
+                          dataType="i4"
+                          lineageId="Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[CustomerID]"
+                          name="CustomerID" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[SalesPersonID]"
+                          dataType="i4"
+                          lineageId="Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[SalesPersonID]"
+                          name="SalesPersonID" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[TerritoryID]"
+                          dataType="i4"
+                          lineageId="Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[TerritoryID]"
+                          name="TerritoryID" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[BillToAddressID]"
+                          dataType="i4"
+                          lineageId="Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[BillToAddressID]"
+                          name="BillToAddressID" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[ShipToAddressID]"
+                          dataType="i4"
+                          lineageId="Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[ShipToAddressID]"
+                          name="ShipToAddressID" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[ShipMethodID]"
+                          dataType="i4"
+                          lineageId="Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[ShipMethodID]"
+                          name="ShipMethodID" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[CreditCardID]"
+                          dataType="i4"
+                          lineageId="Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[CreditCardID]"
+                          name="CreditCardID" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[CreditCardApprovalCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="15"
+                          lineageId="Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[CreditCardApprovalCode]"
+                          name="CreditCardApprovalCode" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[CurrencyRateID]"
+                          dataType="i4"
+                          lineageId="Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[CurrencyRateID]"
+                          name="CurrencyRateID" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[SubTotal]"
+                          dataType="cy"
+                          lineageId="Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[SubTotal]"
+                          name="SubTotal" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[TaxAmt]"
+                          dataType="cy"
+                          lineageId="Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[TaxAmt]"
+                          name="TaxAmt" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[Freight]"
+                          dataType="cy"
+                          lineageId="Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[Freight]"
+                          name="Freight" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[TotalDue]"
+                          dataType="cy"
+                          lineageId="Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[TotalDue]"
+                          name="TotalDue" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[Comment]"
+                          dataType="wstr"
+                          length="128"
+                          lineageId="Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[Comment]"
+                          name="Comment" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[rowguid]"
+                          dataType="guid"
+                          lineageId="Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[rowguid]"
+                          name="rowguid" />
+                        <outputColumn
+                          refId="Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[ModifiedDate]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Loop Over Work\Load Data\Union All.Outputs[Union All Output 1].Columns[ModifiedDate]"
+                          name="ModifiedDate" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Loop Over Work\Load Data.Paths[OLE DB Source Output]"
+                  endId="Package\Loop Over Work\Load Data\Union All.Inputs[Union All Input 1]"
+                  name="OLE DB Source Output"
+                  startId="Package\Loop Over Work\Load Data\OLE DB Source.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Loop Over Work\SQL Checkout Work"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="Checks out work from queue"
+          DTS:DTSID="{0CA8176D-7E0A-4EBD-B8D7-C41C21C42F2E}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL Checkout Work"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server &quot;2012&quot; RC0; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{37494728-8907-402D-B1BF-CBD99B329000}"
+              SQLTask:SqlStatementSource="DECLARE&#x9;@return_value int,&#xA;&#x9;&#x9;@TaskQueueID int,&#xA;&#x9;&#x9;@PartitionWhere varchar(50)&#xA;&#xA;EXEC&#x9;@return_value = [dbo].[ctl_UseTask]&#xA;&#x9;&#x9;@TaskQueueID = @TaskQueueID OUTPUT,&#xA;&#x9;&#x9;@PartitionWhere = @PartitionWhere OUTPUT&#xA;&#xA;SELECT&#x9;convert(int,@TaskQueueID) as N'@TaskQueueID',&#xA;&#x9;&#x9;@PartitionWhere as N'@PartitionWhere'&#xA;&#xA;GO&#xA;"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="0"
+                SQLTask:DtsVariableName="User::intTaskQueueID" />
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="1"
+                SQLTask:DtsVariableName="User::strWherePartition" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Loop Over Work\SQL Update Control Table"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{14C6DFCC-2350-4976-8EDE-898F08800B6D}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL Update Control Table"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server &quot;2012&quot; RC0; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{37494728-8907-402D-B1BF-CBD99B329000}"
+              SQLTask:SqlStatementSource="UPDATE ctlTaskQueue&#xA;SET CompleteDate = GETDATE()&#xA;WHERE TaskQueueID = ?&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::intTaskQueueID"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Loop Over Work.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{F8EBF4AF-A36C-47E2-89E1-56573E8218B1}"
+          DTS:EvalOp="3"
+          DTS:Expression="@intTaskQueueID &gt; 0"
+          DTS:From="Package\Loop Over Work\SQL Checkout Work"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Loop Over Work\Load Data" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Loop Over Work.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{A487CE6B-759D-4FEF-8359-CF2920722627}"
+          DTS:From="Package\Loop Over Work\Load Data"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Loop Over Work\SQL Update Control Table" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql11">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="128,42"
+          Id="Package\Loop Over Work\Load Data"
+          TopLeft="82.6666666666667,133" />
+        <NodeLayout
+          Size="174,42"
+          Id="Package\Loop Over Work\SQL Checkout Work"
+          TopLeft="59.6666666666667,28" />
+        <NodeLayout
+          Size="203,42"
+          Id="Package\Loop Over Work\SQL Update Control Table"
+          TopLeft="52.2213886952152,227.520416236148" />
+        <EdgeLayout
+          Id="Package\Loop Over Work.PrecedenceConstraints[Constraint]"
+          TopLeft="146.666666666667,70">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,63"
+              Start="0,0"
+              End="0,55.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,55.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,19.75,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Loop Over Work.PrecedenceConstraints[Constraint 1]"
+          TopLeft="150.194027680941,175">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,52.5204162361484"
+              Start="0,0"
+              End="0,45.0204162361484">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,45.0204162361484" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="290,321"
+          Size="290,364"
+          Id="Package\Loop Over Work"
+          TopLeft="82.9373878569874,56.5763710520762" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Loop Over Work\Load Data">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="152,42"
+          Id="Package\Loop Over Work\Load Data\OLE DB Source"
+          TopLeft="185,50" />
+        <NodeLayout
+          Size="123,42"
+          Id="Package\Loop Over Work\Load Data\Union All"
+          TopLeft="196.993910711788,135.063084874521" />
+        <EdgeLayout
+          Id="Package\Loop Over Work\Load Data.Paths[OLE DB Source Output]"
+          TopLeft="259.746955355894,92">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,43.0630848745209"
+              Start="0,0"
+              End="0,35.5630848745209">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.5630848745209" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Loop Over Work\Load Data\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

@@ -1,0 +1,985 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/9/2005 11:10:08 AM"
+  DTS:CreationName="SSIS.Package.3"
+  DTS:CreatorComputerName="PCONLAN01"
+  DTS:CreatorName="REDMOND\pconlan"
+  DTS:DTSID="{5A5B1BCD-FA5E-407D-8CC7-6008E533903C}"
+  DTS:ExecutableType="SSIS.Package.3"
+  DTS:LastModifiedProductVersion="11.0.3369.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Fuzzy Lookup Example"
+  DTS:PackageType="5"
+  DTS:VersionBuild="41"
+  DTS:VersionGUID="{CD954079-191B-41B2-9EC7-5C690B55DA29}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[AdventureWorks]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{C4FCE965-975A-4EC6-BFC4-9339915FF0A5}"
+      DTS:ObjectName="AdventureWorks">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=(local);Initial Catalog=AdventureWorks;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{4D72D488-97CF-4AE6-9C17-D6A71FEF615D}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\ProSSIS\Data Cleansing\USCustomers.xls;Extended Properties=&quot;EXCEL 8.0;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Execute SQL Task"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="Execute SQL Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{19436FB9-5763-4FAC-9567-18D50F43FB81}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute SQL Task"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server &quot;Denali&quot; CTP3; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{C4FCE965-975A-4EC6-BFC4-9339915FF0A5}"
+          SQLTask:SqlStatementSource="USE AdventureWorks&#xA;GO&#xA;CREATE TABLE [dbo].[inCustomers](&#xA;&#x9;[CustomerID] [smallint] NOT NULL,&#xA;&#x9;[FirstName] nvarchar(60) NOT NULL,&#xA;&#x9;[MiddleName] nvarchar(60) NULL,&#xA;&#x9;[LastName] nvarchar(60) NOT NULL,&#xA;&#x9;[Phone] nvarchar(60) NULL,&#xA;&#x9;[EmailAddress] nvarchar(60) NULL,&#xA;&#x9;[AddressType] nvarchar(60) NULL,&#xA;&#x9;[AddressLine1] nvarchar(60) NOT NULL,&#xA;&#x9;[AddressLine2] nvarchar(60) NULL,&#xA;&#x9;[City] [nvarchar](30) NOT NULL,&#xA;&#x9;[StateProvinceName] nvarchar(60) NOT NULL,&#xA;&#x9;[PostalCode] [nvarchar](15)NOT NULL,&#xA;&#x9;[CountryRegionName] nvarchar(60) NOT NULL,&#xA; CONSTRAINT [PK_inCustomers] PRIMARY KEY CLUSTERED &#xA;(&#xA;&#x9;[CustomerID] ASC&#xA;)WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]&#xA;) ON [PRIMARY]&#xA;GO&#xA;&#xA;CREATE TABLE [dbo].[Promotions](&#xA;&#x9;[FirstName] [nvarchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,&#xA;&#x9;[LastName] [nvarchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,&#xA;&#x9;[AddressLine1] [nvarchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,&#xA;&#x9;[AddressLine2] [nvarchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,&#xA;&#x9;[City] [nvarchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,&#xA;&#x9;[StateProvinceName] [nvarchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,&#xA;&#x9;[PostalCode] [nvarchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,&#xA;&#x9;[CustomerID] [smallint] NULL&#xA;) ON [PRIMARY]&#xA;GO&#xA;&#xA;&#xA;insert into inCustomers&#xA;select 11012,'Lauren','M','Walker','717-555-0164','lauren41@adventure-works.com',NULL,'4785 Scott Street',NULL,'Bremerton','Washington','98312','United States'&#xA;union&#xA;select 11013,'Ian','M','Jenkins','817-555-0185','ian47@adventure-works.com',NULL,'7902 Hudson Ave.',NULL,'Lebanon','Oregon','97355','United States'&#xA;union&#xA;select 11014,'Sydney',NULL,'Bennett','431-555-0156','sydney23@adventure-works.com',NULL,'9011 Tank Drive',NULL,'Redmond','Washington','98052','United States'&#xA;union&#xA;select 11015,'Chloe',NULL,'Young','208-555-0142','chloe23@adventure-works.com',NULL,'244 Willow Pass Road',NULL,'Burbank','California','91502','United States'&#xA;union&#xA;select 11016,'Wyatt','L','Hill','135-555-0171','wyatt32@adventure-works.com',NULL,'9666 Northridge Ct.',NULL,'Imperial Beach','California','91932','United States'&#xA;union&#xA;select 11021,'Destiny',NULL,'Wilson','622-555-0158','destiny7@adventure-works.com',NULL,'8148 W. Lake Dr.',NULL,'Beaverton','Oregon','97005','United States'&#xA;union&#xA;select 11022,'Ethan','G','Zhang','589-555-0185','ethan20@adventure-works.com',NULL,'1769 Nicholas Drive',NULL,'Bellingham','Washington','98225','United States'&#xA;union&#xA;select 11023,'Seth','M','Edwards','452-555-0188','seth46@adventure-works.com',NULL,'4499 Valley Crest',NULL,'Bellflower','California','90706','United States'&#xA;union&#xA;select 11024,'Russell',NULL,'Xie','746-555-0186','russell7@adventure-works.com',NULL,'8734 Oxford Place',NULL,'Concord','California','94519','United States'&#xA;union&#xA;select 11036,'Jennifer','C','Russell','115-555-0183','jennifer93@adventure-works.com',NULL,'3981 Augustine Drive',NULL,'National City','California','91950','United States'&#xA;union&#xA;select 11040,'Jesse',NULL,'Murphy','961-555-0176','jesse15@adventure-works.com',NULL,'3350 Kingswood Circle',NULL,'Tacoma','Washington','98403','United States'&#xA;union&#xA;select 11041,'Amanda','M','Carter','295-555-0145','amanda53@adventure-works.com',NULL,'5826 Escobar',NULL,'Glendale','California','91203','United States'&#xA;union&#xA;select 11042,'Megan','J','Sanchez','404-555-0199','megan28@adventure-works.com',NULL,'1397 Paraiso Ct.',NULL,'Los Angeles','California','90012','United States'&#xA;union&#xA;select 11043,'Nathan','M','Simmons','296-555-0181','nathan11@adventure-works.com',NULL,'1170 Shaw Rd',NULL,'Glendale','California','91203','United States'&#xA;union&#xA;select 11049,'Carol','C','Rai','654-555-0180','carol8@adventure-works.com',NULL,'6064 Madrid',NULL,'Chula Vista','California','91910','United States'&#xA;union&#xA;select 11053,'Ana','E','Price','859-555-0113','ana0@adventure-works.com',NULL,'1660 Stonyhill Circle',NULL,'San Diego','California','92102','United States'&#xA;union&#xA;select 11062,'Noah','D','Powell','767-555-0113','noah5@adventure-works.com',NULL,'9794 Marion Ct',NULL,'Portland','Oregon','97205','United States'&#xA;union&#xA;select 11063,'Angela',NULL,'Murphy','451-555-0162','angela41@adventure-works.com',NULL,'4927 Virgil Street','# 21','Redmond','Washington','98052','United States'&#xA;union&#xA;select 11064,'Chase',NULL,'Reed','892-555-0184','chase21@adventure-works.com',NULL,'2721 Alexander Pl.',NULL,'Downey','California','90241','United States'&#xA;union&#xA;select 11065,'Jessica',NULL,'Henderson','278-555-0186','jessica29@adventure-works.com',NULL,'9343 Ironwood Way',NULL,'La Jolla','California','92806','United States'&#xA;union&#xA;select 11066,'Grace','T','Butler','712-555-0141','grace62@adventure-works.com',NULL,'4739 Garden Ave.',NULL,'Lebanon','Oregon','97355','United States'&#xA;union&#xA;select 11067,'Caleb','F','Carter','944-555-0167','caleb40@adventure-works.com',NULL,'9563 Pennsylvania Blvd.',NULL,'Port Orchard','Washington','98366','United States'&#xA;union&#xA;select 11081,'Savannah','C','Baker','478-555-0117','savannah39@adventure-works.com',NULL,'1210 Trafalgar Circle',NULL,'Concord','California','94519','United States'&#xA;union&#xA;select 11082,'Angela','L','Butler','579-555-0195','angela17@adventure-works.com',NULL,'6040 Listing Ct',NULL,'Fremont','California','94536','United States'&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Load Offers"
+      DTS:CreationName="SSIS.Pipeline.3"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{C1327D1B-2D68-4156-BC79-7EBBC46D6692}"
+      DTS:ExecutableType="SSIS.Pipeline.3"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load Offers"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v9; (C) 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          BLOBTempStoragePath=""
+          bufferTempStoragePath=""
+          engineThreads="5"
+          version="1">
+          <components>
+            <component
+              refId="Package\Load Offers\Load Promotion Data"
+              componentClassID="{8C084929-27D1-479F-9641-ABB7CDADF1AC}"
+              contactInfo="Excel Source;Microsoft Corporation;Microsoft SqlServer v9; (C) 2005 Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Load Promotion Data"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">Sheet1$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Offers\Load Promotion Data.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load Offers\Load Promotion Data.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Offers\Load Promotion Data.Outputs[Excel Source Output].Columns[FirstName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Offers\Load Promotion Data.Outputs[Excel Source Output].ExternalColumns[FirstName]"
+                      length="255"
+                      lineageId="Package\Load Offers\Load Promotion Data.Outputs[Excel Source Output].Columns[FirstName]"
+                      name="FirstName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Offers\Load Promotion Data.Outputs[Excel Source Output].Columns[LastName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Offers\Load Promotion Data.Outputs[Excel Source Output].ExternalColumns[LastName]"
+                      length="255"
+                      lineageId="Package\Load Offers\Load Promotion Data.Outputs[Excel Source Output].Columns[LastName]"
+                      name="LastName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Offers\Load Promotion Data.Outputs[Excel Source Output].Columns[AddressLine1]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Offers\Load Promotion Data.Outputs[Excel Source Output].ExternalColumns[AddressLine1]"
+                      length="255"
+                      lineageId="Package\Load Offers\Load Promotion Data.Outputs[Excel Source Output].Columns[AddressLine1]"
+                      name="AddressLine1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Offers\Load Promotion Data.Outputs[Excel Source Output].Columns[AddressLine2]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Offers\Load Promotion Data.Outputs[Excel Source Output].ExternalColumns[AddressLine2]"
+                      length="255"
+                      lineageId="Package\Load Offers\Load Promotion Data.Outputs[Excel Source Output].Columns[AddressLine2]"
+                      name="AddressLine2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Offers\Load Promotion Data.Outputs[Excel Source Output].Columns[City]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Offers\Load Promotion Data.Outputs[Excel Source Output].ExternalColumns[City]"
+                      length="255"
+                      lineageId="Package\Load Offers\Load Promotion Data.Outputs[Excel Source Output].Columns[City]"
+                      name="City"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Offers\Load Promotion Data.Outputs[Excel Source Output].Columns[StateProvinceName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Offers\Load Promotion Data.Outputs[Excel Source Output].ExternalColumns[StateProvinceName]"
+                      length="255"
+                      lineageId="Package\Load Offers\Load Promotion Data.Outputs[Excel Source Output].Columns[StateProvinceName]"
+                      name="StateProvinceName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Offers\Load Promotion Data.Outputs[Excel Source Output].Columns[PostalCode]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Offers\Load Promotion Data.Outputs[Excel Source Output].ExternalColumns[PostalCode]"
+                      length="255"
+                      lineageId="Package\Load Offers\Load Promotion Data.Outputs[Excel Source Output].Columns[PostalCode]"
+                      name="PostalCode"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Offers\Load Promotion Data.Outputs[Excel Source Output].ExternalColumns[FirstName]"
+                      dataType="wstr"
+                      length="255"
+                      name="FirstName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Offers\Load Promotion Data.Outputs[Excel Source Output].ExternalColumns[LastName]"
+                      dataType="wstr"
+                      length="255"
+                      name="LastName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Offers\Load Promotion Data.Outputs[Excel Source Output].ExternalColumns[AddressLine1]"
+                      dataType="wstr"
+                      length="255"
+                      name="AddressLine1" />
+                    <externalMetadataColumn
+                      refId="Package\Load Offers\Load Promotion Data.Outputs[Excel Source Output].ExternalColumns[AddressLine2]"
+                      dataType="wstr"
+                      length="255"
+                      name="AddressLine2" />
+                    <externalMetadataColumn
+                      refId="Package\Load Offers\Load Promotion Data.Outputs[Excel Source Output].ExternalColumns[City]"
+                      dataType="wstr"
+                      length="255"
+                      name="City" />
+                    <externalMetadataColumn
+                      refId="Package\Load Offers\Load Promotion Data.Outputs[Excel Source Output].ExternalColumns[StateProvinceName]"
+                      dataType="wstr"
+                      length="255"
+                      name="StateProvinceName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Offers\Load Promotion Data.Outputs[Excel Source Output].ExternalColumns[PostalCode]"
+                      dataType="wstr"
+                      length="255"
+                      name="PostalCode" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load Offers\Load Promotion Data.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Offers\Load Promotion Data.Outputs[Excel Source Error Output].Columns[FirstName]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load Offers\Load Promotion Data.Outputs[Excel Source Error Output].Columns[FirstName]"
+                      name="FirstName" />
+                    <outputColumn
+                      refId="Package\Load Offers\Load Promotion Data.Outputs[Excel Source Error Output].Columns[LastName]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load Offers\Load Promotion Data.Outputs[Excel Source Error Output].Columns[LastName]"
+                      name="LastName" />
+                    <outputColumn
+                      refId="Package\Load Offers\Load Promotion Data.Outputs[Excel Source Error Output].Columns[AddressLine1]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load Offers\Load Promotion Data.Outputs[Excel Source Error Output].Columns[AddressLine1]"
+                      name="AddressLine1" />
+                    <outputColumn
+                      refId="Package\Load Offers\Load Promotion Data.Outputs[Excel Source Error Output].Columns[AddressLine2]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load Offers\Load Promotion Data.Outputs[Excel Source Error Output].Columns[AddressLine2]"
+                      name="AddressLine2" />
+                    <outputColumn
+                      refId="Package\Load Offers\Load Promotion Data.Outputs[Excel Source Error Output].Columns[City]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load Offers\Load Promotion Data.Outputs[Excel Source Error Output].Columns[City]"
+                      name="City" />
+                    <outputColumn
+                      refId="Package\Load Offers\Load Promotion Data.Outputs[Excel Source Error Output].Columns[StateProvinceName]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load Offers\Load Promotion Data.Outputs[Excel Source Error Output].Columns[StateProvinceName]"
+                      name="StateProvinceName" />
+                    <outputColumn
+                      refId="Package\Load Offers\Load Promotion Data.Outputs[Excel Source Error Output].Columns[PostalCode]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load Offers\Load Promotion Data.Outputs[Excel Source Error Output].Columns[PostalCode]"
+                      name="PostalCode" />
+                    <outputColumn
+                      refId="Package\Load Offers\Load Promotion Data.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Offers\Load Promotion Data.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Offers\Load Promotion Data.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Offers\Load Promotion Data.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Offers\Multicast"
+              componentClassID="{EC139FBC-694E-490B-8EA7-35690FB0F445}"
+              contactInfo="Multicast;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Distributes every input row to every row in one or more outputs. For example, branch your data flow to make a copy of data so that some values can be masked before sharing with external partners."
+              name="Multicast">
+              <inputs>
+                <input
+                  refId="Package\Load Offers\Multicast.Inputs[Multicast Input 1]"
+                  name="Multicast Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Offers\Multicast.Outputs[Multicast Output 1]"
+                  dangling="true"
+                  deleteOutputOnPathDetached="true"
+                  name="Multicast Output 1"
+                  synchronousInputId="Package\Load Offers\Multicast.Inputs[Multicast Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Offers\Promotions"
+              componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}"
+              contactInfo="OLE DB Destination;Microsoft Corporation;Microsoft SqlServer v9; (C) 2005 Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Promotions"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Promotions]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destinaton. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Offers\Promotions.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[AdventureWorks]"
+                  connectionManagerRefId="Package.ConnectionManagers[AdventureWorks]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load Offers\Promotions.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Offers\Promotions.Inputs[OLE DB Destination Input].Columns[FirstName]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="FirstName"
+                      externalMetadataColumnId="Package\Load Offers\Promotions.Inputs[OLE DB Destination Input].ExternalColumns[FirstName]"
+                      lineageId="Package\Load Offers\Load Promotion Data.Outputs[Excel Source Output].Columns[FirstName]" />
+                    <inputColumn
+                      refId="Package\Load Offers\Promotions.Inputs[OLE DB Destination Input].Columns[LastName]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="LastName"
+                      externalMetadataColumnId="Package\Load Offers\Promotions.Inputs[OLE DB Destination Input].ExternalColumns[LastName]"
+                      lineageId="Package\Load Offers\Load Promotion Data.Outputs[Excel Source Output].Columns[LastName]" />
+                    <inputColumn
+                      refId="Package\Load Offers\Promotions.Inputs[OLE DB Destination Input].Columns[AddressLine1]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="AddressLine1"
+                      externalMetadataColumnId="Package\Load Offers\Promotions.Inputs[OLE DB Destination Input].ExternalColumns[AddressLine1]"
+                      lineageId="Package\Load Offers\Load Promotion Data.Outputs[Excel Source Output].Columns[AddressLine1]" />
+                    <inputColumn
+                      refId="Package\Load Offers\Promotions.Inputs[OLE DB Destination Input].Columns[AddressLine2]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="AddressLine2"
+                      externalMetadataColumnId="Package\Load Offers\Promotions.Inputs[OLE DB Destination Input].ExternalColumns[AddressLine2]"
+                      lineageId="Package\Load Offers\Load Promotion Data.Outputs[Excel Source Output].Columns[AddressLine2]" />
+                    <inputColumn
+                      refId="Package\Load Offers\Promotions.Inputs[OLE DB Destination Input].Columns[City]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="City"
+                      externalMetadataColumnId="Package\Load Offers\Promotions.Inputs[OLE DB Destination Input].ExternalColumns[City]"
+                      lineageId="Package\Load Offers\Load Promotion Data.Outputs[Excel Source Output].Columns[City]" />
+                    <inputColumn
+                      refId="Package\Load Offers\Promotions.Inputs[OLE DB Destination Input].Columns[StateProvinceName]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="StateProvinceName"
+                      externalMetadataColumnId="Package\Load Offers\Promotions.Inputs[OLE DB Destination Input].ExternalColumns[StateProvinceName]"
+                      lineageId="Package\Load Offers\Load Promotion Data.Outputs[Excel Source Output].Columns[StateProvinceName]" />
+                    <inputColumn
+                      refId="Package\Load Offers\Promotions.Inputs[OLE DB Destination Input].Columns[PostalCode]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="PostalCode"
+                      externalMetadataColumnId="Package\Load Offers\Promotions.Inputs[OLE DB Destination Input].ExternalColumns[PostalCode]"
+                      lineageId="Package\Load Offers\Load Promotion Data.Outputs[Excel Source Output].Columns[PostalCode]" />
+                    <inputColumn
+                      refId="Package\Load Offers\Promotions.Inputs[OLE DB Destination Input].Columns[CustomerID]"
+                      cachedDataType="i2"
+                      cachedName="CustomerID"
+                      externalMetadataColumnId="Package\Load Offers\Promotions.Inputs[OLE DB Destination Input].ExternalColumns[CustomerID]"
+                      lineageId="Package\Load Offers\Validate Customers.Outputs[Lookup Match Output].Columns[CustomerID]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Offers\Promotions.Inputs[OLE DB Destination Input].ExternalColumns[FirstName]"
+                      dataType="wstr"
+                      length="255"
+                      name="FirstName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Offers\Promotions.Inputs[OLE DB Destination Input].ExternalColumns[LastName]"
+                      dataType="wstr"
+                      length="255"
+                      name="LastName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Offers\Promotions.Inputs[OLE DB Destination Input].ExternalColumns[AddressLine1]"
+                      dataType="wstr"
+                      length="255"
+                      name="AddressLine1" />
+                    <externalMetadataColumn
+                      refId="Package\Load Offers\Promotions.Inputs[OLE DB Destination Input].ExternalColumns[AddressLine2]"
+                      dataType="wstr"
+                      length="255"
+                      name="AddressLine2" />
+                    <externalMetadataColumn
+                      refId="Package\Load Offers\Promotions.Inputs[OLE DB Destination Input].ExternalColumns[City]"
+                      dataType="wstr"
+                      length="255"
+                      name="City" />
+                    <externalMetadataColumn
+                      refId="Package\Load Offers\Promotions.Inputs[OLE DB Destination Input].ExternalColumns[StateProvinceName]"
+                      dataType="wstr"
+                      length="255"
+                      name="StateProvinceName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Offers\Promotions.Inputs[OLE DB Destination Input].ExternalColumns[PostalCode]"
+                      dataType="wstr"
+                      length="255"
+                      name="PostalCode" />
+                    <externalMetadataColumn
+                      refId="Package\Load Offers\Promotions.Inputs[OLE DB Destination Input].ExternalColumns[CustomerID]"
+                      dataType="i2"
+                      name="CustomerID" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Offers\Promotions.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Load Offers\Promotions.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Offers\Promotions.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Offers\Promotions.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Offers\Promotions.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Offers\Promotions.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Offers\Validate Customers"
+              componentClassID="{671046B0-AA63-4C9F-90E4-C06E0B710CE3}"
+              contactInfo="Lookup;Microsoft Corporation;Microsoft SqlServer v9; (C) 2005 Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="Looks up values in a reference dataset by using exact matching."
+              name="Validate Customers"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [dbo].[inCustomers]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam">select * from (select * from [dbo].[inCustomers]) [refTable]
+where [refTable].[FirstName] = ? and [refTable].[LastName] = ? and [refTable].[AddressLine1] = ? and [refTable].[AddressLine2] = ? and [refTable].[City] = ? and [refTable].[StateProvinceName] = ? and [refTable].[PostalCode] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="CustomerID" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="FirstName" dataType="DT_WSTR" length="60" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="MiddleName" dataType="DT_WSTR" length="60" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="LastName" dataType="DT_WSTR" length="60" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Phone" dataType="DT_WSTR" length="60" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="EmailAddress" dataType="DT_WSTR" length="60" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="AddressType" dataType="DT_WSTR" length="60" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="AddressLine1" dataType="DT_WSTR" length="60" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="AddressLine2" dataType="DT_WSTR" length="60" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="City" dataType="DT_WSTR" length="30" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="StateProvinceName" dataType="DT_WSTR" length="60" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="PostalCode" dataType="DT_WSTR" length="15" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CountryRegionName" dataType="DT_WSTR" length="60" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Load Offers\Load Promotion Data.Outputs[Excel Source Output].Columns[FirstName]};#{Package\Load Offers\Load Promotion Data.Outputs[Excel Source Output].Columns[LastName]};#{Package\Load Offers\Load Promotion Data.Outputs[Excel Source Output].Columns[AddressLine1]};#{Package\Load Offers\Load Promotion Data.Outputs[Excel Source Output].Columns[AddressLine2]};#{Package\Load Offers\Load Promotion Data.Outputs[Excel Source Output].Columns[City]};#{Package\Load Offers\Load Promotion Data.Outputs[Excel Source Output].Columns[StateProvinceName]};#{Package\Load Offers\Load Promotion Data.Outputs[Excel Source Output].Columns[PostalCode]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Offers\Validate Customers.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[AdventureWorks]"
+                  connectionManagerRefId="Package.ConnectionManagers[AdventureWorks]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load Offers\Validate Customers.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Offers\Validate Customers.Inputs[Lookup Input].Columns[FirstName]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="FirstName"
+                      lineageId="Package\Load Offers\Load Promotion Data.Outputs[Excel Source Output].Columns[FirstName]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">FirstName</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Offers\Validate Customers.Inputs[Lookup Input].Columns[LastName]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="LastName"
+                      lineageId="Package\Load Offers\Load Promotion Data.Outputs[Excel Source Output].Columns[LastName]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">LastName</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Offers\Validate Customers.Inputs[Lookup Input].Columns[AddressLine1]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="AddressLine1"
+                      lineageId="Package\Load Offers\Load Promotion Data.Outputs[Excel Source Output].Columns[AddressLine1]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">AddressLine1</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Offers\Validate Customers.Inputs[Lookup Input].Columns[AddressLine2]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="AddressLine2"
+                      lineageId="Package\Load Offers\Load Promotion Data.Outputs[Excel Source Output].Columns[AddressLine2]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">AddressLine2</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Offers\Validate Customers.Inputs[Lookup Input].Columns[City]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="City"
+                      lineageId="Package\Load Offers\Load Promotion Data.Outputs[Excel Source Output].Columns[City]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">City</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Offers\Validate Customers.Inputs[Lookup Input].Columns[StateProvinceName]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="StateProvinceName"
+                      lineageId="Package\Load Offers\Load Promotion Data.Outputs[Excel Source Output].Columns[StateProvinceName]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">StateProvinceName</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Offers\Validate Customers.Inputs[Lookup Input].Columns[PostalCode]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="PostalCode"
+                      lineageId="Package\Load Offers\Load Promotion Data.Outputs[Excel Source Output].Columns[PostalCode]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">PostalCode</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Offers\Validate Customers.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="RedirectRow"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Load Offers\Validate Customers.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Offers\Validate Customers.Outputs[Lookup Match Output].Columns[CustomerID]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Load Offers\Validate Customers.Outputs[Lookup Match Output].Columns[CustomerID]"
+                      name="CustomerID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">CustomerID</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Offers\Validate Customers.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Load Offers\Validate Customers.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Offers\Validate Customers.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Load Offers\Validate Customers.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Offers\Validate Customers.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Offers\Validate Customers.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Offers\Validate Customers.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Offers\Validate Customers.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Load Offers.Paths[Excel Source Output]"
+              endId="Package\Load Offers\Validate Customers.Inputs[Lookup Input]"
+              name="Excel Source Output"
+              startId="Package\Load Offers\Load Promotion Data.Outputs[Excel Source Output]" />
+            <path
+              refId="Package\Load Offers.Paths[Lookup Error Output]"
+              endId="Package\Load Offers\Multicast.Inputs[Multicast Input 1]"
+              name="Lookup Error Output"
+              startId="Package\Load Offers\Validate Customers.Outputs[Lookup Error Output]" />
+            <path
+              refId="Package\Load Offers.Paths[Lookup Output]"
+              endId="Package\Load Offers\Promotions.Inputs[OLE DB Destination Input]"
+              name="Lookup Output"
+              startId="Package\Load Offers\Validate Customers.Outputs[Lookup Match Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql11">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="164,42"
+          Id="Package\Execute SQL Task"
+          TopLeft="241.111110649433,89.8475798222943" />
+        <NodeLayout
+          Size="136,44"
+          Id="Package\Load Offers"
+          TopLeft="5.5,5.5" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Load Offers">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="136,44"
+          Id="Package\Load Offers\Promotions"
+          TopLeft="79.5262169643011,216.243189483718" />
+        <NodeLayout
+          Size="136,44"
+          Id="Package\Load Offers\Validate Customers"
+          TopLeft="185.236231888007,108.134450157887" />
+        <NodeLayout
+          Size="136,44"
+          Id="Package\Load Offers\Load Promotion Data"
+          TopLeft="190.089134880357,37.272615031669" />
+        <NodeLayout
+          Size="121,42"
+          Id="Package\Load Offers\Multicast"
+          TopLeft="340.851014621604,219.378863041039" />
+        <EdgeLayout
+          Id="Package\Load Offers.Paths[Lookup Output]"
+          TopLeft="231.902898554674,152.134450157887">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-84.376681590373,64.1087393258312"
+              Start="0,0"
+              End="-84.376681590373,56.6087393258312">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.0907660046988" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22.0907660046988"
+                    Point2="0,26.0907660046988"
+                    Point3="-4,26.0907660046988" />
+                  <mssgle:LineSegment
+                    End="-80.376681590373,26.0907660046988" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-80.376681590373,26.0907660046988"
+                    Point2="-84.376681590373,26.0907660046988"
+                    Point3="-84.376681590373,30.0907660046988" />
+                  <mssgle:LineSegment
+                    End="-84.376681590373,56.6087393258312" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-90.3797275139365,31.0907660046988,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Offers.Paths[Lookup Error Output]"
+          TopLeft="274.569565221341,152.134450157887">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="126.781449400263,67.2444128831521"
+              Start="0,0"
+              End="126.781449400263,59.7444128831521">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.3669122198875" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.3669122198875"
+                    Point2="0,27.3669122198875"
+                    Point3="4,27.3669122198875" />
+                  <mssgle:LineSegment
+                    End="122.781449400263,27.3669122198875" />
+                  <mssgle:CubicBezierSegment
+                    Point1="122.781449400263,27.3669122198875"
+                    Point2="126.781449400263,27.3669122198875"
+                    Point3="126.781449400263,31.3669122198875" />
+                  <mssgle:LineSegment
+                    End="126.781449400263,59.7444128831521" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="17.5243379813817,32.3669122198875,91.7327734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Offers.Paths[Excel Source Output]"
+          TopLeft="255.662683384182,81.272615031669">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,26.8618351262179"
+              Start="0,0"
+              End="0,19.3618351262179">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.3618351262179" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Offers\Validate Customers">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[inCustomers]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Offers\Load Promotion Data">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

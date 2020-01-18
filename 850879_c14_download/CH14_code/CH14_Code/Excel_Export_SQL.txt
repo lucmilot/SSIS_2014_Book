@@ -1,0 +1,4 @@
+SELECT ProductID, LocationID, Shelf, Bin, 
+  Null as PhysicalCount
+FROM Production.ProductInventory
+ORDER by LocationID, Shelf, Bin

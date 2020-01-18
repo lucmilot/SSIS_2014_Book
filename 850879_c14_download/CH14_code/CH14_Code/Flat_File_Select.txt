@@ -1,0 +1,2 @@
+SELECT Name, ProductNumber, ListPrice
+FROM [Production].[Product] 

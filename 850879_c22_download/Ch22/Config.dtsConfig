@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<DTSConfiguration>
+<DTSConfigurationHeading>
+<DTSConfigurationFileInfo GeneratedBy="SSISMVP-RC0\MVP" GeneratedFromPackageName="ConfigFiles" GeneratedFromPackageID="{D1A65B15-5EB7-486D-B396-B204B0D2CB42}" GeneratedDate="9/26/2011 12:24:09 PM"/>
+</DTSConfigurationHeading>
+<Configuration ConfiguredType="Property" Path="\Package.Variables[User::strMessage].Properties[Value]" ValueType="String">
+<ConfiguredValue>Config File Changed Value</ConfiguredValue
+></Configuration>
+</DTSConfiguration>

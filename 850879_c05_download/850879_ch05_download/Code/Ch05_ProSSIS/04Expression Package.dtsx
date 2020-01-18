@@ -1,0 +1,174 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="1/1/2008 9:40:55 AM"
+  DTS:CreationName="SSIS.Package.3"
+  DTS:CreatorComputerName="HINDELL01"
+  DTS:CreatorName="HINDELL01\dhinson"
+  DTS:DTSID="{633DACD6-0AE3-440F-A071-5F6AE7FC0A9B}"
+  DTS:ExecutableType="SSIS.Package.3"
+  DTS:LastModifiedProductVersion="11.0.3369.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="04Expression Package"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="0"
+  DTS:VersionBuild="66"
+  DTS:VersionGUID="{47990ECB-3068-47F0-B2B8-08EF45FB3B77}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{52B7EC7A-1F1E-40E2-B2D3-D75A594133B6}"
+      DTS:ObjectName="BankFileSourcePath">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">C:\Ch05_ProSSIS\BankFileSource</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Foreach Loop Container"
+      DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:Description="Foreach Loop Container"
+      DTS:DTSID="{C81F936E-90C4-4806-8BDE-0D0AD9D21435}"
+      DTS:ExecutableType="STOCK:FOREACHLOOP"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Foreach Loop Container">
+      <DTS:ForEachEnumerator
+        DTS:CreationName="DTS.ForEachFileEnumerator.3"
+        DTS:DTSID="{C0B1A341-E7C1-4CB3-A6FE-3624B60F14BD}"
+        DTS:ObjectName="{C0B1A341-E7C1-4CB3-A6FE-3624B60F14BD}">
+        <DTS:PropertyExpression
+          DTS:Name="Directory">@[$Package::BankFileSourcePath]</DTS:PropertyExpression>
+        <DTS:PropertyExpression
+          DTS:Name="FileSpec">"*" + @[UserVar::BankFileExtension]</DTS:PropertyExpression>
+        <DTS:ObjectData>
+          <ForEachFileEnumeratorProperties>
+            <FEFEProperty
+              Folder="C:\Ch05_ProSSIS\BankFileSource" />
+            <FEFEProperty
+              FileSpec="*.txt" />
+            <FEFEProperty
+              FileNameRetrievalType="2" />
+            <FEFEProperty
+              Recurse="0" />
+          </ForEachFileEnumeratorProperties>
+        </DTS:ObjectData>
+      </DTS:ForEachEnumerator>
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{2BA5C278-3D66-4969-91F6-8D1A65B5FDCE}"
+          DTS:EvaluateAsExpression="True"
+          DTS:Expression="@[UserExp::BankFileDestinationFolder] + &quot;\\&quot; +&#xA;(DT_WSTR,4)YEAR(GETDATE()) &#xA;+ RIGHT(&quot;0&quot; + (DT_WSTR,2)MONTH(GETDATE()), 2)&#xA;+ RIGHT(&quot;0&quot; + (DT_WSTR,2)DAY( GETDATE()), 2) &#xA;+ RIGHT(&quot;0&quot; &#xA;+ (DT_WSTR,2)DATEPART(&quot;hh&quot;, GETDATE()), 2)&#xA;+ RIGHT(&quot;0&quot; &#xA;+ (DT_WSTR,2)DATEPART(&quot;mi&quot;, GETDATE()), 2)&#xA;+ RIGHT(&quot;0&quot; &#xA;+ (DT_WSTR,2)DATEPART(&quot;ss&quot;, GETDATE()), 2)&#xA; +  @[UserVar::BankFileExtension] "
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="UserExp"
+          DTS:ObjectName="BankFileDestinationFile">
+          <DTS:VariableValue
+            DTS:DataType="8">C:\Ch05_ProSSIS\BankFileSource\archive\20131027123753.txt</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{5B6EAA7D-38A4-4C14-9E76-BE21EF3F9891}"
+          DTS:EvaluateAsExpression="True"
+          DTS:Expression="@[$Package::BankFileSourcePath] + &quot;\\archive&quot; "
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="UserExp"
+          DTS:ObjectName="BankFileDestinationFolder">
+          <DTS:VariableValue
+            DTS:DataType="8">C:\Ch05_ProSSIS\BankFileSource\archive</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{7529F101-995D-4359-AF7E-51B812672522}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="UserVar"
+          DTS:ObjectName="BankFileExtension">
+          <DTS:VariableValue
+            DTS:DataType="8">.txt</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{600D67BB-0D7A-4031-BA59-E981554B4E32}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="UserVar"
+          DTS:ObjectName="BankFileName">
+          <DTS:VariableValue
+            DTS:DataType="8"
+            xml:space="preserve"></DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{3750C825-0903-4D9D-AF1D-C2121231C093}"
+          DTS:EvaluateAsExpression="True"
+          DTS:Expression="@[$Package::BankFileSourcePath] + &quot;\\&quot; +  @[UserVar::BankFileName] + @[UserVar::BankFileExtension]"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="UserExp"
+          DTS:ObjectName="BankFileSourceFile">
+          <DTS:VariableValue
+            DTS:DataType="8">C:\Ch05_ProSSIS\BankFileSource\.txt</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\File System Task"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.FileSystemTask.FileSystemTask, Microsoft.SqlServer.FileSystemTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="Archive Bank Files File System Task"
+          DTS:DTSID="{A3A77EF0-C864-4EF6-9840-49E774C7110D}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.FileSystemTask.FileSystemTask, Microsoft.SqlServer.FileSystemTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="File System Task"
+          DTS:TaskContact="File System Task;Microsoft Corporation; Microsoft SQL Server v9; © 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <FileSystemData
+              TaskOperationType="MoveFile"
+              TaskSourcePath="UserExp::BankFileSourceFile"
+              TaskIsSourceVariable="True"
+              TaskDestinationPath="UserExp::BankFileDestinationFolder"
+              TaskIsDestinationVariable="True" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:ForEachVariableMappings>
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{041A8257-4C47-4CEA-BD55-D4AA402B510D}"
+          DTS:ObjectName="{041A8257-4C47-4CEA-BD55-D4AA402B510D}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="UserVar::BankFileName" />
+      </DTS:ForEachVariableMappings>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql11">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="162,44"
+          Id="Package\Foreach Loop Container\File System Task"
+          TopLeft="28.5,25.5" />
+        <ContainerLayout
+          HeaderHeight="43.924528301886795"
+          IsExpanded="True"
+          PanelSize="223,124"
+          Size="223,168"
+          Id="Package\Foreach Loop Container"
+          TopLeft="255.5,98.5" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

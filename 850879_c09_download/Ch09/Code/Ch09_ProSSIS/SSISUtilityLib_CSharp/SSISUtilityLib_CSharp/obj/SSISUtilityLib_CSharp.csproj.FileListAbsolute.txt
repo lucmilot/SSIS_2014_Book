@@ -1,0 +1,5 @@
+C:\Documents and Settings\dhinson\My Documents\My Projects\Wiley SSIS SQL2008 Book\Scripting\libs\SSISUtilityLib_CSharp\SSISUtilityLib_CSharp\bin\Debug\SSISUtilityLib_CSharp.dll
+C:\Documents and Settings\dhinson\My Documents\My Projects\Wiley SSIS SQL2008 Book\Scripting\libs\SSISUtilityLib_CSharp\SSISUtilityLib_CSharp\bin\Debug\SSISUtilityLib_CSharp.pdb
+C:\Documents and Settings\dhinson\My Documents\My Projects\Wiley SSIS SQL2008 Book\Scripting\libs\SSISUtilityLib_CSharp\SSISUtilityLib_CSharp\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\dhinson\My Documents\My Projects\Wiley SSIS SQL2008 Book\Scripting\libs\SSISUtilityLib_CSharp\SSISUtilityLib_CSharp\obj\Debug\SSISUtilityLib_CSharp.dll
+C:\Documents and Settings\dhinson\My Documents\My Projects\Wiley SSIS SQL2008 Book\Scripting\libs\SSISUtilityLib_CSharp\SSISUtilityLib_CSharp\obj\Debug\SSISUtilityLib_CSharp.pdb

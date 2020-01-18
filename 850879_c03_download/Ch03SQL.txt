@@ -1,0 +1,93 @@
+CREATE TABLE PROSSIS_ZIPCODE (
+ZipCode CHAR(5),
+State CHAR(2),
+ZipName VARCHAR(16)
+)
+
+
+
+SELECT TOP 1
+CarrierTrackingNumber,
+LineTotal,
+OrderQty,
+UnitPrice
+From Sales.SalesOrderDetail
+
+
+C#
+public override void CreateNewOutputRows()
+{
+System.Data.OleDb.OleDbDataAdapter oleDA =
+new System.Data.OleDb.OleDbDataAdapter();
+System.Data.DataTable dT = new System.Data.DataTable();
+oleDA.Fill(dT, Variables.RecordSetResult);
+foreach (DataRow dr in dT.Rows)
+{
+Output0Buffer.AddRow();
+//by Name
+Output0Buffer.CarrierTrackingNumber =
+dr["CarrierTrackingNumber"].ToString();
+//by Ordinal
+Output0Buffer.UnitPrice = System.Convert.ToDecimal(dr[6]);
+}
+}
+VB
+Public Overrides Sub CreateNewOutputRows()
+Dim oleDA As New System.Data.OleDb.OleDbDataAdapter()
+Dim dT As New System.Data.DataTable()
+Dim row As System.Data.DataRow
+oleDA.Fill(dt, Variables.RecordSetResult)
+For Each row In dT.Rows
+Output0Buffer.AddRow()
+Output0Buffer.CarrierTrackingNumber = _
+row("CarrierTrackingNumber").ToString()
+Output0Buffer.UnitPrice = System.Convert.ToDecimal(row(6))
+Next
+End Sub
+
+
+
+CREATE PROCEDURE usp_UpdatePersonAddressModifyDate(
+@MODIFIED_DATE DATETIME
+)
+AS
+BEGIN
+Update Person.Address
+Set ModifiedDate = @MODIFIED_DATE
+where AddressId = 1
+END
+
+CREATE PROCEDURE usp_GetTop1SalesOrderDetail
+(
+@CARRIER_TRACKING_NUMBER nvarchar(25) OUTPUT,
+@LINE_TOTAL numeric(38,6) OUTPUT,
+@ORDER_QTY smallint OUTPUT,
+@UNIT_PRICE money OUTPUT
+)
+AS
+BEGIN
+SELECT TOP 1
+@CARRIER_TRACKING_NUMBER = CarrierTrackingNumber,
+@LINE_TOTAL = LineTotal,
+@ORDER_QTY = OrderQty,
+@UNIT_PRICE = UnitPrice
+From Sales.SalesOrderDetail
+END
+
+
+SELECT FreeSpace, DeviceId, Size, SystemName, Description FROM Win32_LogicalDisk
+WHERE DeviceID = 'C:'
+
+
+SELECT * FROM Win32_NTLogEvent WHERE LogFile = 'Application' AND
+(SourceName='SQLISService' OR SourceName='SQLISPackage') AND TimeGenerated>
+'20050117'
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,17 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "SFSSUG", "SFSSUG\SFSSUG.dtproj", "{E5B28BB6-35A9-4D8C-8D0C-00BFDCB86C45}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E5B28BB6-35A9-4D8C-8D0C-00BFDCB86C45}.Development|Default.ActiveCfg = Development
+		{E5B28BB6-35A9-4D8C-8D0C-00BFDCB86C45}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

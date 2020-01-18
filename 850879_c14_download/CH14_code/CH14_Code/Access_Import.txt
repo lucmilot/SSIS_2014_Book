@@ -1,0 +1,3 @@
+USE AdventureWorks --revise if your destination database is named differently
+GO
+SELECT * FROM NW_Customers

@@ -1,0 +1,17 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "ProSSISCh08", "ProSSISCh08\ProSSISCh08.dtproj", "{57AC3F5B-1BA3-4C08-B1F4-1A893FF4AEA4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{57AC3F5B-1BA3-4C08-B1F4-1A893FF4AEA4}.Development|Default.ActiveCfg = Development
+		{57AC3F5B-1BA3-4C08-B1F4-1A893FF4AEA4}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,133 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/16/2008 10:16:14 PM"
+  DTS:CreationName="SSIS.Package.3"
+  DTS:CreatorComputerName="DHINSON-PC"
+  DTS:CreatorName="dhinson-PC\dhinson"
+  DTS:DTSID="{8A927123-ACCF-4EA7-A526-4F623DCC31BF}"
+  DTS:ExecutableType="SSIS.Package.3"
+  DTS:LastModifiedProductVersion="11.0.1515.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="17"
+  DTS:VersionGUID="{81A5F4D3-ED3C-4B9E-A800-6E7215B4CA73}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Package.dtsx]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{10B462E9-74E0-485F-BD19-AEC5F4D683E6}"
+      DTS:ObjectName="Package.dtsx">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\SSIS\ExtMgt\WMI_DataReader\WMI_DataReader\Package.dtsx" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[WMI Connection Manager]"
+      DTS:CreationName="WMI"
+      DTS:DTSID="{92662C05-5F66-4B6F-A033-994A37ACDA25}"
+      DTS:ObjectName="WMI Connection Manager">
+      <DTS:ObjectData>
+        <WmiConnectionManager
+          ConnectionString="ServerName=\\localhost;Namespace=\root\cimv2;UseNtAuth=True;UserName=;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\WMI Event Watcher Task - Monitor DB File Backup"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.WmiEventWatcherTask.WmiEventWatcherTask, Microsoft.SqlServer.WMIEWTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="WMI Event Watcher Task"
+      DTS:DTSID="{3EE0ED0C-BCD7-42EA-AF49-96782386EFA6}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.WmiEventWatcherTask.WmiEventWatcherTask, Microsoft.SqlServer.WMIEWTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="WMI Event Watcher Task - Monitor DB File Backup"
+      DTS:TaskContact="WMI Event Watcher Task; Microsoft Corporation; Microsoft SQL Server 2008; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:EventHandlers>
+        <DTS:EventHandler
+          DTS:refId="Package\WMI Event Watcher Task - Monitor DB File Backup.EventHandlers[WMIEventWatcherEventOccurred]"
+          DTS:CreationName="WMIEventWatcherEventOccurred"
+          DTS:DTSID="{B0050E9B-D578-4052-A72E-6BC555A67F97}"
+          DTS:EventID="0"
+          DTS:EventName="WMIEventWatcherEventOccurred"
+          DTS:LocaleID="-1">
+          <DTS:Variables>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:Description="The propagate property of the event"
+              DTS:DTSID="{6299BE87-116D-4E8C-828F-023A0DB1200F}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="System"
+              DTS:ObjectName="Propagate">
+              <DTS:VariableValue
+                DTS:DataType="11">-1</DTS:VariableValue>
+            </DTS:Variable>
+          </DTS:Variables>
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\WMI Event Watcher Task - Monitor DB File Backup.EventHandlers[WMIEventWatcherEventOccurred]\Execute WMI Data Reader Package Task"
+              DTS:CreationName="SSIS.ExecutePackageTask.3"
+              DTS:Description="Execute Package Task"
+              DTS:DTSID="{5B52FF1C-897C-441C-BC1C-BE2A251E8BB5}"
+              DTS:ExecutableType="SSIS.ExecutePackageTask.3"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Execute WMI Data Reader Package Task"
+              DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <ExecutePackageTask>
+                  <Connection>{10B462E9-74E0-485F-BD19-AEC5F4D683E6}</Connection>
+                </ExecutePackageTask>
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+        </DTS:EventHandler>
+      </DTS:EventHandlers>
+      <DTS:ObjectData>
+        <WMIEWTaskData
+          WMIConnectionName="{92662C05-5F66-4B6F-A033-994A37ACDA25}"
+          WQLQuerySource="Select * from __InstanceModificationEvent within 30 where targetinstance isa &#xA;&quot;CIM_DataFile&quot; and targetinstance.name = &quot;C:\\SSIS\\ExtMgt\\WMI_DataReader\\AdventureWorks2012.bak&quot;&#xA;"
+          AfterEvent="WatchfortheEventAgain" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql11">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="252.603773584906,43.9245283018868"
+          Id="Package\WMI Event Watcher Task - Monitor DB File Backup"
+          TopLeft="5.49999999999999,5.5" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <DtsEventHandler
+    design-time-name="Package\WMI Event Watcher Task - Monitor DB File Backup.EventHandlers[WMIEventWatcherEventOccurred]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="191.660377358491,43.9245283018868"
+          Id="Package\WMI Event Watcher Task - Monitor DB File Backup.EventHandlers[WMIEventWatcherEventOccurred]\Execute WMI Data Reader Package Task"
+          TopLeft="5.5,5.5" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

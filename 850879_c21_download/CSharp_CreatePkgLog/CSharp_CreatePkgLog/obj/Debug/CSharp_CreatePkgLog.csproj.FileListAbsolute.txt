@@ -1,0 +1,14 @@
+C:\ssis\ExtMgt\CSharp_CreatePkgLog\CSharp_CreatePkgLog\bin\Debug\Package.dtsx
+C:\ssis\ExtMgt\CSharp_CreatePkgLog\CSharp_CreatePkgLog\bin\Debug\CSharp_CreatePkgLog.exe
+C:\ssis\ExtMgt\CSharp_CreatePkgLog\CSharp_CreatePkgLog\bin\Debug\CSharp_CreatePkgLog.pdb
+C:\ssis\ExtMgt\CSharp_CreatePkgLog\CSharp_CreatePkgLog\obj\Debug\ResolveAssemblyReference.cache
+C:\ssis\ExtMgt\CSharp_CreatePkgLog\CSharp_CreatePkgLog\obj\Debug\CSharp_CreatePkgLog.exe
+C:\ssis\ExtMgt\CSharp_CreatePkgLog\CSharp_CreatePkgLog\obj\Debug\CSharp_CreatePkgLog.pdb
+C:\ssis\ExtMgt\CSharp_CreatePkgLog\CSharp_CreatePkgLog\bin\Debug\CSharp_CreatePkgLog.exe.config
+C:\Users\Chris\Downloads\101124_ch20_download\CSharp_CreatePkgLog\CSharp_CreatePkgLog\bin\Debug\CSharp_CreatePkgLog.exe.config
+C:\Users\Chris\Downloads\101124_ch20_download\CSharp_CreatePkgLog\CSharp_CreatePkgLog\obj\Debug\CSharp_CreatePkgLog.exe
+C:\Users\Chris\Downloads\101124_ch20_download\CSharp_CreatePkgLog\CSharp_CreatePkgLog\obj\Debug\CSharp_CreatePkgLog.pdb
+C:\Users\Chris\Downloads\101124_ch20_download\CSharp_CreatePkgLog\CSharp_CreatePkgLog\bin\Debug\Package.dtsx
+C:\Users\Chris\Downloads\101124_ch20_download\CSharp_CreatePkgLog\CSharp_CreatePkgLog\bin\Debug\CSharp_CreatePkgLog.exe
+C:\Users\Chris\Downloads\101124_ch20_download\CSharp_CreatePkgLog\CSharp_CreatePkgLog\bin\Debug\CSharp_CreatePkgLog.pdb
+C:\Users\Chris\Downloads\101124_ch20_download\CSharp_CreatePkgLog\CSharp_CreatePkgLog\obj\Debug\CSharp_CreatePkgLog.csprojResolveAssemblyReference.cache

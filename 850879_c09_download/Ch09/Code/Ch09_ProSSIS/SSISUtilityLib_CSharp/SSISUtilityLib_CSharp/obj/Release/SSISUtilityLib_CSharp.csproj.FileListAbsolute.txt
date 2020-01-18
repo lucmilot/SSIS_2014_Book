@@ -1,0 +1,5 @@
+C:\Users\MVP\Desktop\Shared\SSISUtilityLib_CSharp\SSISUtilityLib_CSharp\obj\Release\ResolveAssemblyReference.cache
+C:\Users\MVP\Desktop\Shared\SSISUtilityLib_CSharp\SSISUtilityLib_CSharp\bin\Release\SSISUtilityLib_CSharp.dll
+C:\Users\MVP\Desktop\Shared\SSISUtilityLib_CSharp\SSISUtilityLib_CSharp\bin\Release\SSISUtilityLib_CSharp.pdb
+C:\Users\MVP\Desktop\Shared\SSISUtilityLib_CSharp\SSISUtilityLib_CSharp\obj\Release\SSISUtilityLib_CSharp.dll
+C:\Users\MVP\Desktop\Shared\SSISUtilityLib_CSharp\SSISUtilityLib_CSharp\obj\Release\SSISUtilityLib_CSharp.pdb

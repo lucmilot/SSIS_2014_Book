@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="Ch17_ProSSIS">
+</Property><Property Name="Solution File" Value="C:\ProSSIS\Code\Ch17_ProSSIS\Ch17_ProSSIS.sln">
+</Property><Property Name="Date" Value="Monday, August 22, 2011">
+</Property><Property Name="Time" Value="21:09 PM">
+</Property></Properties><Event ErrorLevel="3" Project="Ch17_ProSSIS" Source="Ch17_ProSSIS.dtproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Ch17_ProSSIS" Source="Ch17_ProSSIS.dtproj" Description="Project converted successfully.">
+</Event><Event ErrorLevel="0" Project="" Source="Ch17_ProSSIS.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="Ch17_ProSSIS.sln" Description="Converted">
+</Event></UpgradeLog>

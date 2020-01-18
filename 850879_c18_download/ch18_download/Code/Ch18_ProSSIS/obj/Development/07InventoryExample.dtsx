@@ -1,0 +1,1128 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/4/2005 7:59:59 PM"
+  DTS:CreationName="SSIS.Package.3"
+  DTS:CreatorComputerName="KATHISBS"
+  DTS:CreatorName="KATHISBS\Administrator"
+  DTS:DTSID="{37EACD19-B980-4F2B-A84F-09965EB77A1B}"
+  DTS:ExecutableType="SSIS.Package.3"
+  DTS:LastModifiedProductVersion="11.0.1445.2"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="07InventoryExample"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="0"
+  DTS:VersionBuild="25"
+  DTS:VersionGUID="{83DA978D-4B10-4D4B-B9A2-8D1967745D17}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{00C45A5F-D5BF-4742-9315-CA51371E9981}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="Count">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{821388A3-6072-40CC-ABD1-C467A372C9F7}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="ProductID">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{E953CDC5-AD4B-4F75-A293-0B0AF246EFB6}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="ReorderQuantity">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Inventory Check"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{CC3C9788-6F83-4A97-AF74-6D889A4E9733}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:MaxErrorCount="9999"
+      DTS:ObjectName="Inventory Check">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Inventory Check\Empty Tables"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{DD413D6F-F618-4401-B4EE-897316B9DD6B}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Empty Tables"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server v9; © 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{B9A5400C-A421-44BA-82FA-73222FCEF3F3}"
+              SQLTask:SqlStatementSource="DELETE FROM MissingProductID&#xA;DELETE FROM InventoryWarning&#xA;DELETE FROM InventoryCheck" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Inventory Check\Inventory Query Simulator"
+          DTS:AssignExpression="@Count = @Count + 1"
+          DTS:CreationName="STOCK:FORLOOP"
+          DTS:Description="For Loop Container"
+          DTS:DTSID="{87F1FC4F-AF18-438C-954F-5D04A6474FCE}"
+          DTS:EvalExpression="@Count &lt;= 50"
+          DTS:ExecutableType="STOCK:FORLOOP"
+          DTS:InitExpression="@Count = 1"
+          DTS:LocaleID="-1"
+          DTS:MaxConcurrent="1"
+          DTS:MaxErrorCount="9999"
+          DTS:ObjectName="Inventory Query Simulator">
+          <DTS:Variables />
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\Inventory Check\Inventory Query Simulator\Check Inventory Level"
+              DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+              DTS:Description="Execute SQL Task"
+              DTS:DTSID="{5339CE69-B6D6-4453-935B-F982A90397F8}"
+              DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+              DTS:LocaleID="-1"
+              DTS:MaxErrorCount="9999"
+              DTS:ObjectName="Check Inventory Level"
+              DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server v9; © 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+              DTS:ThreadHint="0">
+              <DTS:Variables />
+              <DTS:EventHandlers>
+                <DTS:EventHandler
+                  DTS:refId="Package\Inventory Check\Inventory Query Simulator\Check Inventory Level.EventHandlers[OnError]"
+                  DTS:CreationName="OnError"
+                  DTS:DTSID="{FAD2CC83-EA73-453C-888A-6A13169BCA5F}"
+                  DTS:EventID="65535"
+                  DTS:EventName="OnError"
+                  DTS:LocaleID="-1">
+                  <DTS:Variables>
+                    <DTS:Variable
+                      DTS:CreationName=""
+                      DTS:Description="The propagate property of the event"
+                      DTS:DTSID="{B91D8A35-5B7F-4350-9533-0928EF06C6C9}"
+                      DTS:IncludeInDebugDump="6789"
+                      DTS:Namespace="System"
+                      DTS:ObjectName="Propagate">
+                      <DTS:VariableValue
+                        DTS:DataType="11">-1</DTS:VariableValue>
+                    </DTS:Variable>
+                  </DTS:Variables>
+                  <DTS:Executables>
+                    <DTS:Executable
+                      DTS:refId="Package\Inventory Check\Inventory Query Simulator\Check Inventory Level.EventHandlers[OnError]\Insert Missing ProductID"
+                      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+                      DTS:Description="Execute SQL Task"
+                      DTS:DTSID="{7C09DF44-29B1-4093-B9A5-9C3DA9489C7A}"
+                      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+                      DTS:LocaleID="-1"
+                      DTS:ObjectName="Insert Missing ProductID"
+                      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server v9; © 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+                      <DTS:Variables />
+                      <DTS:ObjectData>
+                        <SQLTask:SqlTaskData
+                          SQLTask:Connection="{D7E5015F-771F-4F31-A644-DB6F65BE4AA2}"
+                          SQLTask:SqlStatementSource="INSERT INTO MissingProductID&#xA;(ProductID) &#xA;SELECT @ProductID" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+                          <SQLTask:ParameterBinding
+                            SQLTask:ParameterName="@ProductID"
+                            SQLTask:DtsVariableName="User::ProductID"
+                            SQLTask:ParameterDirection="Input"
+                            SQLTask:DataType="11"
+                            SQLTask:ParameterSize="-1" />
+                        </SQLTask:SqlTaskData>
+                      </DTS:ObjectData>
+                    </DTS:Executable>
+                  </DTS:Executables>
+                </DTS:EventHandler>
+                <DTS:EventHandler
+                  DTS:refId="Package\Inventory Check\Inventory Query Simulator\Check Inventory Level.EventHandlers[OnPreExecute]"
+                  DTS:CreationName="OnPreExecute"
+                  DTS:DTSID="{72FEBE06-E3AB-4F00-85BF-7843DFD52E81}"
+                  DTS:EventID="322"
+                  DTS:EventName="OnPreExecute"
+                  DTS:LocaleID="-1">
+                  <DTS:Variables>
+                    <DTS:Variable
+                      DTS:CreationName=""
+                      DTS:Description="The propagate property of the event"
+                      DTS:DTSID="{3388A7E1-17F2-4325-9666-5AB55084D147}"
+                      DTS:IncludeInDebugDump="6789"
+                      DTS:Namespace="System"
+                      DTS:ObjectName="Propagate">
+                      <DTS:VariableValue
+                        DTS:DataType="11">-1</DTS:VariableValue>
+                    </DTS:Variable>
+                  </DTS:Variables>
+                  <DTS:Executables>
+                    <DTS:Executable
+                      DTS:refId="Package\Inventory Check\Inventory Query Simulator\Check Inventory Level.EventHandlers[OnPreExecute]\Record ProductID"
+                      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+                      DTS:Description="Execute SQL Task"
+                      DTS:DTSID="{DD5F1C93-57F2-43E2-8672-B49F84A24B54}"
+                      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+                      DTS:LocaleID="-1"
+                      DTS:ObjectName="Record ProductID"
+                      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server v9; © 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+                      <DTS:Variables />
+                      <DTS:ObjectData>
+                        <SQLTask:SqlTaskData
+                          SQLTask:Connection="{D7E5015F-771F-4F31-A644-DB6F65BE4AA2}"
+                          SQLTask:SqlStatementSource="INSERT INTO InventoryCheck (ProductID)&#xA;SELECT @ProductID" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+                          <SQLTask:ParameterBinding
+                            SQLTask:ParameterName="@ProductID"
+                            SQLTask:DtsVariableName="User::ProductID"
+                            SQLTask:ParameterDirection="Input"
+                            SQLTask:DataType="11"
+                            SQLTask:ParameterSize="-1" />
+                        </SQLTask:SqlTaskData>
+                      </DTS:ObjectData>
+                    </DTS:Executable>
+                  </DTS:Executables>
+                </DTS:EventHandler>
+              </DTS:EventHandlers>
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData
+                  SQLTask:Connection="{B9A5400C-A421-44BA-82FA-73222FCEF3F3}"
+                  SQLTask:SqlStatementSource="usp_GetReorderQuantity" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="@ProductID"
+                    SQLTask:DtsVariableName="User::ProductID"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="11"
+                    SQLTask:ParameterSize="0" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="@ReorderQuantity"
+                    SQLTask:DtsVariableName="User::ReorderQuantity"
+                    SQLTask:ParameterDirection="Output"
+                    SQLTask:DataType="11"
+                    SQLTask:ParameterSize="1" />
+                </SQLTask:SqlTaskData>
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\Inventory Check\Inventory Query Simulator\Generate ProductID"
+              DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ScriptTask.ScriptTask, Microsoft.SqlServer.ScriptTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+              DTS:Description="Script Task"
+              DTS:DTSID="{9D6BD2D5-5184-447D-B1B3-224F24D02D25}"
+              DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ScriptTask.ScriptTask, Microsoft.SqlServer.ScriptTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Generate ProductID"
+              DTS:ThreadHint="0">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <ScriptProject
+                  Name="ScriptTask_1a3f3f2670a14cb59cf5a0c8fd97d533"
+                  VSTAMajorVersion="3"
+                  VSTAMinorVersion="0"
+                  Language="VisualBasic"
+                  ReadWriteVariables="User::ProductID">
+                  <ProjectItem
+                    Name="My Project\AssemblyInfo.vb"
+                    Encoding="UTF8"><![CDATA[Imports System
+Imports System.Reflection
+Imports System.Runtime.InteropServices
+
+' General Information about an assembly is controlled through the following 
+' set of attributes. Change these attribute values to modify the information
+' associated with an assembly.
+
+' Review the values of the assembly attributes
+
+<Assembly: AssemblyTitle("ScriptTask_1a3f3f2670a14cb59cf5a0c8fd97d533.vbproj")> 
+<Assembly: AssemblyDescription("")> 
+<Assembly: AssemblyCompany("")> 
+<Assembly: AssemblyProduct("ScriptTask_1a3f3f2670a14cb59cf5a0c8fd97d533.vbproj")> 
+<Assembly: AssemblyCopyright("Copyright @  2008")> 
+<Assembly: AssemblyTrademark("")> 
+<Assembly: CLSCompliant(True)> 
+
+<Assembly: ComVisible(False)> 
+
+'The following GUID is for the ID of the typelib if this project is exposed to COM
+<Assembly: Guid("256087c7-0d1c-4797-b91a-a7fea5c8efa3")> 
+
+' Version information for an assembly consists of the following four values:
+'
+'      Major Version
+'      Minor Version 
+'      Build Number
+'      Revision
+'
+' You can specify all the values or you can default the Build and Revision Numbers 
+' by using the '*' as shown below:
+' <Assembly: AssemblyVersion("1.0.*")>
+
+<Assembly: AssemblyVersion("1.0.0.0")> 
+<Assembly: AssemblyFileVersion("1.0.0.0")> ]]></ProjectItem>
+                  <ProjectItem
+                    Name="My Project\Resources.Designer.vb"
+                    Encoding="UTF8"><![CDATA['------------------------------------------------------------------------------
+' <autogenerated>
+'     This code was generated by a tool.
+'
+'     Changes to this file may cause incorrect behavior and will be lost if
+'     the code is regenerated.
+' </autogenerated>
+'------------------------------------------------------------------------------
+
+Option Strict Off
+Option Explicit On
+
+
+Namespace My.Resources
+    
+    '''<summary>
+    '''   A strongly-typed resource class, for looking up localized strings, etc.
+    '''</summary>
+    'This class was auto-generated by the Strongly Typed Resource Builder
+    'class via a tool like ResGen or Visual Studio.NET.
+    'To add or remove a member, edit your .ResX file then rerun ResGen
+    'with the /str option, or rebuild your VS project.
+    Class MyResources
+        
+        Private Shared _resMgr As System.Resources.ResourceManager
+        
+        Private Shared _resCulture As System.Globalization.CultureInfo
+        
+        Friend Sub New()
+            MyBase.New
+        End Sub
+        
+        '''<summary>
+        '''   Returns the cached ResourceManager instance used by this class.
+        '''</summary>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Public Shared ReadOnly Property ResourceManager() As System.Resources.ResourceManager
+            Get
+                If (_resMgr Is Nothing) Then
+                    Dim temp As System.Resources.ResourceManager = New System.Resources.ResourceManager("My.Resources.MyResources", GetType(MyResources).Assembly)
+                    _resMgr = temp
+                End If
+                Return _resMgr
+            End Get
+        End Property
+        
+        '''<summary>
+        '''   Overrides the current thread's CurrentUICulture property for all
+        '''   resource lookups using this strongly typed resource class.
+        '''</summary>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Public Shared Property Culture() As System.Globalization.CultureInfo
+            Get
+                Return _resCulture
+            End Get
+            Set
+                _resCulture = value
+            End Set
+        End Property
+    End Class
+End Namespace]]></ProjectItem>
+                  <ProjectItem
+                    Name="My Project\Settings.settings"
+                    Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)" GeneratedClassNamespace="$safeprojectname" GeneratedClassName="MySettings">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
+                  <ProjectItem
+                    Name="scripttask_1a3f3f2670a14cb59cf5a0c8fd97d533.vbproj"
+                    Encoding="UTF16LE"><![CDATA[<?xml version="1.0" encoding="utf-16"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!-- This section defines project-level properties.
+
+       Configuration - Specifies whether the default configuration is Release or Debug.
+       Platform - Specifies what CPU the output of this project can run on.
+       OutputType - Must be "Library" for VSTA.
+       NoStandardLibraries - Set to "false" for VSTA.
+       RootNamespace - In C#, this specifies the namespace given to new files.
+                       In Visual Basic, all objects are wrapped in this namespace at runtime.
+       AssemblyName - Name of the output assembly.
+  -->
+  <PropertyGroup>
+    <ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{F184B08F-C81C-45F6-A57F-5ABD9991F28F}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <OutputType>Library</OutputType>
+    <RootNamespace>ScriptTask_1a3f3f2670a14cb59cf5a0c8fd97d533.vbproj</RootNamespace>
+    <AssemblyName>ScriptTask_1a3f3f2670a14cb59cf5a0c8fd97d533</AssemblyName>
+    <StartupObject></StartupObject>
+    <OptionExplicit>On</OptionExplicit>
+    <OptionCompare>Binary</OptionCompare>
+    <OptionStrict>Off</OptionStrict>
+    <OptionInfer>On</OptionInfer>
+    <ProjectGuid>{BAF53876-472C-4BC9-94BF-1503828F5864}</ProjectGuid>
+  </PropertyGroup>
+  <!-- This section defines properties that are set when the "Debug" configuration is
+       selected.
+
+       DebugSymbols - If true, create symbols (.pdb). If false, do not create symbols.
+       Optimize - If true, optimize the build output. If false, do not optimize.
+       OutputPath - Output path of the project relative to the project file.
+       EnableUnmanagedDebugging - If true, starting the debugger will attach both managed and unmanaged debuggers.
+       DefineConstants - Constants defined for the preprocessor.
+       Warning Level - Warning level for the compiler.
+  -->
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DefineConstants></DefineConstants>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <DebugSymbols>true</DebugSymbols>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <NoWarn>42016,42017,42018,42019,42032,42353,42354,42355</NoWarn>
+  </PropertyGroup>
+  <!-- This section defines properties that are set when the "Release" configuration is
+       selected.
+
+       DebugSymbols - If true, create symbols (.pdb). If false, do not create symbols.
+       Optimize - If true, optimize the build output. If false, do not optimize.
+       OutputPath - Output path of the project relative to the project file.
+       EnableUnmanagedDebugging - If true, starting the debugger will attach both managed and unmanaged debuggers.
+       DefineConstants - Constants defined for the preprocessor.
+       Warning Level - Warning level for the compiler.
+  -->
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DefineConstants></DefineConstants>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <NoWarn>42016,42017,42018,42019,42032,42353,42354,42355</NoWarn>
+  </PropertyGroup>
+  <!-- This section enables pre- and post-build steps. However,
+       it is recommended that MSBuild tasks be used instead of these properties.
+  -->
+  <PropertyGroup>
+    <PreBuildEvent></PreBuildEvent>
+    <PostBuildEvent></PostBuildEvent>
+  </PropertyGroup>
+  <!-- This sections specifies references for the project. -->
+  <ItemGroup>
+    <Reference Include="Microsoft.SqlServer.ManagedDTS, Version=11.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.ScriptTask, Version=11.0.0.0, Culture=Neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <!-- Visual Basic supports Importing namespaces (equivalent to using statements in C#).-->
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+  </ItemGroup>
+  <!-- This section defines the user source files that are part of the
+       project.
+
+       Compile - Specifies a source file to compile.
+       EmbeddedResource - Specifies a .resx file for embedded resources.
+       None - Specifies a file that is not to be passed to the compiler (for instance,
+              a text file or XML file).
+       AppDesigner - Specifies the directory where the application properties files can
+                     be found.
+  -->
+  <ItemGroup>
+    <AppDesigner Include="My Project\" />
+    <Compile Include="My Project\AssemblyInfo.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ScriptMain.designer.vb">
+      <DependentUpon>ScriptMain.Designer.xml</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptMain.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <None Include="ScriptMain.Designer.xml">
+      <DependentUpon>ScriptMain.vb</DependentUpon>
+    </None>
+    <!-- Include the default configuration information and metadata files for the add-in.
+         These files are copied to the build output directory when the project is
+         built, and the path to the configuration file is passed to add-in on the command
+         line when debugging.
+    -->
+  </ItemGroup>
+  <!-- Include the build rules for a VB project.-->
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <!-- This section defines VSTA properties that describe the host-changable project properties. -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}">
+        <ProjectProperties HostName="VSTAHostName" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="vb" TemplatesPath="" DebugInfoExeName="#HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\VisualStudio\9.0\InstallDir#\devenv.exe" />
+        <Host Name="SSIS_ScriptTask">
+          <HostItem Name="ScriptMain" Code="ScriptMain.vb" CanonicalName="ScriptMain" DisplayName="ScriptMain" Blueprint="ScriptMain.Designer.xml" GeneratedCode="ScriptMain.designer.vb" />
+        </Host>
+        <ProjectClient>
+          <HostIdentifier>SSIS_ST110</HostIdentifier>
+        </ProjectClient>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <PropertyGroup>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetFrameworkProfile></TargetFrameworkProfile>
+  </PropertyGroup>
+</Project>]]></ProjectItem>
+                  <ProjectItem
+                    Name="ScriptMain.Designer.xml"
+                    Encoding="UTF8"><![CDATA[<hostitem:hostItem hostitem:identifier="ScriptMain" hostitem:namespace="" hostitem:primaryCookie="ScriptMain" hostitem:baseType="Microsoft.SqlServer.Dts.Tasks.ScriptTask.VSTAProxy.VSTARTScriptObjectModelBaseEntryPoint" hostitem:interfaceType="Microsoft.VisualStudio.Tools.Applications.Runtime.IEntryPoint" hostitem:displayName="ScriptMain" hostitem:generateCode="true" hostitem:startupIndex="0" xmlns:hostitem="http://schemas.microsoft.com/2006/VisualStudio/Tools/Applications/HostItem.xsd" />]]></ProjectItem>
+                  <ProjectItem
+                    Name="My Project\Settings.Designer.vb"
+                    Encoding="UTF8"><![CDATA['------------------------------------------------------------------------------
+' <autogenerated>
+'     This code was generated by a tool.
+'
+'     Changes to this file may cause incorrect behavior and will be lost if
+'     the code is regenerated.
+' </autogenerated>
+'------------------------------------------------------------------------------
+
+Option Strict Off
+Option Explicit On
+
+
+
+Partial Friend NotInheritable Class MySettings
+    Inherits System.Configuration.ApplicationSettingsBase
+
+    Private Shared m_Value As MySettings
+
+    Private Shared m_SyncObject As Object = New Object
+
+    <System.Diagnostics.DebuggerNonUserCode()> _
+    Public Shared ReadOnly Property Value() As MySettings
+        Get
+            If (MySettings.m_Value Is Nothing) Then
+                System.Threading.Monitor.Enter(MySettings.m_SyncObject)
+                If (MySettings.m_Value Is Nothing) Then
+                    Try
+                        MySettings.m_Value = New MySettings
+                    Finally
+                        System.Threading.Monitor.Exit(MySettings.m_SyncObject)
+                    End Try
+                End If
+            End If
+            Return MySettings.m_Value
+        End Get
+    End Property
+End Class]]></ProjectItem>
+                  <ProjectItem
+                    Name="Project"
+                    Encoding="UTF16LE"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="4.0" schemaVersion="1.0">
+	<msb:PropertyGroup>
+		<msb:ProjectId>{F4153E0B-40C0-4112-888C-2659E1A02AF4}</msb:ProjectId>
+		<msb:NoContent>Reference;Import;Folder</msb:NoContent>
+		<msb:Language>msBuild</msb:Language>
+		<msb:DisplayName>scripttask_1a3f3f2670a14cb59cf5a0c8fd97d533</msb:DisplayName>
+		<msb:CodeName>scripttask_1a3f3f2670a14cb59cf5a0c8fd97d533</msb:CodeName>
+	</msb:PropertyGroup>
+	<msb:ItemGroup>
+		<msb:File Include="My Project\Settings.Designer.vb"/>
+		<msb:File Include="My Project\Resources.Designer.vb"/>
+		<msb:File Include="My Project\AssemblyInfo.vb"/>
+		<msb:File Include="My Project\Resources.resx"/>
+		<msb:File Include="My Project\Settings.settings"/>
+		<msb:File Include="ScriptMain.designer.vb"/>
+		<msb:File Include="ScriptMain.vb"/>
+		<msb:File Include="ScriptMain.Designer.xml"/>
+		<msb:Project Include="scripttask_1a3f3f2670a14cb59cf5a0c8fd97d533.vbproj"/>
+	</msb:ItemGroup>
+</c:Project>]]></ProjectItem>
+                  <ProjectItem
+                    Name="ScriptMain.designer.vb"
+                    Encoding="UTF8"><![CDATA[<System.CLSCompliantAttribute(False)> _
+Partial Public Class ScriptMain
+	Inherits Microsoft.SqlServer.Dts.Tasks.ScriptTask.VSTARTScriptObjectModelBase
+End Class]]></ProjectItem>
+                  <ProjectItem
+                    Name="ScriptMain.vb"
+                    Encoding="UTF8"><![CDATA[' Microsoft SQL Server Integration Services Script Task
+' Write scripts using Microsoft Visual Basic
+' The ScriptMain class is the entry point of the Script Task.
+
+Imports System
+Imports System.Data
+Imports System.Math
+Imports Microsoft.SqlServer.Dts.Runtime
+
+<Microsoft.SqlServer.Dts.Tasks.ScriptTask.SSISScriptTaskEntryPointAttribute> _
+Partial Class ScriptMain
+
+	Private Sub ScriptMain_Startup(ByVal sender As Object, ByVal e As System.EventArgs)
+
+	End Sub
+
+	Private Sub ScriptMain_Shutdown(ByVal sender As Object, ByVal e As System.EventArgs)
+
+		Try
+			' Unlock variables from the read-only and read-write variable collection properties
+			If (Dts.Variables.Count <> 0) Then
+				Dts.Variables.Unlock()
+			End If
+		Catch ex As Exception
+		End Try
+	End Sub
+
+	Enum ScriptResults
+		Success = DTSExecResult.Success
+		Failure = DTSExecResult.Failure
+	End Enum
+
+	' The execution engine calls this method when the task executes.
+	' To access the object model, use the Dts object. Connections, variables, events,
+	' and logging features are available as static members of the Dts class.
+	' Before returning from this method, set the value of Dts.TaskResult to indicate success or failure.
+	' 
+	' To open Code and Text Editor Help, press F1.
+	' To open Object Browser, press Ctrl+Alt+J.
+
+	Public Sub Main()
+        Randomize()
+        Dts.Variables("User::ProductID").Value = CInt(Int((900 * Rnd()) + 1))
+        Dts.TaskResult = ScriptResults.Success
+	End Sub
+
+End Class]]></ProjectItem>
+                  <ProjectItem
+                    Name="My Project\Resources.resx"
+                    Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+</root>]]></ProjectItem>
+                  <BinaryItem
+                    Name="ScriptTask_1a3f3f2670a14cb59cf5a0c8fd97d533.dll">TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDAAEoU04AAAAAAAAAAOAAAiELAQgAABwAAAAIAAAAAAAArjsA
+AAAgAAAAQAAAAABAAAAgAAAAAgAABAAAAAAAAAAEAAAAAAAAAACAAAAAAgAAAAAAAAIAQIUAABAA
+ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAAFg7AABTAAAAAEAAADgEAAAAAAAAAAAAAAAAAAAA
+AAAAAGAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAAtBsAAAAgAAAAHAAAAAIA
+AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAADgEAAAAQAAAAAYAAAAeAAAAAAAAAAAAAAAAAABAAABA
+LnJlbG9jAAAMAAAAAGAAAAACAAAAJAAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAACQ
+OwAAAAAAAEgAAAACAAUAGCQAAEAXAAABAAAAAAAAAF4jAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAB4CKAEAAAoqHgIoBAAACiqmcwYAAAqAAQAABHMHAAAKgAIA
+AARzCAAACoADAAAEcwkAAAqABAAABCoAABMwAQALAAAAAQAAEX4BAAAEbwoAAAoqABMwAQALAAAA
+AgAAEX4CAAAEbwsAAAoqABMwAQALAAAAAwAAEX4DAAAEbwwAAAoqABMwAQALAAAABAAAEX4EAAAE
+bw0AAAoqABMwAgANAAAABQAAEQIDKBEAAAooEgAACioAAAATMAEABwAAAAYAABECKBMAAAoqABMw
+AQALAAAABwAAEdAFAAACKBQAAAoqABMwAQAHAAAACAAAEQIoFQAACioAEzABABAAAAAJAAARAowB
+AAAbLQYoAQAAKyoCKhMwAgAQAAAACgAAEQMSAP4VAgAAGwaBAgAAGyoeAigXAAAKKhMwAgAoAAAA
+CwAAEQJ7GQAACm8aAAAKCweMAwAAGy0SKAIAACsLAnsZAAAKB28bAAAKBypKAigXAAAKAnMcAAAK
+fRkAAAoqAB4CKBcAAAoqEzACAC0AAAAMAAARfgYAAAQtIHIBAABw0AcAAAIoFAAACm8eAAAKcx8A
+AAoLB4AGAAAEfgYAAAQqAAAAEzABAAYAAAANAAARfgcAAAQqAAAeAoAHAAAEKkJzFwAACigRAAAK
+gAkAAAQqAAAAHgIoIAAACiobMAEAPwAAAA4AABF+CAAABC0yfgkAAAQoEQAACighAAAKfggAAAQt
+HHMWAAAGgAgAAATeEH4JAAAEKBEAAAooIgAACtx+CAAABCoAARAAAAIAHQAMKQAQAAAAAR4CKCQA
+AAoqBioAABswAgA0AAAADwAAEQJvJQAACm8mAAAKbycAAAoWLhACbyUAAApvJgAACm8oAAAK3g4l
+KCkAAAoKKCoAAAreACoBEAAAAAAAACUlAA4cAAABEzADAE4AAAAAAAAAKCsAAAoCbyUAAApvJgAA
+CnIzAABwbywAAAoiAABhRCgtAAAKWiIAAIA/WCguAAAKbCgvAAAKt4wlAAABbzAAAAoCbyUAAAoW
+bzEAAAoqtAAAAM7K774BAAAAkQAAAGxTeXN0ZW0uUmVzb3VyY2VzLlJlc291cmNlUmVhZGVyLCBt
+c2NvcmxpYiwgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2Vu
+PWI3N2E1YzU2MTkzNGUwODkjU3lzdGVtLlJlc291cmNlcy5SdW50aW1lUmVzb3VyY2VTZXQCAAAA
+AAAAAAAAAABQQURQQURQtAAAAAAAQlNKQgEAAQAAAAAADAAAAHY0LjAuMzAzMTkAAAAABQBsAAAA
+PAgAACN+AACoCAAAeAoAACNTdHJpbmdzAAAAACATAABUAAAAI1VTAHQTAAAQAAAAI0dVSUQAAACE
+EwAAvAMAACNCbG9iAAAAAAAAAAIAAAFXHaIJCQ8AAAD6JTMAFgAAAQAAADIAAAAKAAAADAAAABsA
+AAAIAAAAPgAAAAIAAAA2AAAADwAAAAQAAAAIAAAACQAAAAkAAAABAAAABQAAAAEAAAADAAAAAwAA
+AAIAAAAAAEUKAQAAAAAACgB4AU4BCgCsAY4BBgC8AbUBCgAUAk4BBgCSArUBCgAUA+oCBgBKAzkD
+BgB3A2IDDgDeA8kDEgBdBDQEBgB5BLUBBgC4BLUBDgDrBNUEDgAEBdUEDgAxBRkFBgBbBUgFCgCa
+BXMFCgCyBRMADgDnBcoFBgAcBvwFBgA6BrUBBgBeBrUBCgB3BhMABgC7BpwGBgDhBs8GBgAIB/cG
+BgAbB0gFBgA4B7UBEgBCBzQEFgCbB3sHFgCzB3sHCgDeB3MFCgAMCBMAFgAdCHsHCgAzCBMABgBC
+CLUBBgBNCLUBBgBiCLUBEgB4CDQEBgDhCPwFBgABCfwFBgA5CR8JBgBSCc8GBgBvCZwGBgB9Cc8G
+BgCYCc8GBgCzCc8GBgDMCc8GBgDlCc8GBgACCs8GAAAAAAEAAAAAAAEAAQAAAAAAKQA3AAUAAQAB
+AAAAAABtADcACQABAAIAAAEQAHgANwANAAEAAwAFAQAAggAAAA0ABQAIAAUBAACQAAAADQAFAA8A
+AAAAAKsAtwANAAYAEQAAARAA9wACASUACAAVAAEAAAA1AQIBKQAKABgAAgEAAEABAAAxAAoAHAAx
+ANcBIAAxAAACLQAxACICOgAxAEcCRwAhACMDkAARAFoDnQARAIMDoQARAPYDvwARAP4DwwAGBr0E
+4ABWgMUE4wBWgM0E4wBQIAAAAAAGGIgBEwABAFggAAAAAAYYiAETAAEAYCAAAAAAERjDARcAAQCM
+IAAAAAATCMoBGwABAKQgAAAAABMI8AEoAAEAvCAAAAAAEwgZAjUAAQDUIAAAAAATCDcCQgABAOwg
+AAAAAEYCfQJjAAEACCEAAAAARgKGAmgAAgAcIQAAAACDAJcCbAACADQhAAAAAEYCnwJxAAIASCEA
+AAAAEQCoAngAAgBkIQAAAAABAMYCgAADAIAhAAAAAAYYiAETAAQAiCEAAAAAAwjaAosABAC8IQAA
+AAAGGIgBEwAEANAhAAAAAAMYiAETAAQA2CEAAAAAFgiPA6UABAAUIgAAAAAWCKMDqgAEACgiAAAA
+ABYIrwOvAAQAMCIAAAAAERjDARcABQBEIgAAAAAGGIgBEwAFAEwiAAAAABYICwTGAAUAqCIAAAAA
+BhiIARMABQCwIgAAAAABAIME2QAFALQiAAAAAAEAnwTZAAcABCMAAAAABgCzBBMACQAAAAEAhAIA
+AAEAvQIAAAEAvQIAAAEAuwMAAAEAlgQAAAIAnQQAAAEAlgQAAAIAnQQJAIgBEwBpAIgB8QB5AIgB
+AAERAIgBEwCBAIgBEwAkAIgBEwAsAIgBEwA0AIgBEwA8AIgBEwAkANoCiwAsANoCiwA0ANoCiwA8
+ANoCiwCJAIgBEwCRAIgBEwCZAIgBTwGhACsGmgEZAH0CYwAZAIYCaAApAEwGpwEZAJ8CcQCxAGgG
+twEZAIgBEwC5AIgBxwFEACMDkABMAAsEiwBMAJIGRAJMAIgBEwDBAIgBUwIpAOoGXgI5AIgBYwJJ
+AIgBEwDRABAHfwLRABYHfwLZAIgBEwBRAIgBEwBRAFQHiQLpAKUHjgL5AM0HaADxANcHEwABAeoH
+kwIBAfoHFwAJARMIFwDxACYIngIJAS8IpQIZAT4IqQIhAUcIrgIRAZIGswLpAFMIuAIxAYgBUwI5
+AYgBEwBBAYgBuAJJAYgBEwBRAYgBTwFZAYgBTwFhAYgBTwFpAYgBTwFxAYgBTwF5AYgBTwGBAYgB
+TwGJAYgBTwGRAYgBTwEIACwA5wAIADAA7AApAIMAaAEuAOMBWAIuAPMBgQMuANsBgQMuAKsBxgIu
+ANMBagMuAOsBWAIuAKMBvQIuALMB5QIuALsBLQMuAMMBOgMuAOsAWAIuAJMBZAMuAMsBWAJAACsA
+7ABAABMA9wBDABsABgFDABMA9wBJAIMAVAFjABsABgFjABMA9wBpAIMAeQGAACsA7ACDAHMA7ACD
+ABsABgGDAHsA7ACJAIMAhgGgACsA7ACjABMA9wCjAMMAzwHAACsA7ADDAOsAWALDABMA9wDJABMA
+dgLgACsA7ADpABMAdgIAASsA7AAAARMA9wAJARsB7AAgARMA9wAgASsA7AAjAZMBWAIjAZsB7ABA
+ARMA9wBAASsA7ABgASsA7ABgARMA9wCAASsA7ACgASsA7ADAARMA9wDAASsA7ADgASsA7AAAAisA
+7AAAAhMA9wA7AUABRQFKAZ8BowGuAbMBwgHCAUoCagJxAoQCmQIEAAEABgAFAAcABgAIAAgAAACs
+AU8AAABlAlQAAAAUAlkAAABxAl4AAAAtA5gAAABKA7UAAADBA7oAAAC7A8sAAgAEAAMAAgAFAAUA
+AgAGAAcAAgAHAAkAAgAPAAsAAgASAA0AAgATAA8AAQAUAA8AAgAXABEAdQB1AIgAHwEmAS0BNAEx
+AjgCBIAAAAEAAAAAAAAAAAAAAAAAGQoAAAQAAAAAAAAAAAAAAAEACgAAAAAACgAAAAAAAAAAAAAA
+CgATAAAAAAAEAAAAAAAAAAAAAAABALUBAAAAAAsAAAAAAAAAAAAAANAAFQQAAAAACwAAAAAAAAAA
+AAAA0ABcBwAAAAAAAAAAAQAAAJoIAAAFAAQABgAEAAoACQAAABAADAC7AgAAEAAZALsCAAAAABsA
+uwItAL0BLQA/AgAAAAAAPE1vZHVsZT4AbXNjb3JsaWIATWljcm9zb2Z0LlZpc3VhbEJhc2ljAE15
+QXBwbGljYXRpb24AU2NyaXB0VGFza18xYTNmM2YyNjcwYTE0Y2I1OWNmNWEwYzhmZDk3ZDUzMy52
+YnByb2ouTXkATXlDb21wdXRlcgBNeVByb2plY3QATXlXZWJTZXJ2aWNlcwBUaHJlYWRTYWZlT2Jq
+ZWN0UHJvdmlkZXJgMQBNeVJlc291cmNlcwBTY3JpcHRUYXNrXzFhM2YzZjI2NzBhMTRjYjU5Y2Y1
+YTBjOGZkOTdkNTMzLnZicHJvai5NeS5SZXNvdXJjZXMATXlTZXR0aW5ncwBTY3JpcHRUYXNrXzFh
+M2YzZjI2NzBhMTRjYjU5Y2Y1YTBjOGZkOTdkNTMzLnZicHJvagBTY3JpcHRNYWluAFNjcmlwdFJl
+c3VsdHMATWljcm9zb2Z0LlZpc3VhbEJhc2ljLkFwcGxpY2F0aW9uU2VydmljZXMAQXBwbGljYXRp
+b25CYXNlAC5jdG9yAE1pY3Jvc29mdC5WaXN1YWxCYXNpYy5EZXZpY2VzAENvbXB1dGVyAFN5c3Rl
+bQBPYmplY3QALmNjdG9yAGdldF9Db21wdXRlcgBtX0NvbXB1dGVyT2JqZWN0UHJvdmlkZXIAZ2V0
+X0FwcGxpY2F0aW9uAG1fQXBwT2JqZWN0UHJvdmlkZXIAVXNlcgBnZXRfVXNlcgBtX1VzZXJPYmpl
+Y3RQcm92aWRlcgBnZXRfV2ViU2VydmljZXMAbV9NeVdlYlNlcnZpY2VzT2JqZWN0UHJvdmlkZXIA
+QXBwbGljYXRpb24AV2ViU2VydmljZXMARXF1YWxzAG8AR2V0SGFzaENvZGUAVHlwZQBHZXRUeXBl
+AFRvU3RyaW5nAENyZWF0ZV9fSW5zdGFuY2VfXwBUAGluc3RhbmNlAERpc3Bvc2VfX0luc3RhbmNl
+X18AZ2V0X0dldEluc3RhbmNlAE1pY3Jvc29mdC5WaXN1YWxCYXNpYy5NeVNlcnZpY2VzLkludGVy
+bmFsAENvbnRleHRWYWx1ZWAxAG1fQ29udGV4dABHZXRJbnN0YW5jZQBTeXN0ZW0uUmVzb3VyY2Vz
+AFJlc291cmNlTWFuYWdlcgBfcmVzTWdyAFN5c3RlbS5HbG9iYWxpemF0aW9uAEN1bHR1cmVJbmZv
+AF9yZXNDdWx0dXJlAGdldF9SZXNvdXJjZU1hbmFnZXIAZ2V0X0N1bHR1cmUAc2V0X0N1bHR1cmUA
+VmFsdWUAQ3VsdHVyZQBTeXN0ZW0uQ29uZmlndXJhdGlvbgBBcHBsaWNhdGlvblNldHRpbmdzQmFz
+ZQBtX1ZhbHVlAG1fU3luY09iamVjdABnZXRfVmFsdWUATWljcm9zb2Z0LlNxbFNlcnZlci5TY3Jp
+cHRUYXNrAE1pY3Jvc29mdC5TcWxTZXJ2ZXIuRHRzLlRhc2tzLlNjcmlwdFRhc2sAVlNUQVJUU2Ny
+aXB0T2JqZWN0TW9kZWxCYXNlAEV2ZW50QXJncwBTY3JpcHRNYWluX1N0YXJ0dXAAc2VuZGVyAGUA
+U2NyaXB0TWFpbl9TaHV0ZG93bgBNYWluAEVudW0AdmFsdWVfXwBTdWNjZXNzAEZhaWx1cmUAU3lz
+dGVtLkNvbXBvbmVudE1vZGVsAEVkaXRvckJyb3dzYWJsZUF0dHJpYnV0ZQBFZGl0b3JCcm93c2Fi
+bGVTdGF0ZQBTeXN0ZW0uQ29kZURvbS5Db21waWxlcgBHZW5lcmF0ZWRDb2RlQXR0cmlidXRlAFN5
+c3RlbS5EaWFnbm9zdGljcwBEZWJ1Z2dlckhpZGRlbkF0dHJpYnV0ZQBNaWNyb3NvZnQuVmlzdWFs
+QmFzaWMuQ29tcGlsZXJTZXJ2aWNlcwBTdGFuZGFyZE1vZHVsZUF0dHJpYnV0ZQBIaWRlTW9kdWxl
+TmFtZUF0dHJpYnV0ZQBTeXN0ZW0uQ29tcG9uZW50TW9kZWwuRGVzaWduAEhlbHBLZXl3b3JkQXR0
+cmlidXRlAFN5c3RlbS5SdW50aW1lLkNvbXBpbGVyU2VydmljZXMAUnVudGltZUhlbHBlcnMAR2V0
+T2JqZWN0VmFsdWUAUnVudGltZVR5cGVIYW5kbGUAR2V0VHlwZUZyb21IYW5kbGUAQWN0aXZhdG9y
+AENyZWF0ZUluc3RhbmNlAE15R3JvdXBDb2xsZWN0aW9uQXR0cmlidXRlAHNldF9WYWx1ZQBTeXN0
+ZW0uUnVudGltZS5JbnRlcm9wU2VydmljZXMAQ29tVmlzaWJsZUF0dHJpYnV0ZQBTeXN0ZW0uUmVm
+bGVjdGlvbgBBc3NlbWJseQBnZXRfQXNzZW1ibHkAU3lzdGVtLlRocmVhZGluZwBNb25pdG9yAEVu
+dGVyAEV4aXQARGVidWdnZXJOb25Vc2VyQ29kZUF0dHJpYnV0ZQBFeGNlcHRpb24AU2NyaXB0T2Jq
+ZWN0TW9kZWwAZ2V0X0R0cwBNaWNyb3NvZnQuU3FsU2VydmVyLk1hbmFnZWREVFMATWljcm9zb2Z0
+LlNxbFNlcnZlci5EdHMuUnVudGltZQBWYXJpYWJsZXMAZ2V0X1ZhcmlhYmxlcwBEVFNSZWFkT25s
+eUNvbGxlY3Rpb25CYXNlAGdldF9Db3VudABVbmxvY2sAUHJvamVjdERhdGEAU2V0UHJvamVjdEVy
+cm9yAENsZWFyUHJvamVjdEVycm9yAFZCTWF0aABSYW5kb21pemUAVmFyaWFibGUAZ2V0X0l0ZW0A
+Um5kAENvbnZlcnNpb24ASW50AE1hdGgAUm91bmQASW50MzIAc2V0X1Rhc2tSZXN1bHQAQ0xTQ29t
+cGxpYW50QXR0cmlidXRlAFNTSVNTY3JpcHRUYXNrRW50cnlQb2ludEF0dHJpYnV0ZQBTY3JpcHRU
+YXNrXzFhM2YzZjI2NzBhMTRjYjU5Y2Y1YTBjOGZkOTdkNTMzLnZicHJvai5SZXNvdXJjZXMucmVz
+b3VyY2VzAENvbXBpbGF0aW9uUmVsYXhhdGlvbnNBdHRyaWJ1dGUAUnVudGltZUNvbXBhdGliaWxp
+dHlBdHRyaWJ1dGUAU3lzdGVtLlJ1bnRpbWUuVmVyc2lvbmluZwBUYXJnZXRGcmFtZXdvcmtBdHRy
+aWJ1dGUAQXNzZW1ibHlGaWxlVmVyc2lvbkF0dHJpYnV0ZQBHdWlkQXR0cmlidXRlAEFzc2VtYmx5
+VHJhZGVtYXJrQXR0cmlidXRlAEFzc2VtYmx5Q29weXJpZ2h0QXR0cmlidXRlAEFzc2VtYmx5UHJv
+ZHVjdEF0dHJpYnV0ZQBBc3NlbWJseUNvbXBhbnlBdHRyaWJ1dGUAQXNzZW1ibHlEZXNjcmlwdGlv
+bkF0dHJpYnV0ZQBBc3NlbWJseVRpdGxlQXR0cmlidXRlAFNjcmlwdFRhc2tfMWEzZjNmMjY3MGEx
+NGNiNTljZjVhMGM4ZmQ5N2Q1MzMAU2NyaXB0VGFza18xYTNmM2YyNjcwYTE0Y2I1OWNmNWEwYzhm
+ZDk3ZDUzMy5kbGwAAAAAADFNAHkALgBSAGUAcwBvAHUAcgBjAGUAcwAuAE0AeQBSAGUAcwBvAHUA
+cgBjAGUAcwAAH1UAcwBlAHIAOgA6AFAAcgBvAGQAdQBjAHQASQBEAAAATPsqtZSMj0GJbzoo9FnV
+FgAIt3pcVhk04IkIsD9ffxHVCjoDIAABAwAAAQQAABIMBwYVEhgBEgwEAAASCAcGFRIYARIIBAAA
+EhEHBhUSGAESEQQAABIUBwYVEhgBEhQECAASDAQIABIIBAgAEhEECAASFAQgAQIcAyAACAQgABIV
+AyAADgIeAAcQAQEeAB4ABzABAQEQHgACEwAEIAATAAcGFRIZARMABCgAEwADBhIdAwYSIQQAABId
+BAAAEiEFAAEBEiEECAASHQQIABIhAwYSIAIGHAQAABIgBAgAEiAIiYRdzYCAzJEGIAIBHBItAgYI
+AwYRKAQAAAAABAEAAAAFIAEBETkIAQABAAAAAAAFIAIBDg4YAQAKTXlUZW1wbGF0ZQgxMC4wLjAu
+MAAABhUSGAESDAYVEhgBEggGFRIYARIRBhUSGAESFAQHARIMBAcBEggEBwESEQQHARIUBCABAQ4T
+AQAOTXkuQXBwbGljYXRpb24AABABAAtNeS5Db21wdXRlcgAADAEAB015LlVzZXIAABMBAA5NeS5X
+ZWJTZXJ2aWNlcwAABAABHBwDBwECAwcBCAYAARIVEVUEBwESFQMHAQ4FEAEAHgAECgEeAAQHAR4A
+ByAEAQ4ODg5hAQA0U3lzdGVtLldlYi5TZXJ2aWNlcy5Qcm90b2NvbHMuU29hcEh0dHBDbGllbnRQ
+cm90b2NvbBJDcmVhdGVfX0luc3RhbmNlX18TRGlzcG9zZV9fSW5zdGFuY2VfXwAAAAYVEhgBEwAG
+FRIZARMABAoBEwAFIAEBEwAIBwMTABMAEwAEIAEBAgUBAAAAAAQgABJlBiACAQ4SZQYHAhIdEh0E
+BwESIQgBAAIAAAAAAAQAAQEcBAcBEiAEIAASdQQgABJ5BQABARJxBAcBEnEGIAESgIkcAwAADAQA
+AQwMBAABDQ0EIAEBHAQgAQEICAEACAAAAAAAHgEAAQBUAhZXcmFwTm9uRXhjZXB0aW9uVGhyb3dz
+AUcBABouTkVURnJhbWV3b3JrLFZlcnNpb249djQuMAEAVA4URnJhbWV3b3JrRGlzcGxheU5hbWUQ
+Lk5FVCBGcmFtZXdvcmsgNAwBAAcxLjAuMC4wAAApAQAkMjU2MDg3YzctMGQxYy00Nzk3LWI5MWEt
+YTdmZWE1YzhlZmEzAAAFAQABAAAWAQARQ29weXJpZ2h0IEAgIDIwMDgAADcBADJTY3JpcHRUYXNr
+XzFhM2YzZjI2NzBhMTRjYjU5Y2Y1YTBjOGZkOTdkNTMzLnZicHJvagAAAAAAgDsAAAAAAAAAAAAA
+njsAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJA7AAAAAAAAAAAAAAAAAAAAAF9Db3JEbGxNYWlu
+AG1zY29yZWUuZGxsAAAAAAD/JQAgQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB
+ABAAAAAYAACAAAAAAAAAAAAAAAAAAAABAAEAAAAwAACAAAAAAAAAAAAAAAAAAAABAAAAAABIAAAA
+WEAAAOADAAAAAAAAAAAAAOADNAAAAFYAUwBfAFYARQBSAFMASQBPAE4AXwBJAE4ARgBPAAAAAAC9
+BO/+AAABAAAAAQAAAAAAAAABAAAAAAA/AAAAAAAAAAQAAAACAAAAAAAAAAAAAAAAAAAARAAAAAEA
+VgBhAHIARgBpAGwAZQBJAG4AZgBvAAAAAAAkAAQAAABUAHIAYQBuAHMAbABhAHQAaQBvAG4AAAAA
+AAAAsARAAwAAAQBTAHQAcgBpAG4AZwBGAGkAbABlAEkAbgBmAG8AAAAcAwAAAQAwADAAMAAwADAA
+NABiADAAAACQADMAAQBGAGkAbABlAEQAZQBzAGMAcgBpAHAAdABpAG8AbgAAAAAAUwBjAHIAaQBw
+AHQAVABhAHMAawBfADEAYQAzAGYAMwBmADIANgA3ADAAYQAxADQAYwBiADUAOQBjAGYANQBhADAA
+YwA4AGYAZAA5ADcAZAA1ADMAMwAuAHYAYgBwAHIAbwBqAAAAAAAwAAgAAQBGAGkAbABlAFYAZQBy
+AHMAaQBvAG4AAAAAADEALgAwAC4AMAAuADAAAACAADAAAQBJAG4AdABlAHIAbgBhAGwATgBhAG0A
+ZQAAAFMAYwByAGkAcAB0AFQAYQBzAGsAXwAxAGEAMwBmADMAZgAyADYANwAwAGEAMQA0AGMAYgA1
+ADkAYwBmADUAYQAwAGMAOABmAGQAOQA3AGQANQAzADMALgBkAGwAbAAAAEgAEgABAEwAZQBnAGEA
+bABDAG8AcAB5AHIAaQBnAGgAdAAAAEMAbwBwAHkAcgBpAGcAaAB0ACAAQAAgACAAMgAwADAAOAAA
+AIgAMAABAE8AcgBpAGcAaQBuAGEAbABGAGkAbABlAG4AYQBtAGUAAABTAGMAcgBpAHAAdABUAGEA
+cwBrAF8AMQBhADMAZgAzAGYAMgA2ADcAMABhADEANABjAGIANQA5AGMAZgA1AGEAMABjADgAZgBk
+ADkANwBkADUAMwAzAC4AZABsAGwAAACIADMAAQBQAHIAbwBkAHUAYwB0AE4AYQBtAGUAAAAAAFMA
+YwByAGkAcAB0AFQAYQBzAGsAXwAxAGEAMwBmADMAZgAyADYANwAwAGEAMQA0AGMAYgA1ADkAYwBm
+ADUAYQAwAGMAOABmAGQAOQA3AGQANQAzADMALgB2AGIAcAByAG8AagAAAAAANAAIAAEAUAByAG8A
+ZAB1AGMAdABWAGUAcgBzAGkAbwBuAAAAMQAuADAALgAwAC4AMAAAADgACAABAEEAcwBzAGUAbQBi
+AGwAeQAgAFYAZQByAHMAaQBvAG4AAAAxAC4AMAAuADAALgAwAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAAAAwAAACwOwAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
+                </ScriptProject>
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\Inventory Check\Inventory Query Simulator\Insert Warning"
+              DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+              DTS:Description="Execute SQL Task"
+              DTS:DTSID="{D4C82B94-533D-474B-AFB4-2A19F088D372}"
+              DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Insert Warning"
+              DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server v9; © 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+              DTS:ThreadHint="0">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData
+                  SQLTask:Connection="{B9A5400C-A421-44BA-82FA-73222FCEF3F3}"
+                  SQLTask:SqlStatementSource="INSERT INTO InventoryWarning (ProductID, ReorderQuantity)&#xA;SELECT @ProductID, @ReorderQuantity" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="@ProductID"
+                    SQLTask:DtsVariableName="User::ProductID"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="11"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="@ReorderQuantity"
+                    SQLTask:DtsVariableName="User::ReorderQuantity"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="11"
+                    SQLTask:ParameterSize="-1" />
+                </SQLTask:SqlTaskData>
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+          <DTS:PrecedenceConstraints>
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\Inventory Check\Inventory Query Simulator.PrecedenceConstraints[Constraint]"
+              DTS:CreationName=""
+              DTS:DTSID="{A23C0434-DE5D-4E4C-953C-680FC261C9F1}"
+              DTS:From="Package\Inventory Check\Inventory Query Simulator\Generate ProductID"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Constraint"
+              DTS:To="Package\Inventory Check\Inventory Query Simulator\Check Inventory Level" />
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\Inventory Check\Inventory Query Simulator.PrecedenceConstraints[Constraint 1]"
+              DTS:CreationName=""
+              DTS:DTSID="{2292868F-A64A-4CEA-A3C7-F3961BACD08D}"
+              DTS:EvalOp="3"
+              DTS:Expression="@ReorderQuantity &gt; 0"
+              DTS:From="Package\Inventory Check\Inventory Query Simulator\Check Inventory Level"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Constraint 1"
+              DTS:To="Package\Inventory Check\Inventory Query Simulator\Insert Warning" />
+          </DTS:PrecedenceConstraints>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Inventory Check.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{843B5700-3640-41C9-83BF-CC130DBC595B}"
+          DTS:From="Package\Inventory Check\Empty Tables"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Inventory Check\Inventory Query Simulator" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql11">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="144,42"
+          Id="Package\Inventory Check\Empty Tables"
+          TopLeft="25,159.5" />
+        <NodeLayout
+          Size="184,42"
+          Id="Package\Inventory Check\Inventory Query Simulator\Check Inventory Level"
+          TopLeft="5.50000000000003,107.5" />
+        <NodeLayout
+          Size="173,42"
+          Id="Package\Inventory Check\Inventory Query Simulator\Generate ProductID"
+          TopLeft="11,5.5" />
+        <NodeLayout
+          Size="150,42"
+          Id="Package\Inventory Check\Inventory Query Simulator\Insert Warning"
+          TopLeft="22.5,209.5" />
+        <EdgeLayout
+          Id="Package\Inventory Check\Inventory Query Simulator.PrecedenceConstraints[Constraint]"
+          TopLeft="97.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Inventory Check\Inventory Query Simulator.PrecedenceConstraints[Constraint 1]"
+          TopLeft="97.5,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,18.25,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43.924528301886795"
+          IsExpanded="True"
+          PanelSize="195,278"
+          Size="227,322"
+          Id="Package\Inventory Check\Inventory Query Simulator"
+          TopLeft="261.5,12.5" />
+        <EdgeLayout
+          Id="Package\Inventory Check.PrecedenceConstraints[Constraint]"
+          TopLeft="169,177">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="92.5,0"
+              Start="0,0"
+              End="85,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="85,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43.924528301886795"
+          IsExpanded="True"
+          PanelSize="522,390"
+          Size="522,434"
+          Id="Package\Inventory Check"
+          TopLeft="14.5000000000001,191.5" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <DtsEventHandler
+    design-time-name="Package\Inventory Check\Inventory Query Simulator\Check Inventory Level.EventHandlers[OnPreExecute]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="135.773584905661,43.9245283018868"
+          Id="Package\Inventory Check\Inventory Query Simulator\Check Inventory Level.EventHandlers[OnPreExecute]\Record ProductID"
+          TopLeft="5.5,5.5" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+  <DtsEventHandler
+    design-time-name="Package\Inventory Check\Inventory Query Simulator\Check Inventory Level.EventHandlers[OnError]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="135.773584905661,43.9245283018868"
+          Id="Package\Inventory Check\Inventory Query Simulator\Check Inventory Level.EventHandlers[OnError]\Insert Missing ProductID"
+          TopLeft="5.5,5.5" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

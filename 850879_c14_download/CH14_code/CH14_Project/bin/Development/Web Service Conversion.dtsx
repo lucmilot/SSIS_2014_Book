@@ -1,0 +1,757 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/2/2008 9:02:04 AM"
+  DTS:CreationName="SSIS.Package.3"
+  DTS:CreatorComputerName="KATMAI"
+  DTS:CreatorName="KATMAI\Administrator"
+  DTS:DTSID="{12C88E69-CA03-44CB-8885-2317872ECD30}"
+  DTS:ExecutableType="SSIS.Package.3"
+  DTS:LastModifiedProductVersion="11.0.1445.2"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Web Service Conversion"
+  DTS:PackageType="5"
+  DTS:VersionBuild="7"
+  DTS:VersionGUID="{C4309E86-A4CB-44C1-90E9-BF981C8D11DB}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[(local).AdventureWorks]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{D637E477-16EC-4AB2-970E-68C249574297}"
+      DTS:ObjectName="(local).AdventureWorks">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=(local);Initial Catalog=AdventureWorks;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Flat File Connection Manager]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{99C9AD82-AF08-4576-8339-8527EC60D0EC}"
+      DTS:ObjectName="Flat File Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\ProSSIS\data\USD_EUR.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ProductID"
+              DTS:DTSID="{D8CB784E-4F56-470E-AEF1-3C31AF4129C7}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="6"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ListPrice"
+              DTS:DTSID="{B8F75DB8-487C-4F03-9B03-283AC6595024}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:DataType="14"
+              DTS:DataScale="2"
+              DTS:TextQualified="True"
+              DTS:ObjectName="EuroListPrice"
+              DTS:DTSID="{06CE557F-E2D1-45E5-B5C4-D94606EA47D2}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[HTTP Connection Manager]"
+      DTS:CreationName="HTTP"
+      DTS:DTSID="{5E399BEC-6AB5-4118-88C0-A8D6D6AF8B6B}"
+      DTS:ObjectName="HTTP Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="http://www.webservicex.net/CurrencyConvertor.asmx?wsdl">
+          <DTS:HttpConnection
+            DTS:ServerURL="http://www.webservicex.net/CurrencyConvertor.asmx?wsdl">
+            <DTS:Property
+              DTS:Name="ServerPassword"
+              Sensitive="1"
+              Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA+K8oX1aLAk2eTEYD4qFb9QAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAABwdbtrvM4DZClAX0BZERmt59SISrqEretiBX4TVDau5gAAAAAOgAAAAAIAACAAAADmtZEwssIsx51Exlrm+EXZ5eajf6Nlo/Il0tSnzUTQpRAAAAAQ9VPE34nKzqJanVAXD+BEQAAAAKUnSRYuwx7q8PewZLqTF/z5eyE+qkcTUuS5kx4V6s6NtQryo8CN0pTPGa/Km/iEWVYpSPISDRpHI1c3TOOxj1o</DTS:Property>
+            <DTS:Property
+              DTS:Name="ProxyPassword"
+              Sensitive="1"
+              Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA+K8oX1aLAk2eTEYD4qFb9QAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAAkgyToparaJLpe1PMdLhOB7hxhK5PRtZEnYXP7nYWtUgAAAAAOgAAAAAIAACAAAAD0h5C858dvRYM6HZ1G4gDCntJyGU5oXFs0yLa31shBqBAAAABwCW80CoZ/oaQIj+FqZ+CEQAAAAJ98qNUi3nSh2iUA/U87rjaAfsTaLzDaICFm74ToMc+fVcV6dWXMGgVeoMbkXk/oAHnCQCm60dGgA7HE8sh0pZo</DTS:Property>
+          </DTS:HttpConnection>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{226593BC-2615-49B5-B892-2577E27A2297}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Answer">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{D7D9C160-5D40-40A7-BDD9-22E749CA0474}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="ConversionRate">
+      <DTS:VariableValue
+        DTS:DataType="5">0.</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{FEEE7D05-35F3-4436-91C0-DF739B07348A}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="XMLAnswer">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task 1"
+      DTS:CreationName="SSIS.Pipeline.3"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{5ee2c422-f1bf-4c3b-82d1-14435431209d}"
+      DTS:ExecutableType="SSIS.Pipeline.3"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task 1"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v9; (C) 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          BLOBTempStoragePath=""
+          bufferTempStoragePath=""
+          engineThreads="5"
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task 1\Derived Column"
+              componentClassID="{49928E82-9C4E-49F0-AABE-3812B82707EC}"
+              contactInfo="Derived Column;Microsoft Corporation;Microsoft SqlServer v9; (C) 2005 Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Updates column values using expressions"
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task 1\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Derived Column.Inputs[Derived Column Input].Columns[ListPrice]"
+                      cachedDataType="cy"
+                      cachedName="ListPrice"
+                      lineageId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[ListPrice]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Data Flow Task 1\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Derived Column.Outputs[Derived Column Output].Columns[EuroListPrice]"
+                      dataType="decimal"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task 1\Derived Column.Outputs[Derived Column Output].Columns[EuroListPrice]"
+                      name="EuroListPrice"
+                      scale="2"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[ListPrice]} * @[User::ConversionRate]</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ListPrice * @[User::ConversionRate]</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task 1\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Data Flow Task 1\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task 1\Flat File Destination"
+              componentClassID="{8DA75FED-1B7C-407D-B2AD-2B24209CCCA4}"
+              contactInfo="Flat File Destination;Microsoft Corporation;Microsoft SqlServer v9; (C) 2005 Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Flat File Destination"
+              localeId="1033"
+              name="Flat File Destination">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether the data will overwrite or append to the destination file."
+                  name="Overwrite">true</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the text to write to the destination file before any data is written."
+                  expressionType="Notify"
+                  name="Header" />
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Flat File Destination.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Flat File Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Flat File Connection Manager]"
+                  name="FlatFileConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task 1\Flat File Destination.Inputs[Flat File Destination Input]"
+                  hasSideEffects="true"
+                  name="Flat File Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Flat File Destination.Inputs[Flat File Destination Input].Columns[ProductID]"
+                      cachedDataType="i4"
+                      cachedName="ProductID"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[ProductID]"
+                      lineageId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[ProductID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Flat File Destination.Inputs[Flat File Destination Input].Columns[ListPrice]"
+                      cachedDataType="cy"
+                      cachedName="ListPrice"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[ListPrice]"
+                      lineageId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[ListPrice]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Flat File Destination.Inputs[Flat File Destination Input].Columns[EuroListPrice]"
+                      cachedDataType="decimal"
+                      cachedName="EuroListPrice"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[EuroListPrice]"
+                      lineageId="Package\Data Flow Task 1\Derived Column.Outputs[Derived Column Output].Columns[EuroListPrice]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[ProductID]"
+                      dataType="i4"
+                      name="ProductID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[ListPrice]"
+                      dataType="cy"
+                      name="ListPrice" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[EuroListPrice]"
+                      dataType="decimal"
+                      name="EuroListPrice"
+                      scale="2" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task 1\OLE DB Source"
+              componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}"
+              contactInfo="OLE DB Source;Microsoft Corporation;Microsoft SqlServer v9; (C) 2005 Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT ProductID, ListPrice
+FROM Production.Product
+WHERE ListPrice &gt; 0</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[(local).AdventureWorks]"
+                  connectionManagerRefId="Package.ConnectionManagers[(local).AdventureWorks]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[ProductID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ProductID]"
+                      lineageId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[ProductID]"
+                      name="ProductID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[ListPrice]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ListPrice]"
+                      lineageId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[ListPrice]"
+                      name="ListPrice"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ProductID]"
+                      dataType="i4"
+                      name="ProductID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ListPrice]"
+                      dataType="cy"
+                      name="ListPrice" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ProductID]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ProductID]"
+                      name="ProductID" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ListPrice]"
+                      dataType="cy"
+                      lineageId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ListPrice]"
+                      name="ListPrice" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task 1.Paths[Derived Column Output]"
+              endId="Package\Data Flow Task 1\Flat File Destination.Inputs[Flat File Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Data Flow Task 1\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Data Flow Task 1.Paths[OLE DB Source Output]"
+              endId="Package\Data Flow Task 1\Derived Column.Inputs[Derived Column Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Script Task"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ScriptTask.ScriptTask, Microsoft.SqlServer.ScriptTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="Script Task"
+      DTS:DTSID="{a9a58be0-a9c8-4619-972c-0e7d3fccb1be}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ScriptTask.ScriptTask, Microsoft.SqlServer.ScriptTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Script Task"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ScriptProject
+          Name="ST_517ca829d8634267842e6aa6ad9b2d68"
+          VSTAMajorVersion="3"
+          VSTAMinorVersion="0"
+          Language="VisualBasic" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Web Service Task"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.WebServiceTask.WebServiceTask, Microsoft.SqlServer.WebServiceTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="Web Service Task"
+      DTS:DTSID="{C826C04D-0E87-468C-A618-1FED2DFA0F15}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.WebServiceTask.WebServiceTask, Microsoft.SqlServer.WebServiceTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Web Service Task"
+      DTS:TaskContact="Web Service Task; Microsoft Corporation; Microsoft SQL Server 2008; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <WSTask:WebServiceTaskData
+          WSTask:ConnectionName="{5E399BEC-6AB5-4118-88C0-A8D6D6AF8B6B}"
+          WSTask:Service="CurrencyConvertor"
+          WSTask:WSDLFile="c:\ProSSIS\data\CurrencyConversion.wsdl "
+          WSTask:OverwriteWSDLFile="True"
+          WSTask:OutputType="Variable"
+          WSTask:OutputLocation="User::Answer" xmlns:WSTask="www.microsoft.com/sqlserver/dts/tasks/webservicetask">
+          <WSTask:MethodInfo
+            WSTask:MethodName="ConversionRate"
+            WSTask:MessageName="">
+            <WSTask:Documentation>&amp;lt;br&amp;gt;&amp;lt;b&amp;gt;Get conversion rate from one currency to another currency &amp;lt;b&amp;gt;&amp;lt;br&amp;gt;&amp;lt;p&amp;gt;&amp;lt;b&amp;gt;&amp;lt;font color='#000080' size='1' face='Verdana'&amp;gt;&amp;lt;u&amp;gt;Differenct currency Code and Names around the world&amp;lt;/u&amp;gt;&amp;lt;/font&amp;gt;&amp;lt;/b&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;blockquote&amp;gt;&amp;lt;p&amp;gt;&amp;lt;font face='Verdana' size='1'&amp;gt;AFA-Afghanistan Afghani&amp;lt;br&amp;gt;ALL-Albanian Lek&amp;lt;br&amp;gt;DZD-Algerian Dinar&amp;lt;br&amp;gt;ARS-Argentine Peso&amp;lt;br&amp;gt;AWG-Aruba Florin&amp;lt;br&amp;gt;AUD-Australian Dollar&amp;lt;br&amp;gt;BSD-Bahamian Dollar&amp;lt;br&amp;gt;BHD-Bahraini Dinar&amp;lt;br&amp;gt;BDT-Bangladesh Taka&amp;lt;br&amp;gt;BBD-Barbados Dollar&amp;lt;br&amp;gt;BZD-Belize Dollar&amp;lt;br&amp;gt;BMD-Bermuda Dollar&amp;lt;br&amp;gt;BTN-Bhutan Ngultrum&amp;lt;br&amp;gt;BOB-Bolivian Boliviano&amp;lt;br&amp;gt;BWP-Botswana Pula&amp;lt;br&amp;gt;BRL-Brazilian Real&amp;lt;br&amp;gt;GBP-British Pound&amp;lt;br&amp;gt;BND-Brunei Dollar&amp;lt;br&amp;gt;BIF-Burundi Franc&amp;lt;br&amp;gt;XOF-CFA Franc (BCEAO)&amp;lt;br&amp;gt;XAF-CFA Franc (BEAC)&amp;lt;br&amp;gt;KHR-Cambodia Riel&amp;lt;br&amp;gt;CAD-Canadian Dollar&amp;lt;br&amp;gt;CVE-Cape Verde Escudo&amp;lt;br&amp;gt;KYD-Cayman Islands Dollar&amp;lt;br&amp;gt;CLP-Chilean Peso&amp;lt;br&amp;gt;CNY-Chinese Yuan&amp;lt;br&amp;gt;COP-Colombian Peso&amp;lt;br&amp;gt;KMF-Comoros Franc&amp;lt;br&amp;gt;CRC-Costa Rica Colon&amp;lt;br&amp;gt;HRK-Croatian Kuna&amp;lt;br&amp;gt;CUP-Cuban Peso&amp;lt;br&amp;gt;CYP-Cyprus Pound&amp;lt;br&amp;gt;CZK-Czech Koruna&amp;lt;br&amp;gt;DKK-Danish Krone&amp;lt;br&amp;gt;DJF-Dijibouti Franc&amp;lt;br&amp;gt;DOP-Dominican Peso&amp;lt;br&amp;gt;XCD-East Caribbean Dollar&amp;lt;br&amp;gt;EGP-Egyptian Pound&amp;lt;br&amp;gt;SVC-El Salvador Colon&amp;lt;br&amp;gt;EEK-Estonian Kroon&amp;lt;br&amp;gt;ETB-Ethiopian Birr&amp;lt;br&amp;gt;EUR-Euro&amp;lt;br&amp;gt;FKP-Falkland Islands Pound&amp;lt;br&amp;gt;GMD-Gambian Dalasi&amp;lt;br&amp;gt;GHC-Ghanian Cedi&amp;lt;br&amp;gt;GIP-Gibraltar Pound&amp;lt;br&amp;gt;XAU-Gold Ounces&amp;lt;br&amp;gt;GTQ-Guatemala Quetzal&amp;lt;br&amp;gt;GNF-Guinea Franc&amp;lt;br&amp;gt;GYD-Guyana Dollar&amp;lt;br&amp;gt;HTG-Haiti Gourde&amp;lt;br&amp;gt;HNL-Honduras Lempira&amp;lt;br&amp;gt;HKD-Hong Kong Dollar&amp;lt;br&amp;gt;HUF-Hungarian Forint&amp;lt;br&amp;gt;ISK-Iceland Krona&amp;lt;br&amp;gt;INR-Indian Rupee&amp;lt;br&amp;gt;IDR-Indonesian Rupiah&amp;lt;br&amp;gt;IQD-Iraqi Dinar&amp;lt;br&amp;gt;ILS-Israeli Shekel&amp;lt;br&amp;gt;JMD-Jamaican Dollar&amp;lt;br&amp;gt;JPY-Japanese Yen&amp;lt;br&amp;gt;JOD-Jordanian Dinar&amp;lt;br&amp;gt;KZT-Kazakhstan Tenge&amp;lt;br&amp;gt;KES-Kenyan Shilling&amp;lt;br&amp;gt;KRW-Korean Won&amp;lt;br&amp;gt;KWD-Kuwaiti Dinar&amp;lt;br&amp;gt;LAK-Lao Kip&amp;lt;br&amp;gt;LVL-Latvian Lat&amp;lt;br&amp;gt;LBP-Lebanese Pound&amp;lt;br&amp;gt;LSL-Lesotho Loti&amp;lt;br&amp;gt;LRD-Liberian Dollar&amp;lt;br&amp;gt;LYD-Libyan Dinar&amp;lt;br&amp;gt;LTL-Lithuanian Lita&amp;lt;br&amp;gt;MOP-Macau Pataca&amp;lt;br&amp;gt;MKD-Macedonian Denar&amp;lt;br&amp;gt;MGF-Malagasy Franc&amp;lt;br&amp;gt;MWK-Malawi Kwacha&amp;lt;br&amp;gt;MYR-Malaysian Ringgit&amp;lt;br&amp;gt;MVR-Maldives Rufiyaa&amp;lt;br&amp;gt;MTL-Maltese Lira&amp;lt;br&amp;gt;MRO-Mauritania Ougulya&amp;lt;br&amp;gt;MUR-Mauritius Rupee&amp;lt;br&amp;gt;MXN-Mexican Peso&amp;lt;br&amp;gt;MDL-Moldovan Leu&amp;lt;br&amp;gt;MNT-Mongolian Tugrik&amp;lt;br&amp;gt;MAD-Moroccan Dirham&amp;lt;br&amp;gt;MZM-Mozambique Metical&amp;lt;br&amp;gt;MMK-Myanmar Kyat&amp;lt;br&amp;gt;NAD-Namibian Dollar&amp;lt;br&amp;gt;NPR-Nepalese Rupee&amp;lt;br&amp;gt;ANG-Neth Antilles Guilder&amp;lt;br&amp;gt;NZD-New Zealand Dollar&amp;lt;br&amp;gt;NIO-Nicaragua Cordoba&amp;lt;br&amp;gt;NGN-Nigerian Naira&amp;lt;br&amp;gt;KPW-North Korean Won&amp;lt;br&amp;gt;NOK-Norwegian Krone&amp;lt;br&amp;gt;OMR-Omani Rial&amp;lt;br&amp;gt;XPF-Pacific Franc&amp;lt;br&amp;gt;PKR-Pakistani Rupee&amp;lt;br&amp;gt;XPD-Palladium Ounces&amp;lt;br&amp;gt;PAB-Panama Balboa&amp;lt;br&amp;gt;PGK-Papua New Guinea Kina&amp;lt;br&amp;gt;PYG-Paraguayan Guarani&amp;lt;br&amp;gt;PEN-Peruvian Nuevo Sol&amp;lt;br&amp;gt;PHP-Philippine Peso&amp;lt;br&amp;gt;XPT-Platinum Ounces&amp;lt;br&amp;gt;PLN-Polish Zloty&amp;lt;br&amp;gt;QAR-Qatar Rial&amp;lt;br&amp;gt;ROL-Romanian Leu&amp;lt;br&amp;gt;RUB-Russian Rouble&amp;lt;br&amp;gt;WST-Samoa Tala&amp;lt;br&amp;gt;STD-Sao Tome Dobra&amp;lt;br&amp;gt;SAR-Saudi Arabian Riyal&amp;lt;br&amp;gt;SCR-Seychelles Rupee&amp;lt;br&amp;gt;SLL-Sierra Leone Leone&amp;lt;br&amp;gt;XAG-Silver Ounces&amp;lt;br&amp;gt;SGD-Singapore Dollar&amp;lt;br&amp;gt;SKK-Slovak Koruna&amp;lt;br&amp;gt;SIT-Slovenian Tolar&amp;lt;br&amp;gt;SBD-Solomon Islands Dollar&amp;lt;br&amp;gt;SOS-Somali Shilling&amp;lt;br&amp;gt;ZAR-South African Rand&amp;lt;br&amp;gt;LKR-Sri Lanka Rupee&amp;lt;br&amp;gt;SHP-St Helena Pound&amp;lt;br&amp;gt;SDD-Sudanese Dinar&amp;lt;br&amp;gt;SRG-Surinam Guilder&amp;lt;br&amp;gt;SZL-Swaziland Lilageni&amp;lt;br&amp;gt;SEK-Swedish Krona&amp;lt;br&amp;gt;TRY-Turkey Lira&amp;lt;br&amp;gt;CHF-Swiss Franc&amp;lt;br&amp;gt;SYP-Syrian Pound&amp;lt;br&amp;gt;TWD-Taiwan Dollar&amp;lt;br&amp;gt;TZS-Tanzanian Shilling&amp;lt;br&amp;gt;THB-Thai Baht&amp;lt;br&amp;gt;TOP-Tonga Pa'anga&amp;lt;br&amp;gt;TTD-Trinidad&amp;amp;amp;amp;Tobago Dollar&amp;lt;br&amp;gt;TND-Tunisian Dinar&amp;lt;br&amp;gt;TRL-Turkish Lira&amp;lt;br&amp;gt;USD-U.S. Dollar&amp;lt;br&amp;gt;AED-UAE Dirham&amp;lt;br&amp;gt;UGX-Ugandan Shilling&amp;lt;br&amp;gt;UAH-Ukraine Hryvnia&amp;lt;br&amp;gt;UYU-Uruguayan New Peso&amp;lt;br&amp;gt;VUV-Vanuatu Vatu&amp;lt;br&amp;gt;VEB-Venezuelan Bolivar&amp;lt;br&amp;gt;VND-Vietnam Dong&amp;lt;br&amp;gt;YER-Yemen Riyal&amp;lt;br&amp;gt;YUM-Yugoslav Dinar&amp;lt;br&amp;gt;ZMK-Zambian Kwacha&amp;lt;br&amp;gt;ZWD-Zimbabwe Dollar&amp;lt;/font&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;/blockquote&amp;gt;</WSTask:Documentation>
+            <WSTask:ParamInfo
+              WSTask:Name="FromCurrency"
+              WSTask:Datatype="Currency"
+              WSTask:ParamType="Enum"
+              WSTask:SeqNumber="0">
+              <WSTask:EnumValue
+                WSTask:PossibleValues="AFA;ALL;DZD;ARS;AWG;AUD;BSD;BHD;BDT;BBD;BZD;BMD;BTN;BOB;BWP;BRL;GBP;BND;BIF;XOF;XAF;KHR;CAD;CVE;KYD;CLP;CNY;COP;KMF;CRC;HRK;CUP;CYP;CZK;DKK;DJF;DOP;XCD;EGP;SVC;EEK;ETB;EUR;FKP;GMD;GHC;GIP;XAU;GTQ;GNF;GYD;HTG;HNL;HKD;HUF;ISK;INR;IDR;IQD;ILS;JMD;JPY;JOD;KZT;KES;KRW;KWD;LAK;LVL;LBP;LSL;LRD;LYD;LTL;MOP;MKD;MGF;MWK;MYR;MVR;MTL;MRO;MUR;MXN;MDL;MNT;MAD;MZM;MMK;NAD;NPR;ANG;NZD;NIO;NGN;KPW;NOK;OMR;XPF;PKR;XPD;PAB;PGK;PYG;PEN;PHP;XPT;PLN;QAR;ROL;RUB;WST;STD;SAR;SCR;SLL;XAG;SGD;SKK;SIT;SBD;SOS;ZAR;LKR;SHP;SDD;SRG;SZL;SEK;CHF;SYP;TWD;TZS;THB;TOP;TTD;TND;TRL;USD;AED;UGX;UAH;UYU;VUV;VEB;VND;YER;YUM;ZMK;ZWD;TRY">USD</WSTask:EnumValue>
+            </WSTask:ParamInfo>
+            <WSTask:ParamInfo
+              WSTask:Name="ToCurrency"
+              WSTask:Datatype="Currency"
+              WSTask:ParamType="Enum"
+              WSTask:SeqNumber="1">
+              <WSTask:EnumValue
+                WSTask:PossibleValues="AFA;ALL;DZD;ARS;AWG;AUD;BSD;BHD;BDT;BBD;BZD;BMD;BTN;BOB;BWP;BRL;GBP;BND;BIF;XOF;XAF;KHR;CAD;CVE;KYD;CLP;CNY;COP;KMF;CRC;HRK;CUP;CYP;CZK;DKK;DJF;DOP;XCD;EGP;SVC;EEK;ETB;EUR;FKP;GMD;GHC;GIP;XAU;GTQ;GNF;GYD;HTG;HNL;HKD;HUF;ISK;INR;IDR;IQD;ILS;JMD;JPY;JOD;KZT;KES;KRW;KWD;LAK;LVL;LBP;LSL;LRD;LYD;LTL;MOP;MKD;MGF;MWK;MYR;MVR;MTL;MRO;MUR;MXN;MDL;MNT;MAD;MZM;MMK;NAD;NPR;ANG;NZD;NIO;NGN;KPW;NOK;OMR;XPF;PKR;XPD;PAB;PGK;PYG;PEN;PHP;XPT;PLN;QAR;ROL;RUB;WST;STD;SAR;SCR;SLL;XAG;SGD;SKK;SIT;SBD;SOS;ZAR;LKR;SHP;SDD;SRG;SZL;SEK;CHF;SYP;TWD;TZS;THB;TOP;TTD;TND;TRL;USD;AED;UGX;UAH;UYU;VUV;VEB;VND;YER;YUM;ZMK;ZWD;TRY">EUR</WSTask:EnumValue>
+            </WSTask:ParamInfo>
+          </WSTask:MethodInfo>
+        </WSTask:WebServiceTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\XML Task"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.XMLTask.XMLTask, Microsoft.SqlServer.XMLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="XML Task"
+      DTS:DTSID="{BBB35005-A6B6-4F26-A464-B610981D4350}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.XMLTask.XMLTask, Microsoft.SqlServer.XMLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="XML Task"
+      DTS:TaskContact="XML Task; Microsoft Corporation; Microsoft SQL Server 2008; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <XMLTaskData
+          OperationType="XPATH"
+          SourceType="Variable"
+          Source="User::XMLAnswer"
+          SecondOperand="/"
+          SaveOperationResult="True"
+          DestinationType="Variable"
+          Destination="User::Answer"
+          OverwriteDestination="True"
+          XPathOperation="Values" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{153569CA-297F-428B-8F23-1CB369C45CC9}"
+      DTS:From="Package\Web Service Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\XML Task" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{C517197E-3DC3-4DA9-A048-A70C970891B4}"
+      DTS:From="Package\XML Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Script Task" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{654333EF-75D4-4ECA-A992-D4F00E3ADFF5}"
+      DTS:From="Package\Script Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Data Flow Task 1" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql11">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="136,44"
+          Id="Package\Data Flow Task 1"
+          TopLeft="267.462264150943,316.198113207547" />
+        <NodeLayout
+          Size="136,44"
+          Id="Package\Script Task"
+          TopLeft="224.971698113208,235.330188679245" />
+        <NodeLayout
+          Size="136,44"
+          Id="Package\Web Service Task"
+          TopLeft="83.5,60.5" />
+        <NodeLayout
+          Size="136,44"
+          Id="Package\XML Task"
+          TopLeft="154.405660377359,144.349056603774" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="151.38679245283,104.424528301887">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="70.9056603773585,39.9245283018868"
+              Start="0,0"
+              End="70.9056603773585,32.4245283018868">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.9622641509434" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15.9622641509434"
+                    Point2="0,19.9622641509434"
+                    Point3="4,19.9622641509434" />
+                  <mssgle:LineSegment
+                    End="66.9056603773585,19.9622641509434" />
+                  <mssgle:CubicBezierSegment
+                    Point1="66.9056603773585,19.9622641509434"
+                    Point2="70.9056603773585,19.9622641509434"
+                    Point3="70.9056603773585,23.9622641509434" />
+                  <mssgle:LineSegment
+                    End="70.9056603773585,32.4245283018868" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="222.292452830189,188.27358490566">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="70.5660377358491,47.0566037735849"
+              Start="0,0"
+              End="70.5660377358491,39.5566037735849">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.5094339622641" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19.5094339622641"
+                    Point2="0,23.5094339622641"
+                    Point3="4,23.5094339622641" />
+                  <mssgle:LineSegment
+                    End="66.5660377358491,23.5094339622641" />
+                  <mssgle:CubicBezierSegment
+                    Point1="66.5660377358491,23.5094339622641"
+                    Point2="70.5660377358491,23.5094339622641"
+                    Point3="70.5660377358491,27.5094339622641" />
+                  <mssgle:LineSegment
+                    End="70.5660377358491,39.5566037735849" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="292.858490566038,279.254716981132">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="42.4905660377358,36.9433962264151"
+              Start="0,0"
+              End="42.4905660377358,29.4433962264151">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14.4528301886792" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.4528301886792"
+                    Point2="0,18.4528301886792"
+                    Point3="4,18.4528301886792" />
+                  <mssgle:LineSegment
+                    End="38.4905660377358,18.4528301886792" />
+                  <mssgle:CubicBezierSegment
+                    Point1="38.4905660377358,18.4528301886792"
+                    Point2="42.4905660377358,18.4528301886792"
+                    Point3="42.4905660377358,22.4528301886792" />
+                  <mssgle:LineSegment
+                    End="42.4905660377358,29.4433962264151" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task 1">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="136,44"
+          Id="Package\Data Flow Task 1\Flat File Destination"
+          TopLeft="57.4245283018868,209.160377358491" />
+        <NodeLayout
+          Size="136,44"
+          Id="Package\Data Flow Task 1\OLE DB Source"
+          TopLeft="5.5,5.5" />
+        <NodeLayout
+          Size="136,44"
+          Id="Package\Data Flow Task 1\Derived Column"
+          TopLeft="30.4811320754717,105.349056603774" />
+        <EdgeLayout
+          Id="Package\Data Flow Task 1.Paths[OLE DB Source Output]"
+          TopLeft="73.3867924528302,49.4245283018868">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="24.9811320754717,55.9245283018868"
+              Start="0,0"
+              End="24.9811320754717,48.4245283018868">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.9622641509434" />
+                  <mssgle:LineSegment
+                    End="24.9811320754717,27.9622641509434" />
+                  <mssgle:LineSegment
+                    End="24.9811320754717,48.4245283018868" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task 1.Paths[Derived Column Output]"
+          TopLeft="98.3679245283019,149.27358490566">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="26.9433962264151,59.8867924528302"
+              Start="0,0"
+              End="26.9433962264151,52.3867924528302">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.9622641509434" />
+                  <mssgle:LineSegment
+                    End="26.9433962264151,29.9622641509434" />
+                  <mssgle:LineSegment
+                    End="26.9433962264151,52.3867924528302" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

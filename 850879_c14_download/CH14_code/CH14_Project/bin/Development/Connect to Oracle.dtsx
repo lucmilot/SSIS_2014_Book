@@ -1,0 +1,45 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/2/2008 8:42:08 AM"
+  DTS:CreationName="SSIS.Package.3"
+  DTS:CreatorComputerName="KATMAI"
+  DTS:CreatorName="KATMAI\Administrator"
+  DTS:DTSID="{05BA795F-1363-4CDF-93F5-D1F3B7C4B103}"
+  DTS:ExecutableType="SSIS.Package.3"
+  DTS:LastModifiedProductVersion="11.0.1445.2"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Connect to Oracle"
+  DTS:PackageType="5"
+  DTS:VersionBuild="2"
+  DTS:VersionGUID="{E1E548D8-3166-43BA-BEA3-4D1764A1A9AE}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[ORA_Server.scott]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{9D80D4A4-02E8-45C4-B7DD-8404B9843635}"
+      DTS:ObjectName="ORA_Server.scott">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=ORA_Server;User ID=scott;Provider=MSDAORA.1;Persist Security Info=True;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA+K8oX1aLAk2eTEYD4qFb9QAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACl3Kg/RxoTAY3VDNI6qMgIWTxRN/tEJJeVmlBN7NK9ngAAAAAOgAAAAAIAACAAAAAiZ7bIpA/1OO87C4q7geLyogXWFhdLbvZNY2GVXtzEIxAAAAD0yh4xkZ6JH0rhIR8pyZX3QAAAAEY0U8oodnyBSv+Ng+DxcO4K4Q03JPVIxtqnav07We6o3BBiLdYWtd2qmaqf7QFd3+PJqS2mWpt3n93/CJ9Huic</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables />
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql11">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

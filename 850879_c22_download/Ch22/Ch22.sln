@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "Ch22", "Ch22\Ch22.dtproj", "{00EBFB20-BA28-4FDE-8702-2E89D6265164}"
+EndProject
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "PackageDeploymentModel", "PackageDeploymentModel\PackageDeploymentModel.dtproj", "{434A2518-263D-4A04-9AA1-BED699D2F277}"
+EndProject
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "EnvironmentDemo", "EnvironmentDemo\EnvironmentDemo.dtproj", "{3F81A9EF-8573-484C-BFAC-996D10ECCA5B}"
+EndProject
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "DataTapDemo", "DataTapDemo\DataTapDemo.dtproj", "{65378FE2-8CED-4AE7-ABEC-A7572D573888}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{00EBFB20-BA28-4FDE-8702-2E89D6265164}.Development|Default.ActiveCfg = Development
+		{00EBFB20-BA28-4FDE-8702-2E89D6265164}.Development|Default.Build.0 = Development
+		{434A2518-263D-4A04-9AA1-BED699D2F277}.Development|Default.ActiveCfg = Development
+		{434A2518-263D-4A04-9AA1-BED699D2F277}.Development|Default.Build.0 = Development
+		{3F81A9EF-8573-484C-BFAC-996D10ECCA5B}.Development|Default.ActiveCfg = Development
+		{3F81A9EF-8573-484C-BFAC-996D10ECCA5B}.Development|Default.Build.0 = Development
+		{65378FE2-8CED-4AE7-ABEC-A7572D573888}.Development|Default.ActiveCfg = Development
+		{65378FE2-8CED-4AE7-ABEC-A7572D573888}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

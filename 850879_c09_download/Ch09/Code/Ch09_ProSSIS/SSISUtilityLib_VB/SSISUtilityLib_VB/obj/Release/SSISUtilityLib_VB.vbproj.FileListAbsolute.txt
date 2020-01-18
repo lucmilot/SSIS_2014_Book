@@ -1,0 +1,10 @@
+C:\Users\MVP\Desktop\Shared\SSISUtilityLib_VB\SSISUtilityLib_VB\bin\Release\SSISUtilityLib_VB.dll
+C:\Users\MVP\Desktop\Shared\SSISUtilityLib_VB\SSISUtilityLib_VB\bin\Release\SSISUtilityLib_VB.pdb
+C:\Users\MVP\Desktop\Shared\SSISUtilityLib_VB\SSISUtilityLib_VB\bin\Release\SSISUtilityLib_VB.xml
+C:\Users\MVP\Desktop\Shared\SSISUtilityLib_VB\SSISUtilityLib_VB\obj\Release\ResolveAssemblyReference.cache
+C:\Users\MVP\Desktop\Shared\SSISUtilityLib_VB\SSISUtilityLib_VB\obj\Release\SSISUtilityLib_VB.Resources.resources
+C:\Users\MVP\Desktop\Shared\SSISUtilityLib_VB\SSISUtilityLib_VB\obj\Release\GenerateResource.read.1.tlog
+C:\Users\MVP\Desktop\Shared\SSISUtilityLib_VB\SSISUtilityLib_VB\obj\Release\GenerateResource.write.1.tlog
+C:\Users\MVP\Desktop\Shared\SSISUtilityLib_VB\SSISUtilityLib_VB\obj\Release\SSISUtilityLib_VB.dll
+C:\Users\MVP\Desktop\Shared\SSISUtilityLib_VB\SSISUtilityLib_VB\obj\Release\SSISUtilityLib_VB.xml
+C:\Users\MVP\Desktop\Shared\SSISUtilityLib_VB\SSISUtilityLib_VB\obj\Release\SSISUtilityLib_VB.pdb

@@ -1,0 +1,47 @@
+CREATE TABLE [ZipCode] (
+[StateFIPCode] smallint,
+[ZipCode] char(5),
+[StateAbbr] char(2),
+[City] varchar(16),
+[Longitude] real,
+[Latitude] real,
+[Population] int,
+[AllocationPercentage] real
+          )
+
+
+
+
+TRUNCATE TABLE ZipCode 
+
+
+CREATE TABLE MarketingCorporation(
+CorporateNumber varchar(12),
+CorporationName varchar(48),
+FilingStatus char(1),
+FilingType char(4),
+AddressLine1 varchar(150),
+AddressLine2 varchar(50),
+City varchar(28),
+State char(2),
+ZipCode varchar(10),
+Country char(2),
+FilingDate varchar(10) NULL
+)
+
+
+CREATE TABLE [ErrorQueue] (
+[CorporateNumber] varchar(50),
+[CorporationName] varchar(50),
+[CorporateStatus] varchar(50),
+[FilingType] varchar(50),
+[AddressLine1] varchar(150),
+[AddressLine2] varchar(150),
+[City] varchar(50),
+[StateAbbr] varchar(50),
+[ZipCode] varchar(50),
+[Country] varchar(50),
+[FilingDate] varchar(50),
+[TaskName] nvarchar(19),
+[PackageName] nvarchar(15)
+)

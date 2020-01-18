@@ -1,0 +1,17 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "WMI_EventWatcher", "WMI_EventWatcher\WMI_EventWatcher.dtproj", "{6471822E-6A12-4ECA-93AF-B80D0F902AEC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6471822E-6A12-4ECA-93AF-B80D0F902AEC}.Development|Default.ActiveCfg = Development
+		{6471822E-6A12-4ECA-93AF-B80D0F902AEC}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

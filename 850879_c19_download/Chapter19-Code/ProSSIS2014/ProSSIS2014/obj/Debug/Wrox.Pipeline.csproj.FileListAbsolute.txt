@@ -1,0 +1,14 @@
+C:\Users\DenaliDemo\Documents\Visual Studio 2010\Projects\ProSSIS2011\ProSSIS2011\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\DenaliDemo\Documents\Visual Studio 2010\Projects\ProSSIS2011\ProSSIS2011\bin\Debug\Wrox.Pipeline.dll
+C:\Users\DenaliDemo\Documents\Visual Studio 2010\Projects\ProSSIS2011\ProSSIS2011\bin\Debug\Wrox.Pipeline.pdb
+C:\Users\DenaliDemo\Documents\Visual Studio 2010\Projects\ProSSIS2011\ProSSIS2011\obj\Debug\Wrox.Pipeline.dll
+C:\Users\DenaliDemo\Documents\Visual Studio 2010\Projects\ProSSIS2011\ProSSIS2011\obj\Debug\Wrox.Pipeline.pdb
+C:\Users\DenaliDemo\Documents\Visual Studio 2010\Projects\ProSSIS2012\ProSSIS2012\bin\Debug\Wrox.Pipeline.dll
+C:\Users\DenaliDemo\Documents\Visual Studio 2010\Projects\ProSSIS2012\ProSSIS2012\bin\Debug\Wrox.Pipeline.pdb
+C:\Users\DenaliDemo\Documents\Visual Studio 2010\Projects\ProSSIS2012\ProSSIS2012\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\DenaliDemo\Documents\Visual Studio 2010\Projects\ProSSIS2012\ProSSIS2012\obj\Debug\Wrox.Pipeline.dll
+C:\Users\DenaliDemo\Documents\Visual Studio 2010\Projects\ProSSIS2012\ProSSIS2012\obj\Debug\Wrox.Pipeline.pdb
+C:\Users\Chris\Downloads\101124_ch18_download\ProSSIS2014\ProSSIS2014\bin\Debug\Wrox.Pipeline.dll
+C:\Users\Chris\Downloads\101124_ch18_download\ProSSIS2014\ProSSIS2014\bin\Debug\Wrox.Pipeline.pdb
+C:\Users\Chris\Downloads\101124_ch18_download\ProSSIS2014\ProSSIS2014\obj\Debug\Wrox.Pipeline.dll
+C:\Users\Chris\Downloads\101124_ch18_download\ProSSIS2014\ProSSIS2014\obj\Debug\Wrox.Pipeline.pdb

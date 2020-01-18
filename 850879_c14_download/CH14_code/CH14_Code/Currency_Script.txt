@@ -1,0 +1,7 @@
+Public Sub Main()
+Dim strConversion As String
+strConversion = Dts.Variables("User::Answer").Value.ToString
+strConversion = strConversion.Remove(strConversion.Length -1,1)
+Dts.Variables("User::ConversionRate").Value = CType(strConversion,Double)
+Dts.TaskResult = Dts.Results.Success
+End Sub 

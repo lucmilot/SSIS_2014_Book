@@ -1,0 +1,182 @@
+EXEC [SSISDB].[catalog].[configure_catalog] @property_name=N'OPERATION_CLEANUP_ENABLED', @property_value=N'FALSE'
+
+
+USE [AdventureWorks2012]
+GO
+CREATE TABLE [dbo].[InsertTest](
+	[StringCol] [varchar](50) NULL
+) ON [PRIMARY]
+GO
+
+
+
+INSERT INTO [dbo].[InsertTest]
+           ([StringCol])
+     VALUES
+           (?)
+
+
+Declare @execution_id bigint
+EXEC [SSISDB].[catalog].[create_execution] @package_name=N'AdminDemo1.dtsx', @execution_id=@execution_id OUTPUT, @folder_name=N'AdminDemo', @project_name=N'Ch22', @use32bitruntime=False, @reference_id=Null
+Select @execution_id
+EXEC [SSISDB].[catalog].[start_execution] @execution_id
+GO
+
+
+
+Declare @execution_id bigint
+
+EXEC [SSISDB].[catalog].[create_execution] @package_name=N'AdminDemo1.dtsx',
+ @execution_id=@execution_id OUTPUT, @folder_name=N'AdminDemo',
+  @project_name=N'Ch22', @use32bitruntime=False, @reference_id=Null
+
+Select @execution_id
+
+DECLARE @var0 sql_variant = N'PackageParam'
+
+EXEC [SSISDB].[catalog].[set_execution_parameter_value] @execution_id,  @object_type=30, @parameter_name=N'strInput', @parameter_value=@var0
+
+EXEC [SSISDB].[catalog].[start_execution] @execution_id
+GO
+
+
+
+Declare @execution_id bigint
+EXEC [SSISDB].[catalog].[create_execution] @package_name=N'AdminDemo1.dtsx', @execution_id=@execution_id OUTPUT, @folder_name=N'AdminDemo', @project_name=N'Ch22', @use32bitruntime=False, @reference_id=Null
+Select @execution_id
+DECLARE @var0 sql_variant = (
+  Select top(1) FirstName from 
+  [AdventureWorks2012].[Person].[Contact]
+  Order by LASTNAME
+  )
+EXEC [SSISDB].[catalog].[set_execution_parameter_value] @execution_id,  @object_type=30, @parameter_name=N'strInput', @parameter_value=@var0
+EXEC [SSISDB].[catalog].[start_execution] @execution_id
+GO
+
+
+
+Select top(1) FirstName from 
+  [AdventureWorks2012].[Person].[Contact]
+  Order by LASTNAME
+
+CREATE TABLE [dbo].[EnvironmentDemo](
+	[RunType] [varchar](50) NULL,
+	[IntParamValue] [nchar](10) NULL
+) ON [PRIMARY]
+
+
+
+DECLARE @var int = N'2'
+EXEC [SSISDB].[catalog].[create_environment_variable] @variable_name=N'intNumber', @sensitive=False, @description=N'', @environment_name=N'Weekends', @folder_name=N'EnvironmentDemo', @value=@var, @data_type=N'Int32'
+GO
+DECLARE @var sql_variant = N'Weekends'
+EXEC [SSISDB].[catalog].[create_environment_variable] @variable_name=N'strRunType', @sensitive=False, @description=N'', @environment_name=N'Weekends', @folder_name=N'EnvironmentDemo', @value=@var, @data_type=N'String'
+GO
+
+
+
+EXEC [SSISDB].[catalog].[set_object_parameter_value] @object_type=20, @parameter_name=N'intNumber', @object_name=N'EnvironmentDemo', @folder_name=N'EnvironmentDemo', @project_name=N'EnvironmentDemo', @value_type=R, @parameter_value=N'intNumber'
+GO
+EXEC [SSISDB].[catalog].[set_object_parameter_value] @object_type=20, @parameter_name=N'strRunType', @object_name=N'EnvironmentDemo', @folder_name=N'EnvironmentDemo', @project_name=N'EnvironmentDemo', @value_type=R, @parameter_value=N'strRunType'
+GO
+
+
+Declare @execution_id bigint
+
+EXEC [SSISDB].[catalog].[create_execution] 
+@package_name=N'EnvironDemo3.dtsx',
+ @execution_id=@execution_id OUTPUT, 
+ @folder_name=N'EnvironmentDemo',
+  @project_name=N'EnvironmentDemo', 
+  @use32bitruntime=False,
+ @reference_id=5
+
+Select @execution_id
+
+EXEC [SSISDB].[catalog].[start_execution] @execution_id
+GO
+
+
+
+exec [SSISDB].[catalog].[add_data_tap]
+    @execution_id= @execution_id, 
+	@task_package_path = '\Package\Get Person Data',
+	@dataflow_path_id_string = 'Paths[Person Source.OLE DB Source Output]', 
+	@data_filename = 'C:\ProSSIS\Data\Ch22\datatap.csv'
+
+
+
+
+Declare @execution_id bigint
+EXEC [SSISDB].[catalog].[create_execution] @package_name=N'DataTap1.dtsx', @execution_id=@execution_id OUTPUT, @folder_name=N'DataTapDemo', @project_name=N'DataTapDemo', @use32bitruntime=False, @reference_id=Null
+
+Select @execution_id
+
+exec [SSISDB].[catalog].[add_data_tap]
+    @execution_id= @execution_id, 
+	@task_package_path = '\Package\Get Person Data',
+	@dataflow_path_id_string = 'Paths[Person Source.OLE DB Source Output]', 
+	@data_filename = 'C:\ProSSIS\Data\Ch22\datatap.csv'
+
+EXEC [SSISDB].[catalog].[start_execution] @execution_id
+GO
+
+
+Public Sub Main()
+'
+'Add your code here
+MsgBox(Dts.Variables("strMessage").Value)
+Dts.TaskResult = ScriptResults.Success
+End Sub 
+
+
+
+CREATE TABLE [dbo].[ctrlConfigurations]
+(
+ConfigurationFilter NVARCHAR(255) NOT NULL,
+ConfiguredValue NVARCHAR(255) NULL,
+PackagePath NVARCHAR(255) NOT NULL,
+ConfiguredValueType NVARCHAR(20) NOT NULL
+)
+
+
+Update ctrlConfigurations
+SET ConfiguredValue = 'SQL Server Config Value'
+where ConfiguredValue = 'Hard Coded Value'
+
+DTExec.exe /DTS "\MSDB\DBSnapshots" /SERVER localhost /MAXCONCURRENT " -1 "
+/CHECKPOINTING OFF /REPORTING V 
+
+
+for %%f in (*.dtsx) do Dtutil.exe /file %%f /encrypt file;%%f;3;newpassword 
+
+
+DTUtil.exe -I -File dbsnapshots.dtsx 
+
+
+for %%f in (*.dtsx) do dtutil.exe /I /FILE "%%f" 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

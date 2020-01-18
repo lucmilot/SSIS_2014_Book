@@ -1,0 +1,96 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/12/2011 6:07:56 PM"
+  DTS:CreationName="SSIS.Package.3"
+  DTS:CreatorComputerName="SSISMVP-RC0"
+  DTS:CreatorName="SSISMVP-RC0\MVP"
+  DTS:DTSID="{DDED5B62-DDDB-4ED4-83C6-59EFEAA12658}"
+  DTS:ExecutableType="SSIS.Package.3"
+  DTS:LastModifiedProductVersion="11.0.3369.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="XMLTask"
+  DTS:PackageType="5"
+  DTS:VersionBuild="6"
+  DTS:VersionGUID="{D9C966F4-CECB-480E-A24A-6471FC90D8B6}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[MyGetZips.xsd]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{EB7B7942-FA39-4503-A62E-A4707E911A81}"
+      DTS:ObjectName="MyGetZips.xsd">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\ProSSIS\Tasks\XMLTask\MyGetZips.xsd" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[MyGetZipsData.xml]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{1BC31D9E-CAF7-4190-A5D5-91266D4A314C}"
+      DTS:ObjectName="MyGetZipsData.xml">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\ProSSIS\Tasks\XMLTask\MyGetZipsData.xml" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[XMLValidateTest.txt]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{2ED6D6DD-B2B2-44DD-9663-A0777DF469C1}"
+      DTS:ObjectName="XMLValidateTest.txt">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:FileUsageType="1"
+          DTS:ConnectionString="C:\ProSSIS\Tasks\XMLTask\XMLValidateTest.txt" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\XML Task"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.XMLTask.XMLTask, Microsoft.SqlServer.XMLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="XML Task"
+      DTS:DTSID="{EE469C5F-BD8C-495F-BF51-5D2CAEA0231C}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.XMLTask.XMLTask, Microsoft.SqlServer.XMLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="XML Task"
+      DTS:TaskContact="XML Task; Microsoft Corporation; SQL Server &quot;Denali&quot; CTP3; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <XMLTaskData
+          OperationType="Validate"
+          Source="MyGetZipsData.xml"
+          SecondOperandType="FileConnection"
+          SecondOperand="MyGetZips.xsd"
+          SaveOperationResult="True"
+          Destination="XMLValidateTest.txt"
+          OverwriteDestination="True" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql11">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="125,42"
+          Id="Package\XML Task"
+          TopLeft="127.172507937988,180.876611368152" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

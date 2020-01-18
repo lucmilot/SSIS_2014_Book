@@ -1,0 +1,10 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="AdventureWorksDW"
+  DTS:DTSID="{72DFC3BB-E328-4962-AAE3-7830B210C334}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=WSERVER16A;Initial Catalog=AdventureWorksDW2016;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-{72DFC3BB-E328-4962-AAE3-7830B210C334}AdventureWorksDW;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

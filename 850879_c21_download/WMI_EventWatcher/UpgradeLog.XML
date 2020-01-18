@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="WMI_EventWatcher">
+</Property><Property Name="Solution File" Value="C:\ssis\ExtMgt\WMI_EventWatcher\WMI_EventWatcher.sln">
+</Property><Property Name="User Options File" Value="C:\ssis\ExtMgt\WMI_EventWatcher\WMI_EventWatcher.suo">
+</Property><Property Name="Date" Value="Tuesday, August 30, 2011">
+</Property><Property Name="Time" Value="9:53 AM">
+</Property></Properties><Event ErrorLevel="0" Project="" Source="WMI_EventWatcher.sln" Description="File successfully backed up as C:\ssis\ExtMgt\WMI_EventWatcher\Backup\WMI_EventWatcher.sln">
+</Event><Event ErrorLevel="0" Project="" Source="WMI_EventWatcher.suo" Description="File successfully backed up as C:\ssis\ExtMgt\WMI_EventWatcher\Backup\WMI_EventWatcher.suo">
+</Event><Event ErrorLevel="0" Project="WMI_EventWatcher" Source="WMI_EventWatcher.database" Description="File successfully backed up as C:\ssis\ExtMgt\WMI_EventWatcher\Backup\WMI_EventWatcher\WMI_EventWatcher.database">
+</Event><Event ErrorLevel="0" Project="WMI_EventWatcher" Source="Package.dtsx" Description="File successfully backed up as C:\ssis\ExtMgt\WMI_EventWatcher\Backup\WMI_EventWatcher\Package.dtsx">
+</Event><Event ErrorLevel="0" Project="WMI_EventWatcher" Source="WMI_EventWatcher.dtproj" Description="File successfully backed up as C:\ssis\ExtMgt\WMI_EventWatcher\Backup\WMI_EventWatcher\WMI_EventWatcher.dtproj">
+</Event><Event ErrorLevel="3" Project="WMI_EventWatcher" Source="WMI_EventWatcher.dtproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WMI_EventWatcher" Source="WMI_EventWatcher.dtproj" Description="Project converted successfully.">
+</Event><Event ErrorLevel="0" Project="" Source="WMI_EventWatcher.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="WMI_EventWatcher.sln" Description="Converted">
+</Event></UpgradeLog>

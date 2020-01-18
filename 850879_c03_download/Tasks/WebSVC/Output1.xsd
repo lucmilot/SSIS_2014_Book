@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="NewDataSet">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" name="Table">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" name="CITY" type="xs:string" />
+              <xs:element minOccurs="0" name="STATE" type="xs:string" />
+              <xs:element minOccurs="0" name="ZIP" type="xs:unsignedShort" />
+              <xs:element minOccurs="0" name="AREA_CODE" type="xs:unsignedShort" />
+              <xs:element minOccurs="0" name="TIME_ZONE" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

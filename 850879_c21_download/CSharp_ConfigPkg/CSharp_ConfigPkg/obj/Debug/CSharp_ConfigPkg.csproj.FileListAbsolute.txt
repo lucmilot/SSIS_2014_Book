@@ -1,0 +1,13 @@
+C:\ssis\ExtMgt\CSharp_ConfigPkg\CSharp_ConfigPkg\bin\Debug\CSharp_ConfigPkg.exe.config
+C:\ssis\ExtMgt\CSharp_ConfigPkg\CSharp_ConfigPkg\bin\Debug\CSharp_ConfigPkg.exe
+C:\ssis\ExtMgt\CSharp_ConfigPkg\CSharp_ConfigPkg\bin\Debug\CSharp_ConfigPkg.pdb
+C:\ssis\ExtMgt\CSharp_ConfigPkg\CSharp_ConfigPkg\obj\Debug\ResolveAssemblyReference.cache
+C:\ssis\ExtMgt\CSharp_ConfigPkg\CSharp_ConfigPkg\obj\Debug\CSharp_ConfigPkg.exe
+C:\ssis\ExtMgt\CSharp_ConfigPkg\CSharp_ConfigPkg\obj\Debug\CSharp_ConfigPkg.pdb
+C:\Users\Chris\Downloads\101124_ch20_download\CSharp_ConfigPkg\CSharp_ConfigPkg\bin\Debug\CSharp_ConfigPkg.exe.config
+C:\Users\Chris\Downloads\101124_ch20_download\CSharp_ConfigPkg\CSharp_ConfigPkg\obj\Debug\CSharp_ConfigPkg.exe
+C:\Users\Chris\Downloads\101124_ch20_download\CSharp_ConfigPkg\CSharp_ConfigPkg\obj\Debug\CSharp_ConfigPkg.pdb
+C:\Users\Chris\Downloads\101124_ch20_download\CSharp_ConfigPkg\CSharp_ConfigPkg\bin\Debug\Package.dtsx
+C:\Users\Chris\Downloads\101124_ch20_download\CSharp_ConfigPkg\CSharp_ConfigPkg\bin\Debug\CSharp_ConfigPkg.exe
+C:\Users\Chris\Downloads\101124_ch20_download\CSharp_ConfigPkg\CSharp_ConfigPkg\bin\Debug\CSharp_ConfigPkg.pdb
+C:\Users\Chris\Downloads\101124_ch20_download\CSharp_ConfigPkg\CSharp_ConfigPkg\obj\Debug\CSharp_ConfigPkg.csprojResolveAssemblyReference.cache
